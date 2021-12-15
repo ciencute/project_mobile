@@ -1,16 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constants/colors.dart';
 
-class AppCacheImage extends StatelessWidget {
+class CacheImage extends StatelessWidget {
   final String url;
   final double? width;
   final double? height;
   final double? borderRadius;
   final BoxFit fit;
 
-  const AppCacheImage({
+  const CacheImage({
     Key? key,
     this.url = '',
     this.width,
@@ -23,8 +24,8 @@ class AppCacheImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isValidUrl = Uri.tryParse(url)?.isAbsolute == true;
     return Container(
-      width: width ?? double.infinity,
-      height: height ?? double.infinity,
+      width: width ?? Get.width,
+      height: height ?? Get.height,
       // ignore: sort_child_properties_last
       child: isValidUrl
           ? ClipRRect(

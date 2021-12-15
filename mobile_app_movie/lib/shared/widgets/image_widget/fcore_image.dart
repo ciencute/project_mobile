@@ -22,7 +22,7 @@ class FCoreImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (source.contains('http')) {
-      return AppCacheImage(
+      return CacheImage(
         url: source,
         fit: fit,
         width: width,

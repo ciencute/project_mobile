@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   AppColor();
-
-  /// Light Color
   static Color defaultHeaderOSColorLight =
       const Color(0xFF45C152); // light green
   static Color primaryColorLight = const Color(0xFF13862B); // dark green

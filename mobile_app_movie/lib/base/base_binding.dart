@@ -5,5 +5,4 @@ class BaseBinding extends Bindings {
   @override
   @mustCallSuper
   void dependencies() {}
-
 }
