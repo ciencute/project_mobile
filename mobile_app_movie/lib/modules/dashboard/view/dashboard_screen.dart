@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/home_controller.dart';
+import 'package:mobile_app_movie/modules/dashboard/controller/dashboard_controller.dart';
 
-part 'home_screen.children.dart';
-class HomeScreen extends GetView<HomeController>{
+class DashboardScreen extends GetView<DashboardController>{
   @override
   Widget build(BuildContext context) {
    return Container();
