@@ -6,6 +6,6 @@ class DashboardBinding extends BaseBinding {
   @override
   void dependencies() {
     super.dependencies();
-    Get.lazyPut<DashboardController>(() => DashboardController());
+    Get.lazyPut<DashboardController>(DashboardController.new);
   }
 }

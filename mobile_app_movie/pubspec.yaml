@@ -40,7 +40,8 @@ dependencies:
   #image
   flutter_svg: ^1.0.0
   cached_network_image: ^3.2.0
-
+  #local database
+  hive: ^2.0.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,7 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/resource/assets_resources/icons/
-    - lib/resource/assets_resources/images/
+    - lib/resource/assets_resources/images/image_app/
     - lib/resource/assets_resources/images/2.0x/
     - lib/resource/assets_resources/images/3.0x/
 

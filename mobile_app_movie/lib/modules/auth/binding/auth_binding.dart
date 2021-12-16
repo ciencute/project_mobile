@@ -7,6 +7,6 @@ class AuthBinding extends BaseBinding {
   @override
   void dependencies() {
     super.dependencies();
-    Get.lazyPut<AuthController>(() => AuthController());
+    Get.lazyPut<AuthController>(AuthController.new);
   }
 }

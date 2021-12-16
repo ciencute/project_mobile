@@ -14,3 +14,18 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+# project_mobile_app_movie
+mobile font end movie app code by Flutter 2.8.0
+# Build Android
+## run Run command before build
+1. flutter clean
+2. flutter pub get
+3. flutter pub run build_runner build --delete-conflicting-outputs
+# Build IOS
+## run Run command before build
+1. flutter clean
+2. flutter pub get
+3. cd ios
+4. delete Podfile.lock
+5. pod install
+6. flutter pub run build_runner build --delete-conflicting-outputs
