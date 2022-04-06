@@ -1,7 +1,10 @@
 part of 'app_pages.dart';
 
 abstract class Routes {
-  static const HOME = '/home_screen';
-  static const DASHBOARD = '/dashboard_screen';
-  static const AUTH = '/AUTH_screen';
+  static const HOME = '/homeScreen';
+  static const DASHBOARD = '/dashboardScreen';
+  static const DETAIL = '/DetailScreen';
+  static const SIGN_IN = '/SignInScreen';
+  static const SIGN_UP = '/SignUpScreen';
+  static const ONBOARDING = '/OnboardingScreen';
 }

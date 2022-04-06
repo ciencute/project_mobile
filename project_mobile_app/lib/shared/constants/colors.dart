@@ -4,10 +4,10 @@ class AppColors {
   AppColors();
   static const Color defaultHeaderOSColorLight =
       Color(0xFF45C152); // light green
-  static const Color primaryColorLight = Color(0xFF13862B); // dark green
+  static const Color primaryColorLight = Color(0xFF09090F); // dark green
   static const Color accentColorLight = Color(0xFFF47458); // orange
   static const Color dividerColorLight = Color(0xFFF0F0F0); // grey
-  static const Color primaryTextColorLight = Color(0xFF333333); // black gray
+  static const Color primaryTextColorLight = Color(0xFFFFFFFF); // black gray
   static const Color secondTextColorLight = Color(0xFFFFFFFF); // white
   static const Color thirdTextColorLight = Color(0xFF000000); // black
   static const Color fourthTextColorLight = Color(0xFF13862B); // green

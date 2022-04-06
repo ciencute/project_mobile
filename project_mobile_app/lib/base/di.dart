@@ -1,8 +1,12 @@
-import 'package:get/get.dart';
-import '../shared/services/storage_service.dart';
+
+import '../api/network/dio_client.dart';
+import '../shared/constants/common.dart';
+
 
 class DependencyInjection {
-    static Future<void> init() async {
-    await Get.putAsync(() => StorageService().init());
+  static Future<void> init(String environment) async {
+    //api
+    final _dioAPIClient =
+        await DioClient.setup(baseUrl: ClientAPIDomain);
   }
 }
