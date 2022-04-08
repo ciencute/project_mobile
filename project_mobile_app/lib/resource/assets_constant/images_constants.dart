@@ -7,5 +7,4 @@ class ImageConstants {
   //url
   //3x
   static const imageMovie1= '${IMAGE_ASSET}image_moive1.png';
-  static const imageAvatar= '${IMAGE_ASSET}img_avatar.png';
 }
