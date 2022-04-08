@@ -5,5 +5,4 @@ class IconConstants {
   static const iconSearch = '${ICON_ASSET}ic_search.svg';
   static const iconPlay = '${ICON_ASSET}ic_play.svg';
   static const iconProfile = '${ICON_ASSET}ic_profile.svg';
-  static const iconCamera = '${ICON_ASSET}ic_camera.svg';
 }

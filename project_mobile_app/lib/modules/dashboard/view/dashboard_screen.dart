@@ -1,8 +1,6 @@
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_mobile_app/modules/category/view/category_screen.dart';
-import 'package:project_mobile_app/modules/profile/view/profile_screen.dart';
 
 import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../shared/constants/colors.dart';
@@ -33,9 +31,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ),
     // const HomePage(),
     // const GroupPage(),
-    const CategoryScreen(),
     const DetailScreen(),
-    const ProfileScreen(),
+    const DetailScreen(),
+    const DetailScreen(),
   ];
   final pageController = PageController();
   late DashboardCubit _cubit;
@@ -71,22 +69,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   ),
                   Padding(
                       padding: EdgeInsets.all(15),
-                      child: FCoreImage(
-                        IconConstants.iconPlay,
-                        color: Colors.white,
-                      )),
+                      child: FCoreImage(IconConstants.iconPlay,
+                       
+                      color: Colors.white,)),
                   Padding(
                       padding: EdgeInsets.all(15),
-                      child: FCoreImage(
-                        IconConstants.iconSearch,
-                        color: Colors.white,
-                      )),
+                      child: FCoreImage(IconConstants.iconSearch,
+                        color: Colors.white,)),
                   Padding(
                       padding: EdgeInsets.all(15),
-                      child: FCoreImage(
-                        IconConstants.iconProfile,
-                        color: Colors.white,
-                      )),
+                      child: FCoreImage(IconConstants.iconProfile,
+                        color: Colors.white,)),
                 ],
                 inactiveIcons: [
                   Textlabel1('Home'),
@@ -112,7 +105,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   bottomRight: Radius.circular(24),
                   bottomLeft: Radius.circular(24),
                 ),
-                shadowColor: Colors.deepPurple,
+                shadowColor: Colors.cyan.shade300,
                 elevation: 5,
               );
             }));
