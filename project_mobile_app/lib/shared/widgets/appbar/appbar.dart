@@ -24,7 +24,7 @@ PreferredSizeWidget appbar(BuildContext context, String s,
           ),
       actions: [
         WidgetCircularAnimator(
-                    size: 250,
+          size: 250,
           innerIconsSize: 3,
           outerIconsSize: 3,
           innerAnimation: Curves.easeInOutBack,
