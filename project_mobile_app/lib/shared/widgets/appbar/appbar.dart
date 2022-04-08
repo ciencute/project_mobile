@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_mobile_app/shared/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:widget_circular_animator/widget_circular_animator.dart';
 
 import '../../../resource/assets_constant/icon_constants.dart';
@@ -23,29 +24,36 @@ PreferredSizeWidget appbar(BuildContext context, String s,
             },
           ),
       actions: [
-        WidgetCircularAnimator(
-          size: 250,
-          innerIconsSize: 3,
-          outerIconsSize: 3,
-          innerAnimation: Curves.easeInOutBack,
-          outerAnimation: Curves.easeInOutBack,
-          innerColor: Colors.deepPurple,
-          outerColor: Colors.orangeAccent,
-          innerAnimationSeconds: 10,
-          outerAnimationSeconds: 10,
-          child: Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.grey[200]),
-            child: avatar != null
-                ? FCoreImage(
-                    IconConstants.iconSearch,
-                    fit: BoxFit.contain,
-                  )
-                : Icon(
-                    Icons.person_outline,
-                    color: Colors.deepOrange[200],
-                    size: 60,
-                  ),
+       // SearchBarWidget(),
+        Padding(
+          padding: const EdgeInsets.only(
+            right: 12
+          ),
+          child: WidgetCircularAnimator(
+            size: 55,
+            innerIconsSize: 1,
+            outerIconsSize: 1,
+            innerAnimation: Curves.easeInOutBack,
+            outerAnimation: Curves.easeInOutBack,
+            innerColor: Colors.deepPurple,
+            outerColor: Colors.orangeAccent,
+            innerAnimationSeconds: 5,
+            outerAnimationSeconds: 5,
+            child: Container(
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.grey[200]),
+              child: avatar != null
+                  ? FCoreImage(
+                      IconConstants.iconSearch,
+                      fit: BoxFit.contain,
+
+                    )
+                  : Icon(
+                      Icons.person_outline,
+                      color: Colors.deepOrange[200],
+                      size: 40,
+                    ),
+            ),
           ),
         )
       ]);

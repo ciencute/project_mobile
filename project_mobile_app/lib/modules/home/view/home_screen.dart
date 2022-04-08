@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             const SizedBox(
-              height: 120,
+              height: 16,
             ),
             widget._genListMovieCard(
               movieCardModels: _cubit.lstImage(),
