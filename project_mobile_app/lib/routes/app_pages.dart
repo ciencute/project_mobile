@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:project_mobile_app/modules/category/view/category_screen.dart';
 import 'package:project_mobile_app/modules/profile/view/profile_screen.dart';
 import '../modules/auth/onboarding/view/onboarding_screen.dart';
 import '../modules/auth/sign_in/view/sign_in_screen.dart';
@@ -17,4 +18,5 @@ final routePages = [
   GetPage(name: Routes.HOME, page: () => const HomeScreen()),
   GetPage(name: Routes.DETAIL, page: () => const DetailScreen()),
   GetPage(name: Routes.PROFILE, page: () => const ProfileScreen()),
+  GetPage(name: Routes.CATEGORY, page: () => const CategoryScreen()),
 ];
