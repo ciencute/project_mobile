@@ -23,29 +23,33 @@ PreferredSizeWidget appbar(BuildContext context, String s,
             },
           ),
       actions: [
-        WidgetCircularAnimator(
-                    size: 250,
-          innerIconsSize: 3,
-          outerIconsSize: 3,
-          innerAnimation: Curves.easeInOutBack,
-          outerAnimation: Curves.easeInOutBack,
-          innerColor: Colors.deepPurple,
-          outerColor: Colors.orangeAccent,
-          innerAnimationSeconds: 10,
-          outerAnimationSeconds: 10,
-          child: Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.grey[200]),
-            child: avatar != null
-                ? FCoreImage(
-                    IconConstants.iconSearch,
-                    fit: BoxFit.contain,
-                  )
-                : Icon(
-                    Icons.person_outline,
-                    color: Colors.deepOrange[200],
-                    size: 60,
-                  ),
+        Padding(
+          padding: const EdgeInsets.only(right:16.0),
+          child: WidgetCircularAnimator(
+            singleRing: true,
+                      size: 55,
+            innerIconsSize: 1,
+            outerIconsSize: 1,
+            innerAnimation: Curves.easeInOutBack,
+            outerAnimation: Curves.easeInOutBack,
+            innerColor: Colors.deepPurple,
+            outerColor: Colors.orangeAccent,
+            innerAnimationSeconds: 5,
+            outerAnimationSeconds: 5,
+            child: Container(
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.grey[200]),
+              child: avatar != null
+                  ? FCoreImage(
+                      IconConstants.iconSearch,
+                      fit: BoxFit.contain,
+                    )
+                  : Icon(
+                      Icons.person_outline,
+                      color: Colors.deepOrange[200],
+                      size: 40,
+                    ),
+            ),
           ),
         )
       ]);
