@@ -7,6 +7,7 @@ class DetailState extends BaseState {
   List<Object?> get props => [
         loadStatus,
       ];
+  @override
   DetailState copyWith({
     LoadStatus? loadStatus,
   }) {
