@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_mobile_app/modules/auth/sign_in/view/sign_in_screen.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../shared/constants/common.dart';
@@ -23,6 +24,7 @@ class _TypeOntionState extends State<TypeOntion> {
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
+        _controller.setVolume(0);
         setState(() {});
       });
   }
@@ -52,7 +54,7 @@ class _TypeOntionState extends State<TypeOntion> {
                       await Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const DashBoardScreen()));
+                              builder: (context) => const SignInScreen()));
                     },
                     title: 'Login'),
                 const SizedBox(
@@ -91,8 +93,8 @@ class _TypeOntionState extends State<TypeOntion> {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topRight,
                 colors: [
-                  const Color(0xFF141e30).withOpacity(0.5),
-                  const Color(0xFF243b55).withOpacity(0.5)
+                  const Color(0xFF141e30).withOpacity(0.6),
+                  const Color(0xFF243b55).withOpacity(0.7)
                 ])),
         padding: const EdgeInsets.symmetric(
             horizontal: CommonConstants.kDefaultPadding,
