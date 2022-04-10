@@ -12,16 +12,14 @@ import '../cubit/category_cubit.dart';
 
 part 'category_screen.chidren.dart';
 
-
 class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({ Key? key }) : super(key: key);
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-
   late CategoryCubit _cubit;
   final pageController = PageController();
   @override
@@ -29,36 +27,33 @@ class _CategoryScreenState extends State<CategoryScreen> {
     super.initState();
     _cubit = CategoryCubit();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:  BlocBuilder<CategoryCubit, CategoryState>(
-        builder: (_,state){
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 64,
-                ),
-                widget._horizontalTabs(
-                  onSelected: (value){
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      builder: (_, state) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 32,
+              ),
+              widget._horizontalTabs(onSelected: (value) {
+                _cubit.changePage(value);
+              }),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: widget._listItemType(onSelectedTab: (value) {
                     _cubit.changePage(value);
-                  }
+                  }),
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: widget._listItemType(onSelectedTab:  (value){
-                        _cubit.changePage(value);
-                      }),
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-        bloc: _cubit,
-      ),
+              )
+            ],
+          ),
+        );
+      },
+      bloc: _cubit,
     );
   }
 }

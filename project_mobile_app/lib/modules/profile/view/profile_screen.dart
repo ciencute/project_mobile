@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:editable_image/editable_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_mobile_app/resource/assets_constant/icon_constants.dart';
@@ -9,7 +7,7 @@ import 'package:project_mobile_app/resource/assets_constant/images_constants.dar
 import 'package:project_mobile_app/shared/constants/colors.dart';
 
 import '../../../shared/constants/common.dart';
-import '../../../shared/styles/heading_style/heading_text_style.dart';
+
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
 import '../cubit/profile_cubit.dart';
@@ -31,6 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     _cubit = ProfileCubit();
     profilePicFile = File('');
+    _cubit.fetchProjectInfo();
   }
 
   Future<void> _directUpdateImage(File? file) async {
@@ -46,11 +45,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        body: BlocBuilder<ProfileCubit, ProfileState>(
+      child:  BlocBuilder<ProfileCubit, ProfileState>(
           bloc: _cubit,
           builder: (_, state) {
-            final infoUser = _cubit.fetchProjectInfo();
+           
 
             return Column(
               children: [
@@ -84,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             );
           },
         ),
-      ),
+      
     );
   }
 }
