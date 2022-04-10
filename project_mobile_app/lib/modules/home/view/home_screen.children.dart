@@ -79,7 +79,7 @@ extension _HomeScreenChildren on HomeScreen {
       ),
       padding: const EdgeInsets.symmetric(
           horizontal: CommonConstants.kDefaultPadding,
-          vertical: CommonConstants.kDefaultPadding),
+          vertical: CommonConstants.kDefaultPadding-6),
       decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.3),
           border: Border.all(width: 1, color: Colors.white.withOpacity(0.4)),

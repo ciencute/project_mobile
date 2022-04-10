@@ -14,7 +14,7 @@ class MoveApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       enableLog: true,
       defaultTransition: Transition.fade,
-      initialRoute: Routes.DASHBOARD,
+      initialRoute: Routes.TYPEOPTION,
       getPages: routePages,
      
     );

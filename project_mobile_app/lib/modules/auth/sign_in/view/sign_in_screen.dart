@@ -10,8 +10,18 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+
+          ),
+        ),
+      ),
     );
   }
 }

@@ -19,9 +19,9 @@ class CommonConstants {
 const APP_NAME = 'Movie app';
 const IMAGE_ASSET = 'lib/resource/assets_resources/images/image_app/';
 const ICON_ASSET = 'lib/resource/assets_resources/icons/';
+const VIDEO_APP = 'assets/video/background_app.mp4';
 const FONT_FAMILY = 'Quicksand';
 double DEFAULT_WIDTH = Get.width;
 double DEFAULT_HEIGHT = Get.width;
 const ClientAPIDomain = 'ClientAPIDomain';
-
 
