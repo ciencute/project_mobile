@@ -1,10 +1,10 @@
-import 'package:faded_widget/faded_widget.dart';
+import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:project_mobile_app/resource/assets_constant/images_constants.dart';
-import 'package:project_mobile_app/shared/constants/common.dart';
-import 'package:project_mobile_app/shared/widgets/argon_button/argon_button_widget.dart';
-import 'package:project_mobile_app/shared/widgets/image_widget/fcore_image.dart';
-import 'package:project_mobile_app/shared/widgets/text_input_widget/text_input_widget.dart';
+import '../../../../resource/assets_constant/images_constants.dart';
+import '../../../../shared/constants/common.dart';
+import '../../../../shared/widgets/argon_button/argon_button_widget.dart';
+import '../../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../../../shared/widgets/text_input_widget/text_input_widget.dart';
 part 'sign_in_screen.childern.dart';
 
 class SignInScreen extends StatefulWidget {

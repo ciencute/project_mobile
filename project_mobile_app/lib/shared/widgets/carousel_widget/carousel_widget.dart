@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:project_mobile_app/modules/profile/view/profile_screen.dart';
-import 'package:project_mobile_app/shared/styles/label_style/label_text_style.dart';
-
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../resource/assets_constant/images_constants.dart';
+import '../../../modules/profile/view/profile_screen.dart';
+import '../../styles/label_style/label_text_style.dart';
 import '../image_widget/fcore_image.dart';
 
 class SliderlWidget extends StatefulWidget {

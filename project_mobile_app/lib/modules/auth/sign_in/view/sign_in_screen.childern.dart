@@ -21,7 +21,13 @@ extension _SignInScreenChildren on SignInScreen {
           const SizedBox(
             height: 32,
           ),
-          ArgonButtonWidget()
+          ArgonButtonWidget(onTap: (startLoading, stopLoading, btnState) {
+             if (btnState == ButtonState.Idle) {
+                  startLoading();
+                } else {
+                  stopLoading();
+                }
+          })
         ],
       ),
     );

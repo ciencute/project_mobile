@@ -5,7 +5,8 @@ import 'package:project_mobile_app/shared/styles/heading_style/heading_text_styl
 import '../../constants/common.dart';
 
 class ArgonButtonWidget extends StatelessWidget {
-  const ArgonButtonWidget({ Key? key }) : super(key: key);
+  final Function(Function startLoading, Function stopLoading, ButtonState btnState) onTap;
+  const ArgonButtonWidget({ Key? key , required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +27,7 @@ class ArgonButtonWidget extends StatelessWidget {
       // size: loaderWidth ,
     ),
   ),
-  onTap: (startLoading, stopLoading, btnState) {
-    if (btnState == ButtonState.Idle) {
-                 startLoading();
-                }
-  },
+  onTap: onTap,
 );
   }
 }
