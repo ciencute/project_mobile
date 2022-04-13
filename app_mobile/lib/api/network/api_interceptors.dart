@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../shared/constants/storage.dart';
 import '../../shared/utils/logger.dart';
 
@@ -10,8 +11,9 @@ class ApiInterceptors extends InterceptorsWrapper {
     final method = options.method;
     final uri = options.uri;
     final data = options.data;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    options.headers['Authorization'] = 'Bearer ${StorageConstants.token}';
+    options.headers['Authorization'] = 'Bearer ${prefs.getString(StorageConstants.token)}';
 
     logger.log(
         '\n\n--------------------------------------------------------------------------------------------------------');
@@ -22,11 +24,11 @@ class ApiInterceptors extends InterceptorsWrapper {
     } else {
       try {
         logger.log(
-            '✈️ REQUEST[$method] => PATH: $uri \n Token: ${StorageConstants.token} \n DATA: ${jsonEncode(data)}',
+            '✈️ REQUEST[$method] => PATH: $uri \n Token: ${prefs.getString(StorageConstants.token)} \n DATA: ${jsonEncode(data)}',
             printFullText: true);
       } catch (e) {
         logger.log(
-            '✈️ REQUEST[$method] => PATH: $uri \n Token: ${StorageConstants.token} \n DATA: $data',
+            '✈️ REQUEST[$method] => PATH: $uri \n Token: ${prefs.getString(StorageConstants.token)} \n DATA: $data',
             printFullText: true);
       }
     }

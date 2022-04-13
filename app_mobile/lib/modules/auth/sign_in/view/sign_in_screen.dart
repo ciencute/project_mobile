@@ -1,15 +1,15 @@
-import 'package:app_mobile/modules/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import '../../../../api/models/enums/load_status.dart';
-import '../../../../api/repositories/movie_app_repository.dart';
+
 import '../../../../resource/assets_constant/images_constants.dart';
 import '../../../../shared/constants/common.dart';
 import '../../../../shared/widgets/argon_button/argon_button_widget.dart';
 import '../../../../shared/widgets/image_widget/fcore_image.dart';
 import '../../../../shared/widgets/text_input_widget/text_input_widget.dart';
+import '../cubit/sign_in_cubit.dart';
+
 part 'sign_in_screen.childern.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -50,7 +50,6 @@ class _SignInScreenState extends State<SignInScreen> {
     return BlocBuilder<SignInCubit, SignInState>(
       bloc: _cubit,
       builder: (context, state) {
-        final isLoading = state.loadStatus == LoadStatus.loading;
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(
