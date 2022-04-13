@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
 import 'package:get/get.dart';
 
 class CommonConstants {
@@ -23,5 +25,5 @@ const VIDEO_APP = 'assets/video/background_app.mp4';
 const FONT_FAMILY = 'Quicksand';
 double DEFAULT_WIDTH = Get.width;
 double DEFAULT_HEIGHT = Get.width;
-const ClientAPIDomain = 'ClientAPIDomain';
+const ClientAPIDomain = 'https://movieapi.tk/';
 

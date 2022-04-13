@@ -9,7 +9,7 @@ import '../api/network/dio_client.dart';
 import '../shared/constants/common.dart';
 
 class DependencyInjection {
-  static Future<void> init(String environment) async {
+  static Future<void> init() async {
     //api
     await Get.putAsync(() => StorageService().init());
     final _dioAPIClient = await DioClient.setup(baseUrl: ClientAPIDomain);

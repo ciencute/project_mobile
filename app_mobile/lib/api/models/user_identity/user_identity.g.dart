@@ -7,16 +7,16 @@ part of 'user_identity.dart';
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-      accessToken: json['accessToken'] as String,
-      tokenType: json['tokenType'] as String,
-      expiresIn: json['expiresIn'] as int,
+      accessToken: json['access_token'] as String,
+      tokenType: json['token_type'] as String,
+      expiresIn: json['expires_in'] as int,
       user: UserUIModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
-      'accessToken': instance.accessToken,
-      'tokenType': instance.tokenType,
-      'expiresIn': instance.expiresIn,
+      'access_token': instance.accessToken,
+      'token_type': instance.tokenType,
+      'expires_in': instance.expiresIn,
       'user': instance.user,
     };
 
