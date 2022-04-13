@@ -1,1 +1,3 @@
-abstract class MovieAppRepository {}
+abstract class MovieAppRepository {
+  
+}
