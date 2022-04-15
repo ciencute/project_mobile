@@ -5,7 +5,7 @@
 import 'package:get/get.dart';
 
 class CommonConstants {
-    static const double extraSmallText = 10;
+  static const double extraSmallText = 10;
   static const double smallText = 12;
   static const double mediumText = 14;
   static const double largeText = 16;

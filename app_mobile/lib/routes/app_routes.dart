@@ -8,4 +8,5 @@ abstract class Routes {
   static const SIGN_UP = '/SignUpScreen';
   static const ONBOARDING = '/OnboardingScreen';
   static const TYPEOPTION = '/typeOntion';
+  static const SEARCH = '/search';
 }

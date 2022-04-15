@@ -7,6 +7,7 @@ import '../modules/auth/sign_up/view/sign_up_screen.dart';
 import '../modules/dashboard/view/dashboard_screen.dart';
 import '../modules/detail/view/detail_screen.dart';
 import '../modules/home/view/home_screen.dart';
+import '../modules/search/view/search_screen.dart';
 
 part 'app_routes.dart';
 
@@ -18,4 +19,5 @@ final routePages = [
   GetPage(name: Routes.HOME, page: () => const HomeScreen()),
   GetPage(name: Routes.DETAIL, page: () => const DetailScreen()),
   GetPage(name: Routes.TYPEOPTION, page: () => const TypeOntion()),
+  GetPage(name: Routes.SEARCH, page: () => const SearchScreen()),
 ];

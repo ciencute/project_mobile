@@ -7,7 +7,8 @@ class AppColors {
   static const Color primaryColorLight = Color(0xFF09090F); // dark green
   static const Color accentColorLight = Color(0xFFF47458); // orange
   static const Color dividerColorLight = Color(0xFFF0F0F0); // grey
-  static const Color primaryTextColorLight = Color(0xFFFFFFFF); // black gray
+  static const Color primaryTextColorLight = Color(0xFFFFFFFF); // white
+  static const Color iconColorLight = Color(0xFFFFFFFF); // white
   static const Color secondTextColorLight = Color(0xFFFFFFFF); // white
   static const Color thirdTextColorLight = Color(0xFF000000); // black
   static const Color fourthTextColorLight = Color(0xFF13862B); // green
@@ -27,6 +28,11 @@ class AppColors {
   static const Color thirdBackgroundColorLight = Color(0xFF019749); // white
   static const Color shadowColorLight = Color(0x42000000); // black26
   static const Color contractInfoColor = Color(0xff1199E5);
+  static const Color borderTextFieldColor = Color(0xffEEEEEE);
+  static const Color colorLight = Color(0xffFFFFFF);
+  static const Color colorDark = Color(0xff000000);
+  static const Color gradient1BackgroundColor = Color(0xFF141e30);
+  static const Color gradient2BackgroundColor = Color(0xFF243b55);
 }
 
 Color hexToColor(String hex) {

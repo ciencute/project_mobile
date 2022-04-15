@@ -1,3 +1,4 @@
+import 'package:app_mobile/routes/app_pages.dart';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../resource/assets_constant/images_constants.dart';
 import '../../../../shared/constants/common.dart';
+import '../../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../../shared/widgets/argon_button/argon_button_widget.dart';
 import '../../../../shared/widgets/image_widget/fcore_image.dart';
 import '../../../../shared/widgets/text_input_widget/text_input_widget.dart';
