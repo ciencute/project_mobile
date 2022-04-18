@@ -31,18 +31,18 @@ class _MovieAPI implements MovieAPI {
   }
 
   @override
-  Future<HomeModel> getHomeUI() async {
+  Future<HomeUIModel> getHomeUI() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HomeModel>(
+        _setStreamType<HomeUIModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/home',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = HomeModel.fromJson(_result.data!);
+    final value = HomeUIModel.fromJson(_result.data!);
     return value;
   }
 

@@ -53,7 +53,7 @@ extension _HomeScreenChildren on HomeScreen {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FCoreImage(
-                  typeActions[index].icon ?? '',
+                  typeActions[index].img ?? '',
                   height: 55,
                   fit: BoxFit.cover,
                 ),
@@ -111,19 +111,22 @@ extension _HomeScreenChildren on HomeScreen {
       },
     );
   }
-Widget _lstMovie({required List<Data> lstMovies}){
+Widget _lstMovie({required List<UIItem> lstMovies}){
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.only(left: CommonConstants.kDefaultPadding),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+
           children:List.generate(lstMovies.length, (index){
             return Container(
+            height: 250,
             margin:
                 const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
             width: (Get.width - 64) / 3,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
@@ -139,6 +142,8 @@ Widget _lstMovie({required List<Data> lstMovies}){
                 Textlabel2(
                   lstMovies[index].title,
                   textAlign: TextAlign.center,
+                  textOverflow: TextOverflow.ellipsis,
+
                 )
               ],
             ),
@@ -169,7 +174,7 @@ Widget _lstMovie({required List<Data> lstMovies}){
         return Column(
           children: [
             FCoreImage(
-              lstMovies[index].icon ?? '',
+              lstMovies[index].img ?? '',
               height: 200,
               width: Get.width  / 3,
               fit: BoxFit.cover,
@@ -194,19 +199,7 @@ class MovieCardModel {
   MovieCardModel({required this.icon, required this.title, required this.star});
 }
 
-class UIItem {
-  String? id;
-  String? title;
-  String? icon;
-  String? description;
-  final Bihavior bihavior;
-  UIItem(
-      {required this.id,
-      required this.title,
-      required this.icon,
-      required this.description,
-      required this.bihavior});
-}
+
 
 class Bihavior {
   final String action;

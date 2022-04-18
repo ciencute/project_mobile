@@ -11,5 +11,5 @@ abstract class MovieAPI {
   @POST("/api/login")
   Future<UserModel> authLogin(@Body() Map<String, dynamic> body);
     @GET("/api/home")
-  Future<HomeModel>  getHomeUI();
+  Future<HomeUIModel>  getHomeUI();
 }

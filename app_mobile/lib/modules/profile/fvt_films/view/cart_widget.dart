@@ -7,10 +7,10 @@ import '../../../../shared/styles/label_style/label_text_style.dart';
 
 class CardWidget extends StatelessWidget {
   List data = [
-    {"color": Color(0xffff6968)},
-    {"color": Color.fromARGB(255, 28, 204, 116)},
-    {"color": Color(0xffff8f61)},
-    {"color": Color(0xff2ac3ff)},
+    {"color": const Color(0xffff6968)},
+    {"color": const Color.fromARGB(255, 28, 204, 116)},
+    {"color": const Color(0xffff8f61)},
+    {"color": const Color(0xff2ac3ff)},
     {"color": Color.fromARGB(255, 168, 79, 209)},
     {"color": Color(0xff96da45)},
     {"color": Color(0xffff6968)},
@@ -64,7 +64,7 @@ class CardWidget extends StatelessWidget {
                           right: 0,
                           top: 0,
                           child: Container(
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: AppColors.colorLight.withOpacity(0.5)),
@@ -117,7 +117,7 @@ class CardWidget extends StatelessWidget {
             );
           }),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
 

@@ -2,7 +2,7 @@ part of '../cubit/home_cubit.dart';
 
 class HomeState extends BaseState {
 
-  final HomeModel? homeModel;
+  final HomeUIModel? homeModel;
   final LoadStatus loadStatus;
   final int pageIndex;
   
@@ -21,7 +21,7 @@ class HomeState extends BaseState {
   HomeState copyWith({
     LoadStatus? loadStatus,
     int? pageIndex,
-    HomeModel? homeModel,
+    HomeUIModel? homeModel,
   }) {
     return HomeState(
       loadStatus: loadStatus ?? this.loadStatus,

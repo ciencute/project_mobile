@@ -17,7 +17,7 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
     return _movieAPI.authLogin(param);
   }
    @override
-  Future<HomeModel> getHomeUI() {
+  Future<HomeUIModel> getHomeUI() {
     return _movieAPI.getHomeUI();
   }
 

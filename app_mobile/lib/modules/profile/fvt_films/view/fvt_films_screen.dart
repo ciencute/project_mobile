@@ -1,17 +1,9 @@
-import 'dart:io';
-
-import 'package:app_mobile/modules/profile/acount_infos/state/acount_infos_state.dart';
-import 'package:app_mobile/modules/profile/fvt_films/state/fvt_films_state.dart';
-import 'package:app_mobile/shared/styles/body_style/body_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app_mobile/resource/assets_constant/icon_constants.dart';
-import 'package:app_mobile/resource/assets_constant/images_constants.dart';
-import 'package:app_mobile/shared/constants/colors.dart';
 import 'package:get/get.dart';
 
-import '../cubit/fvt_films_cubit.dart';
+import 'package:app_mobile/shared/constants/colors.dart';
+
+import '../../../../shared/styles/body_style/body_text_style.dart';
 import 'cart_widget.dart';
 
 class FavoriteFilmsScreen extends StatefulWidget {
@@ -24,8 +16,7 @@ class FavoriteFilmsScreen extends StatefulWidget {
 class _FavoriteFilmsScreenState extends State<FavoriteFilmsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  // late FavoriteFilmsCubit _cubit;
-  late File profilePicFile;
+
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0)

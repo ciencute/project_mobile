@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/base/base_cubit.dart';
-import 'package:app_mobile/resource/assets_constant/icon_constants.dart';
+import '../../../api/models/ui_item/ui_item.dart';
+import '../../../resource/assets_constant/icon_constants.dart';
 
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/home/home_identity.dart';
@@ -40,11 +41,11 @@ class HomeCubit extends Cubit<HomeState> {
 
     for (var i = 0; i < 10; i++) {
       items.add(UIItem(
-          id: i.toString(),
-          title: 'Phim chem nhau',
-          icon: ImageConstants.imageMovie1,
-          description: '',
-          bihavior: Bihavior(action: '', data: '')));
+        id: i,
+        title: 'Phim chem nhau',
+        img: ImageConstants.imageMovie1,
+        description: '',
+      ));
     }
     return items;
   }
@@ -55,35 +56,35 @@ class HomeCubit extends Cubit<HomeState> {
       switch (i) {
         case 1:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Genre',
-              icon: IconConstants.icGenre,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Genre',
+            img: IconConstants.icGenre,
+            description: '',
+          ));
           break;
         case 2:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Top IMDB',
-              icon: IconConstants.icTopImdb,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Top IMDB',
+            img: IconConstants.icTopImdb,
+            description: '',
+          ));
           break;
         case 3:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Country',
-              icon: IconConstants.icCountry,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Country',
+            img: IconConstants.icCountry,
+            description: '',
+          ));
           break;
         case 4:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Watched',
-              icon: IconConstants.icWatched,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Watched',
+            img: IconConstants.icWatched,
+            description: '',
+          ));
           break;
         default:
       }

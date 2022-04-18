@@ -6,5 +6,5 @@ abstract class MovieAppRepository {
     String username,
     String password,
   );
-  Future<HomeModel> getHomeUI();
+  Future<HomeUIModel> getHomeUI();
 }
