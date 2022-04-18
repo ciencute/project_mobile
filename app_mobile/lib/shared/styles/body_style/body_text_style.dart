@@ -42,7 +42,7 @@ class Textbody1 extends Text {
 class Textbody2 extends Textbody1 {
   static const TextStyle defaultStyle = TextStyle(
       fontFamily: CommonConstants.mulish_semiBold,
-      fontSize: CommonConstants.smallText,
+      fontSize: CommonConstants.mediumText,
       color: AppColors.primaryTextColorLight,
       fontWeight: FontWeight.w600,
       height: 1.5,
@@ -63,13 +63,36 @@ class Textbody2 extends Textbody1 {
 
 class Textbody3 extends Textbody1 {
   static const TextStyle defaultStyle = TextStyle(
-      fontFamily: CommonConstants.mulish_semiBold,
-      fontSize: CommonConstants.mediumText,
+      fontFamily: CommonConstants.mulish_bold,
+      fontSize: CommonConstants.largeText,
       color: AppColors.primaryTextColorLight,
       fontWeight: FontWeight.w700,
       height: 1.5,
       letterSpacing: -0.01);
   Textbody3(
+    String? data, {
+    TextStyle? style = defaultStyle,
+    color,
+    textAlign = TextAlign.left,
+    TextOverflow? textOverflow,
+    int? maxLines,
+  }) : super(
+          data,
+          style: Textbody1.getTextStyle(color, style, defaultStyle),
+          textAlign: textAlign,
+          overflow: textOverflow,
+          maxLines: maxLines,
+        );
+}
+class Textbody4 extends Textbody1 {
+  static const TextStyle defaultStyle = TextStyle(
+      fontFamily: CommonConstants.mulish_semiBold,
+      fontSize: CommonConstants.extraLargeText,
+      color: AppColors.primaryTextColorLight,
+      fontWeight: FontWeight.w700,
+      height: 1.5,
+      letterSpacing: -0.01);
+  Textbody4(
     String? data, {
     TextStyle? style = defaultStyle,
     color,
