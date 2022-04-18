@@ -23,6 +23,7 @@ class AppColors {
   static const Color primaryBackgroundColorLight = Color(0xFFF2F4F8); // gray
   static const Color disabledColorLight = Color(0xFFADADAD); // gray
   static const Color errorColorLight = Color(0xFFEE0707); // red
+  static const Color coloRed = Color(0xFFEE0707); // red
   static const Color cursorColorLight = Color(0xFF000000); // black
   static const Color secondBackgroundColorLight = Color(0xFFFFFFFF);
   static const Color thirdBackgroundColorLight = Color(0xFF019749); // white

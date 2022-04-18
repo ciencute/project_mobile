@@ -1,4 +1,7 @@
 import 'package:app_mobile/modules/auth/type_option/type_option_screen.dart';
+import 'package:app_mobile/modules/profile/acount_infos/view/acount_infos_screen.dart';
+import 'package:app_mobile/modules/profile/fvt_actors/view/fvt_actors_screen.dart';
+import 'package:app_mobile/modules/profile/fvt_films/view/fvt_films_screen.dart';
 import 'package:get/get.dart';
 
 import '../modules/auth/onboarding/view/onboarding_screen.dart';
@@ -20,4 +23,7 @@ final routePages = [
   GetPage(name: Routes.DETAIL, page: () => const DetailScreen()),
   GetPage(name: Routes.TYPEOPTION, page: () => const TypeOntion()),
   GetPage(name: Routes.SEARCH, page: () => const SearchScreen()),
+  GetPage(name: Routes.ACOUNTINFO, page: () => const AcountInfoScreen()),
+  GetPage(name: Routes.FVTACTORS, page: () => const FavoriteActorsScreen()),
+  GetPage(name: Routes.FVTFILMS, page: () => const FavoriteFilmsScreen()),
 ];

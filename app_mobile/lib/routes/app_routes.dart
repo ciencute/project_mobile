@@ -9,4 +9,7 @@ abstract class Routes {
   static const ONBOARDING = '/OnboardingScreen';
   static const TYPEOPTION = '/typeOntion';
   static const SEARCH = '/search';
+  static const ACOUNTINFO = '/acountInfo';
+  static const FVTFILMS = '/fvtFilms';
+  static const FVTACTORS = '/fvtActors';
 }

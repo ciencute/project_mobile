@@ -63,7 +63,7 @@ class Textbody2 extends Textbody1 {
 
 class Textbody3 extends Textbody1 {
   static const TextStyle defaultStyle = TextStyle(
-      fontFamily: CommonConstants.mulish_semiBold,
+      fontFamily: CommonConstants.mulish_bold,
       fontSize: CommonConstants.largeText,
       color: AppColors.primaryTextColorLight,
       fontWeight: FontWeight.w700,

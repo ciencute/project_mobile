@@ -10,25 +10,30 @@ extension _DetailScreenChildren on ProfileScreen {
         clipBehavior: Clip.none,
         children: [
           const CircleAvatar(
-            backgroundImage: AssetImage(ImageConstants.imageAvatar),
+            backgroundColor: Colors.white,
+            radius: 60,
+            child: CircleAvatar(
+              radius: 55,
+              backgroundImage: AssetImage(ImageConstants.imageAvatar),
+            ),
           ),
           Positioned(
-            right: -16,
+            right: -12,
             bottom: 0,
             child: SizedBox(
-              height: 46,
-              width: 46,
+              height: 35,
+              width: 35,
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: const BorderSide(color: Colors.white),
+                    side:  BorderSide(color:Colors.white.withOpacity(0.5)),
                   ),
                   primary: Colors.white,
-                  backgroundColor: const Color(0xFFF5F6F9),
+                  backgroundColor:  Colors.white.withOpacity(0.5),
                 ),
                 onPressed: () {},
-                child: const FCoreImage(IconConstants.iconCamera),
+                child: const FCoreImage(IconConstants.iconCamera,color: Colors.white,width: 16,),
               ),
             ),
           )
@@ -39,26 +44,26 @@ extension _DetailScreenChildren on ProfileScreen {
 
   Widget _profileMenu({
     required ProfileMenu item,
-    
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: CommonConstants.kDefaultPadding),
+      padding: const EdgeInsets.symmetric(
+          horizontal: CommonConstants.kDefaultPadding),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.fifthTextColorLight.withOpacity(0.2)
-        ),
+            borderRadius: BorderRadius.circular(12),
+            color: AppColors.fifthTextColorLight.withOpacity(0.2)),
         padding: const EdgeInsets.all(16),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FCoreImage(
               item.icon,
-              width: 22,
-              color: Colors.grey,
+              width: 25,
+              color: Colors.white,
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Expanded(child: Textlabel2(item.text)),
-            Icon(Icons.arrow_forward_ios),
+            const Icon(Icons.keyboard_arrow_right_rounded, color: Colors.white),
           ],
         ),
       ),
@@ -69,10 +74,7 @@ extension _DetailScreenChildren on ProfileScreen {
 class ProfileMenu {
   final String icon;
   final String text;
-  ProfileMenu({
-    required this.icon,
-    required this.text
-  });
+  ProfileMenu({required this.icon, required this.text});
 }
 
 class InfoUser {
