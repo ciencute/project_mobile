@@ -1,3 +1,4 @@
+import 'package:app_mobile/shared/styles/body_style/body_text_style.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
@@ -52,7 +53,7 @@ class TextInputLogin extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           suffixIcon: suffixIcon,
-          hintStyle: const TextStyle(color: AppColors.secondTextColorLight),
+          hintStyle: Textbody2.defaultStyle,
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: 1.0),
               borderRadius: BorderRadius.all(Radius.circular(16))),

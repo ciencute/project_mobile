@@ -56,7 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.black),
+                                ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +119,6 @@ class _DetailScreenState extends State<DetailScreen> {
                         Text(
                           'Episodes',
                           style: Textbody1.defaultStyle.copyWith(
-                              color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.w500),
                         ),
@@ -181,7 +180,6 @@ class _DetailScreenState extends State<DetailScreen> {
                   Text(
                     'Discover Seattle',
                     style: Textbody1.defaultStyle.copyWith(
-                        color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.w700),
                   ),

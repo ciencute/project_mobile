@@ -38,7 +38,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         description: 'Phim hay',
         icon: ImageConstants.imageMovie1,
         id: i.toString(),
-        title: 'Phim Nguowif nheenj',
+        title: 'Phim người nhện',
       );
       datas.add(data);
     }

@@ -73,37 +73,42 @@ extension _HomeScreenChildren on HomeScreen {
   }
 
   Widget _research() {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: CommonConstants.kDefaultPadding,
-      ),
-      padding: const EdgeInsets.symmetric(
+    return InkWell(
+      child: Container(
+        margin: const EdgeInsets.symmetric(
           horizontal: CommonConstants.kDefaultPadding,
-          vertical: CommonConstants.kDefaultPadding-6),
-      decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.3),
-          border: Border.all(width: 1, color: Colors.white.withOpacity(0.4)),
-          borderRadius: BorderRadius.circular(20)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              const FCoreImage(
-                IconConstants.iconSearch,
-                width: 21,
-                height: 21,
-              ),
-              const SizedBox(width: 12),
-              Text(
-                'Search',
-                style: TextStyleApp().text14500G2(),
-              )
-            ],
-          ),
-          const SizedBox()
-        ],
+        ),
+        padding: const EdgeInsets.symmetric(
+            horizontal: CommonConstants.kDefaultPadding,
+            vertical: CommonConstants.kDefaultPadding-6),
+        decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.3),
+            border: Border.all(width: 1, color: Colors.white.withOpacity(0.4)),
+            borderRadius: BorderRadius.circular(20)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                const FCoreImage(
+                  IconConstants.iconSearch,
+                  width: 21,
+                  height: 21,
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  'Search',
+                  style: TextStyleApp().text14500G2(),
+                )
+              ],
+            ),
+            const SizedBox()
+          ],
+        ),
       ),
+      onTap: (){
+        Get.toNamed(Routes.SEARCH);
+      },
     );
   }
 Widget _lstMovie({required List<Data> lstMovies}){

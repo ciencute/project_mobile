@@ -56,7 +56,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               stops: [0.4, 1.0],
               begin: Alignment.bottomCenter,
               end: Alignment.topRight,
-              colors: [Color(0xFF141e30), Color(0xFF243b55)])),
+              colors: [AppColors.gradient1BackgroundColor, AppColors.gradient2BackgroundColor])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: PageView(
@@ -111,9 +111,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     _cubit.changePage(value);
                     pageController.jumpToPage(value);
                   },
-                  gradient: LinearGradient(colors: [
-                    const Color(0xFF243b55).withOpacity(0.8),
-                    const Color(0xFFA6A1E0)
+                  gradient: const LinearGradient(colors: [
+                    AppColors.colorDark,
+                    AppColors.gradient2BackgroundColor
                   ]),
                   color: Colors.white,
                   padding:
@@ -125,7 +125,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     bottomLeft: Radius.circular(16),
                   ),
                   //shadowColor: Colors.cyan.shade300,
-                  elevation: 1.5,
                 );
               })),
     );
