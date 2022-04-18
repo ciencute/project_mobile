@@ -74,15 +74,11 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           ),
           BlocListener<SignInCubit, SignInState>(
-            bloc: _cubit,
-             listenWhen: (prev, current) =>
-                  (prev.loadStatus == LoadStatus.loading) !=
-                          (prev.loadStatus == LoadStatus.success),
-            
-            listener: (context, state) {
-             
-            },
-            child:  widget._formLogin(
+              bloc: _cubit,
+              listenWhen: (prev, current) =>
+                  prev.loadStatus == LoadStatus.loading,
+              listener: (context, state) {},
+              child: widget._formLogin(
                   emailController: _emailController,
                   passwordController: _passwordController,
                   onTap: (startLoading, stopLoading, btnState) {
@@ -93,8 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordController.text);
                       stopLoading();
                     }
-                  })
-          )
+                  }))
         ],
       ),
     );

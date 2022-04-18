@@ -33,15 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _cubit = HomeCubit(movieAppRepository: Get.find());
     _cubit.getData();
-      
-  }
-    @override
-  void dispose() {
-  _cubit.close();
-    super.dispose();
   }
 
- 
+  @override
+  void dispose() {
+    _cubit.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
