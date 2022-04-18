@@ -81,6 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   passwordController: _passwordController,
                   onTap: (startLoading, stopLoading, btnState) {
                     if (btnState == ButtonState.Idle) {
+                      
                       startLoading();
                       _cubit.signIn(
                           username: _emailController.text,

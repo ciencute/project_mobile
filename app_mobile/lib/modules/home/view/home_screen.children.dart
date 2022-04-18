@@ -106,7 +106,7 @@ extension _HomeScreenChildren on HomeScreen {
       ),
     );
   }
-Widget _lstMovie({required List<UIItem> lstMovies}){
+Widget _lstMovie({required List<Data> lstMovies}){
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
@@ -123,7 +123,7 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: FCoreImage(
-                    lstMovies[index].icon ?? '',
+                    lstMovies[index].img ?? '',
                     height: 180,
                     fit: BoxFit.cover,
                   ),

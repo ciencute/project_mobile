@@ -30,9 +30,10 @@ class SignInCubit extends Cubit<SignInState> {
       await prefs.setString(StorageConstants.token, result.accessToken ?? '');
       await prefs.setString(StorageConstants.avatar, result.user?.img ?? '');
       await prefs.setString(StorageConstants.userName, result.user?.name ?? '');
-      Get.offAndToNamed(Routes.DASHBOARD);
+      
       emit(state.copyWith(loadStatus: LoadStatus.success));
       }
+      Get.offAndToNamed(Routes.DASHBOARD);
 prefs.getString(StorageConstants.userName);
       
     } catch (error, stackTrace) {

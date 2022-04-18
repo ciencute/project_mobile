@@ -1,8 +1,10 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:get/get.dart';
 
+import '../../../api/models/home/home_identity.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../resource/assets_constant/images_constants.dart';
 import '../../../shared/constants/colors.dart';
@@ -28,54 +30,64 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _cubit = HomeCubit();
+    _cubit = HomeCubit(movieAppRepository: Get.find());
+    _cubit.getData();
   }
 
   @override
   void dispose() {
+  
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-        child: Column(
-          
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
-            widget._headerPage(
-                avatar: ImageConstants.imageAvatar,
-                name: 'Kien',
-                description: 'Check for latest addition.'),
-           
-            widget._research(),
-            const SizedBox(
-              height: 16,
+    return BlocBuilder<HomeCubit, HomeState>(
+        bloc: _cubit,
+        builder: (context, state) {
+         if(state.homeModel != null){
+           return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                widget._headerPage(
+                    avatar: ImageConstants.imageAvatar,
+                    name: 'Kien',
+                    description: 'Check for latest addition.'),
+                widget._research(),
+                const SizedBox(
+                  height: 16,
+                ),
+                widget._typeAction(typeActions: _cubit.lstTypeAction()),
+                const SizedBox(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: CommonConstants.kDefaultPadding,
+                  ),
+                  child: TextHeading3('Movie Hot'),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                widget._lstMovie(
+                    lstMovies: state.homeModel?.latestMovie?.data ?? []),
+                const SizedBox(
+                  height: 16,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+              ],
             ),
-            widget._typeAction(typeActions: _cubit.lstTypeAction()),
-            const SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: CommonConstants.kDefaultPadding,
-              ),
-              child: TextHeading3('Movie Hot'),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            widget._lstMovie(lstMovies: _cubit.lstMovie()),
-            const SizedBox(
-              height: 16,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-          ],
-        ),
-      
-    );
+          );
+         }
+
+
+          return Container();
+        });
   }
 }

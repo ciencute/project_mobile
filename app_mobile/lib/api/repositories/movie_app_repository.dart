@@ -1,3 +1,4 @@
+import '../models/home/home_identity.dart';
 import '../models/user_identity/user_identity.dart';
 
 abstract class MovieAppRepository {
@@ -5,4 +6,5 @@ abstract class MovieAppRepository {
     String username,
     String password,
   );
+  Future<HomeModel> getHomeUI();
 }
