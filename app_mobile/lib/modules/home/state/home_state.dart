@@ -4,29 +4,34 @@ class HomeState extends BaseState {
 
   final HomeUIModel? homeModel;
   final LoadStatus loadStatus;
-  final int pageIndex;
+  final List<UIItem>? lstUiItem;
+  final int page;
   
   HomeState({
     this.loadStatus = LoadStatus.initial,
-    this.pageIndex = 0,
+    this.page = 1,
      this.homeModel,
+     this.lstUiItem
   });
   @override
   List<Object?> get props => [
         loadStatus,
-        pageIndex,
-        homeModel
+        page,
+        homeModel,
+        lstUiItem
       ];
   @override
   HomeState copyWith({
     LoadStatus? loadStatus,
-    int? pageIndex,
+    int? page,
     HomeUIModel? homeModel,
+    List<UIItem>? lstUiItem
   }) {
     return HomeState(
       loadStatus: loadStatus ?? this.loadStatus,
-      pageIndex:pageIndex?? this.pageIndex,
-      homeModel: homeModel??this.homeModel
+      page:page?? this.page,
+      homeModel: homeModel??this.homeModel,
+      lstUiItem:lstUiItem??this.lstUiItem
     );
   }
 }

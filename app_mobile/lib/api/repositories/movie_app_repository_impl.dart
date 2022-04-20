@@ -2,6 +2,8 @@ import 'package:app_mobile/api/models/user_identity/user_identity.dart';
 
 import '../datasource/movie_data_api.dart';
 import '../models/home/home_identity.dart';
+import '../models/pagination/pagination_identity.dart';
+import '../models/ui_item/ui_item.dart';
 import 'movie_app_repository.dart';
 
 class MovieAppRepositoryImpl extends MovieAppRepository {
@@ -19,6 +21,16 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
    @override
   Future<HomeUIModel> getHomeUI() {
     return _movieAPI.getHomeUI();
+  }
+  
+  @override
+  Future<UIItem> getMovieDetail(int id) {
+    return _movieAPI.getMovieDetail(id);
+  }
+
+  @override
+  Future<PaginationModel> getMovieAnimation(int page) {
+     return _movieAPI.getMovieAnimation(page);
   }
 
 }

@@ -25,6 +25,19 @@ class HomeCubit extends Cubit<HomeState> {
       logger.e(error, stackTrace: stackTrace);
     }
   }
+    Future<List<UIItem>> getDataLoadmore({
+     required int page
+    }) async {
+    emit(state.copyWith(loadStatus: LoadStatus.loading));
+    try {
+      final result = await movieAppRepository.getMovieAnimation(page);
+      emit(state.copyWith(lstUiItem: result));
+      return result;
+    } catch (error, stackTrace) {
+      logger.e(error, stackTrace: stackTrace);
+    }
+    return [];
+  }
 
   List<MovieCardModel> lstImage() {
     final items = <MovieCardModel>[];
@@ -92,4 +105,5 @@ class HomeCubit extends Cubit<HomeState> {
 
     return items;
   }
+
 }

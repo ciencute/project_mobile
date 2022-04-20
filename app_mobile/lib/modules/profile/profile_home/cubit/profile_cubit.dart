@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app_mobile/modules/profile/view/profile_screen.dart';
+
 import 'package:app_mobile/resource/assets_constant/images_constants.dart';
 
-import '../../../api/models/enums/load_status.dart';
-import '../../../base/base_cubit.dart';
+import '../../../../api/models/enums/load_status.dart';
+import '../../../../base/base_cubit.dart';
+import '../view/profile_screen.dart';
+
+
 
 part '../state/profile_state.dart';
 

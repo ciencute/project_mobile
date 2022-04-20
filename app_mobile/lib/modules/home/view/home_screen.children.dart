@@ -80,7 +80,7 @@ extension _HomeScreenChildren on HomeScreen {
         ),
         padding: const EdgeInsets.symmetric(
             horizontal: CommonConstants.kDefaultPadding,
-            vertical: CommonConstants.kDefaultPadding-6),
+            vertical: CommonConstants.kDefaultPadding - 6),
         decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.3),
             border: Border.all(width: 1, color: Colors.white.withOpacity(0.4)),
@@ -106,55 +106,51 @@ extension _HomeScreenChildren on HomeScreen {
           ],
         ),
       ),
-      onTap: (){
+      onTap: () {
         Get.toNamed(Routes.SEARCH);
       },
     );
   }
-Widget _lstMovie({required List<UIItem> lstMovies}){
+
+  Widget _lstMovie({required List<UIItem> lstMovies}) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.only(left: CommonConstants.kDefaultPadding),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-
-          children:List.generate(lstMovies.length, (index){
-            return Container(
-            height: 250,
-            margin:
-                const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
-            width: (Get.width - 64) / 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: FCoreImage(
-                    lstMovies[index].img ?? '',
-                    height: 180,
-                    fit: BoxFit.cover,
-                  ),
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: List.generate(lstMovies.length, (index) {
+              return Container(
+                height: 250,
+                margin: const EdgeInsets.only(
+                    right: CommonConstants.kDefaultPadding),
+                width: (Get.width - 64) / 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: FCoreImage(
+                        lstMovies[index].img ?? '',
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Textlabel2(
+                      lstMovies[index].title,
+                      textAlign: TextAlign.center,
+                      textOverflow: TextOverflow.ellipsis,
+                    )
+                  ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Textlabel2(
-                  lstMovies[index].title,
-                  textAlign: TextAlign.center,
-                  textOverflow: TextOverflow.ellipsis,
-
-                )
-              ],
-            ),
-          );
-          })
-          ),
+              );
+            })),
       ),
-      
     );
-}
-
+  }
 
   Widget _listMovieHot({required List<UIItem> lstMovies}) {
     final customLayoutOption =
@@ -168,7 +164,7 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
     return Swiper(
       layout: SwiperLayout.CUSTOM,
       customLayoutOption: customLayoutOption,
-      itemWidth: Get.width  / 3,
+      itemWidth: Get.width / 3,
       itemHeight: 300,
       itemBuilder: (context, index) {
         return Column(
@@ -176,7 +172,7 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
             FCoreImage(
               lstMovies[index].img ?? '',
               height: 200,
-              width: Get.width  / 3,
+              width: Get.width / 3,
               fit: BoxFit.cover,
             ),
             const SizedBox(
@@ -189,6 +185,25 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
       itemCount: lstMovies.length,
     );
   }
+
+  Widget _lodMore({required List<UIItem> lstItems,required ScrollController controller}) {
+    return Container(
+      height: 400,
+      child: ListView.separated(
+          controller: controller,
+          itemBuilder: (context, index) {
+            if (index < lstItems.length) {
+              return TextHeading1(lstItems[index].title);
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+          separatorBuilder: (context, index) => const SizedBox(
+                height: 12,
+              ),
+          itemCount: lstItems.length + 1),
+    );
+  }
 }
 
 class MovieCardModel {
@@ -198,8 +213,6 @@ class MovieCardModel {
 
   MovieCardModel({required this.icon, required this.title, required this.star});
 }
-
-
 
 class Bihavior {
   final String action;

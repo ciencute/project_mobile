@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../modules/profile/view/profile_screen.dart';
+
+import '../../../api/models/ui_item/ui_item.dart';
 import '../../styles/label_style/label_text_style.dart';
 import '../image_widget/fcore_image.dart';
 
@@ -44,7 +45,7 @@ class _SliderlWidgetState extends State<SliderlWidget> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FCoreImage(item.icon ?? ''),
+                            FCoreImage(item.img ?? ''),
                             const SizedBox(
                               height: 4,
                             ),

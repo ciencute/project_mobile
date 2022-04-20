@@ -1,4 +1,7 @@
+import 'package:app_mobile/api/models/ui_item/ui_item.dart';
+
 import '../models/home/home_identity.dart';
+import '../models/pagination/pagination_identity.dart';
 import '../models/user_identity/user_identity.dart';
 
 abstract class MovieAppRepository {
@@ -7,4 +10,6 @@ abstract class MovieAppRepository {
     String password,
   );
   Future<HomeUIModel> getHomeUI();
+  Future<UIItem> getMovieDetail(int page);
+   Future<PaginationModel> getMovieAnimation(int page);
 }
