@@ -4,7 +4,7 @@ class HomeState extends BaseState {
 
   final HomeUIModel? homeModel;
   final LoadStatus loadStatus;
-  final List<UIItem>? lstUiItem;
+  final PaginationModel? lstUiItem;
   final int page;
   
   HomeState({
@@ -25,7 +25,7 @@ class HomeState extends BaseState {
     LoadStatus? loadStatus,
     int? page,
     HomeUIModel? homeModel,
-    List<UIItem>? lstUiItem
+    PaginationModel? lstUiItem
   }) {
     return HomeState(
       loadStatus: loadStatus ?? this.loadStatus,

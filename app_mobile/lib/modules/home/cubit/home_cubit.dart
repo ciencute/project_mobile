@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/base/base_cubit.dart';
+import '../../../api/models/pagination/pagination_identity.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 
@@ -25,18 +26,15 @@ class HomeCubit extends Cubit<HomeState> {
       logger.e(error, stackTrace: stackTrace);
     }
   }
-    Future<List<UIItem>> getDataLoadmore({
-     required int page
-    }) async {
+
+  Future<void> getDataLoadmore({required int page}) async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
       final result = await movieAppRepository.getMovieAnimation(page);
       emit(state.copyWith(lstUiItem: result));
-      return result;
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }
-    return [];
   }
 
   List<MovieCardModel> lstImage() {
@@ -105,5 +103,4 @@ class HomeCubit extends Cubit<HomeState> {
 
     return items;
   }
-
 }

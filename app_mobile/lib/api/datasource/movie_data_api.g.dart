@@ -75,7 +75,7 @@ class _MovieAPI implements MovieAPI {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/movies/animation?page={page}',
+                .compose(_dio.options, '/api/movies/animation?page=$page',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
