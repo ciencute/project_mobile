@@ -22,8 +22,9 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       EasyLoading.show();
       final result = await movieAppRepository.getHomeUI();
-      emit(state.copyWith(homeModel: result));
       EasyLoading.dismiss();
+      emit(state.copyWith(homeModel: result));
+      
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }
@@ -76,7 +77,7 @@ class HomeCubit extends Cubit<HomeState> {
         case 3:
           items.add(UIItem(
             id: i,
-            title: 'Country',
+            title: 'Top 10',
             img: IconConstants.icCountry,
             description: '',
           ));

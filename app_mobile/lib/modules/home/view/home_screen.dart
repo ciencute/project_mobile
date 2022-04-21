@@ -16,6 +16,7 @@ import '../../../shared/styles/style.dart';
 import '../../../shared/widgets/carousel_widget/carousel_widget.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
 import '../../movies_category/view/movies_category_screen.dart';
+import '../../movies_top10/view/movies_top10_screen.dart';
 import '../cubit/home_cubit.dart';
 part 'home_screen.children.dart';
 
@@ -66,6 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 16,
                   ),
                   widget._typeAction(typeActions: _cubit.lstTypeAction(),
+                  onConfirm: (value){
+                    switch (value) {
+                      case 0:
+                      case 1:
+                      case 2:
+                      Get.to(const MoviesTop10Screen());
+                      break;
+                      case 3:
+
+                        
+                        break;
+                      default: Get.to(const MoviesCategoryScreen());
+                    }
+                  },
                   context: context
                   ),
                   const SizedBox(
@@ -83,7 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   widget._lstMovie(
                       lstMovies:
-                          state.homeModel?.movies.mostViewMovies?.data ?? []),
+                          state.homeModel?.movies.mostViewMovies?.data ?? [],
+                          onConfirm: (value)
+                          {
+                            final modelItem=state.homeModel?.movies.mostViewMovies?.data[value];
+                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
+                          }
+                          ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -99,7 +120,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   widget._lstMovie(
                       lstMovies:
-                          state.homeModel?.movies.animationMovies?.data ?? []),
+                          state.homeModel?.movies.animationMovies?.data ?? [],
+                          onConfirm: (value)
+                          {
+                            final modelItem=state.homeModel?.movies.animationMovies?.data[value];
+                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
+                          }
+                          ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -112,10 +139,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(
                     height: 16,
-                  ),
+                  ),  
                   widget._lstMovie(
                       lstMovies:
-                          state.homeModel?.movies.latestMovies?.data ?? []),
+                          state.homeModel?.movies.latestMovies?.data ?? [],
+                          onConfirm: (value)
+                          {
+                            final modelItem=state.homeModel?.movies.latestMovies?.data[value];
+                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
+                          }
+                          ),
                   const SizedBox(
                     height: 32,
                   ),

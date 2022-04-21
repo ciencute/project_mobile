@@ -19,7 +19,7 @@ PreferredSizeWidget appbar(BuildContext context,
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: [AppColors.colorDark, AppColors.gradient2BackgroundColor],
+          colors: [AppColors.gradient2BackgroundColor,AppColors.gradient1BackgroundColor],
         ),
       ),
     ),
@@ -32,17 +32,6 @@ PreferredSizeWidget appbar(BuildContext context,
             },
           )
         : null,
-    actions: [
-      IconButton(
-        icon: const Icon(
-          Icons.search,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          Get.toNamed(Routes.HOME);
-        },
-        color: Colors.white,
-      ),
-    ],
+
   );
 }

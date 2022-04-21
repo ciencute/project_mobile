@@ -13,4 +13,5 @@ abstract class MovieAppRepository {
   Future<UIItem> getMovieDetail(int page);
   Future<PaginationModel> getMovieAnimation(int? page);
   Future<PaginationModel> getMovieCategoryByID(int id,int? page);
+  Future<List<UIItem>> getMoviesTopView();
 }

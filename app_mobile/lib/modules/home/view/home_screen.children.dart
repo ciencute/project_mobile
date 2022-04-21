@@ -38,7 +38,9 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _typeAction({required List<UIItem> typeActions, required BuildContext context}) {
+  Widget _typeAction({required List<UIItem> typeActions, required BuildContext context,
+  required Function(int) onConfirm
+  }) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -46,11 +48,7 @@ extension _HomeScreenChildren on HomeScreen {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(typeActions.length, (index) {
           return InkWell(
-            onTap: (){
-              Get.to( MoviesCategoryScreen());
-             
-  
-            },
+            onTap: ()=>onConfirm(index),
             child: Container(
               margin:
                   const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
@@ -119,7 +117,7 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _lstMovie({required List<UIItem> lstMovies}) {
+  Widget _lstMovie({required List<UIItem> lstMovies, required Function(int) onConfirm}) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
@@ -127,32 +125,35 @@ extension _HomeScreenChildren on HomeScreen {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(lstMovies.length, (index) {
-              return Container(
-              
-                margin: const EdgeInsets.only(
-                    right: CommonConstants.kDefaultPadding),
-                width: (Get.width - 64) / 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: FCoreImage(
-                        lstMovies[index].img ?? '',
-                        height: 180,
-                        fit: BoxFit.cover,
+              return InkWell(
+                child: Container(
+                
+                  margin: const EdgeInsets.only(
+                      right: CommonConstants.kDefaultPadding),
+                  width: (Get.width - 64) / 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: FCoreImage(
+                          lstMovies[index].img ?? '',
+                          height: 180,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Textlabel2(
-                      lstMovies[index].title,
-                      textAlign: TextAlign.center,
-                      textOverflow: TextOverflow.ellipsis,
-                    )
-                  ],
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Textlabel2(
+                        lstMovies[index].title,
+                        textAlign: TextAlign.center,
+                        textOverflow: TextOverflow.ellipsis,
+                      )
+                    ],
+                  ),
                 ),
+                onTap: ()=> onConfirm(index)
               );
             })),
       ),
