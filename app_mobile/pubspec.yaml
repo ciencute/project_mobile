@@ -67,15 +67,15 @@ dependencies:
   argon_buttons_flutter: ^1.1.0
   circle_nav_bar: ^1.0.2
   swipe_deck: ^1.1.0
-  widget_circular_animator: ^1.0.0
   editable_image: ^1.0.1
   smooth_page_indicator: ^1.0.0+2
   video_player: ^2.3.0
   faded_widget: ^2.0.0
+  loading_indicator: ^3.0.3
   #auth
   local_auth: ^1.1.11
   expandable_page_view: ^1.0.13
-  card_swiper: ^2.0.3
+
   flutter_easyloading: ^3.0.3
   
 

@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors();
+  static const List<Color> primaryColorLoadingIndicator =  [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.indigo,
+    Colors.purple,
+  ];
   static const Color defaultHeaderOSColorLight =
       Color(0xFF45C152); // light green
+  static const Color primaryColorLoading = Color(0xff019FDC);
   static const Color primaryColorLight = Color(0xFF09090F); // dark green
   static const Color accentColorLight = Color(0xFFF47458); // orange
   static const Color dividerColorLight = Color(0xFFF0F0F0); // grey

@@ -1,9 +1,13 @@
+import 'package:app_mobile/api/models/enums/load_status.dart';
 import 'package:app_mobile/routes/app_pages.dart';
-import 'package:card_swiper/card_swiper.dart';
+import 'package:app_mobile/shared/constants/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
@@ -26,7 +30,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>  with AutomaticKeepAliveClientMixin{
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
   late HomeCubit _cubit;
   @override
   void initState() {
@@ -44,123 +49,148 @@ class _HomeScreenState extends State<HomeScreen>  with AutomaticKeepAliveClientM
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final sharedPreferences = Get.find<SharedPreferences>();
     return BlocBuilder<HomeCubit, HomeState>(
         bloc: _cubit,
         builder: (context, state) {
-          if (state.homeModel != null) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 24),
-                  widget._headerPage(
-                      avatar: ImageConstants.imageAvatar,
-                      name: 'Kien',
-                      description: 'Check for latest addition.'),
-                  widget._research(),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  CarouselWidget(
-                    items: state.homeModel?.slider ?? [],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._typeAction(typeActions: _cubit.lstTypeAction(),
-                  onConfirm: (value){
-                    switch (value) {
-                      case 0:
-                      case 1:
-                      case 2:
-                      Get.to(const MoviesTop10Screen());
-                      break;
-                      case 3:
-
-                        
-                        break;
-                      default: Get.to(const MoviesCategoryScreen());
-                    }
-                  },
-                  context: context
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
-                    ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.mostViewMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.mostViewMovies?.data ?? [],
-                          onConfirm: (value)
-                          {
-                            final modelItem=state.homeModel?.movies.mostViewMovies?.data[value];
-                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
-                          }
-                          ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
-                    ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.animationMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.animationMovies?.data ?? [],
-                          onConfirm: (value)
-                          {
-                            final modelItem=state.homeModel?.movies.animationMovies?.data[value];
-                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
-                          }
-                          ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
-                    ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.latestMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),  
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.latestMovies?.data ?? [],
-                          onConfirm: (value)
-                          {
-                            final modelItem=state.homeModel?.movies.latestMovies?.data[value];
-                            Get.toNamed(Routes.DETAIL,arguments: modelItem);
-                          }
-                          ),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                ],
+          if (state.loadStatus == LoadStatus.loading) {
+            return const SizedBox(
+              child: Padding(
+                padding: EdgeInsets.all(120),
+                child: LoadingIndicator(
+                  indicatorType: Indicator.ballScaleMultiple,
+                  colors: AppColors.primaryColorLoadingIndicator,
+                  strokeWidth: 7,
+                ),
               ),
             );
+          } else if (state.loadStatus == LoadStatus.success) {
+            if (state.homeModel != null) {
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 24),
+                    widget._headerPage(
+                        avatar: sharedPreferences
+                                .getString(StorageConstants.avatar) ??
+                            ImageConstants.imageAvatar,
+                        name: sharedPreferences
+                                .getString(StorageConstants.userName) ??
+                            'Name',
+                        description: 'Check for latest addition.'),
+                    widget._research(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    CarouselWidget(
+                      items: state.homeModel?.slider ?? [],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._typeAction(
+                        typeActions: _cubit.lstTypeAction(),
+                        onConfirm: (value) {
+                          switch (value) {
+                            case 0:
+                              Get.to(const MoviesCategoryScreen());
+                              break;
+                            case 1:
+                              Get.to(const MoviesCategoryScreen());
+                              break;
+                            case 2:
+                              Get.to(const MoviesTop10Screen());
+                              break;
+                            case 3:
+                              Get.to(const MoviesCategoryScreen());
+                              break;
+                              break;
+                            default:
+                              Get.to(const MoviesCategoryScreen());
+                          }
+                        },
+                        context: context),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.mostViewMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.mostViewMovies?.data ?? [],
+                        onConfirm: (value) {
+                          final modelItem = state
+                              .homeModel?.movies.mostViewMovies?.data[value];
+                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                        }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.animationMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.animationMovies?.data ?? [],
+                        onConfirm: (value) {
+                          final modelItem = state
+                              .homeModel?.movies.animationMovies?.data[value];
+                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                        }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.latestMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.latestMovies?.data ?? [],
+                        onConfirm: (value) {
+                          final modelItem =
+                              state.homeModel?.movies.latestMovies?.data[value];
+                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                        }),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              const Center(
+                child: Text('Không có dữ liệu '),
+              );
+            }
           }
 
           return Container();
         });
   }
-      @override
+
+  @override
   bool get wantKeepAlive => true;
 }

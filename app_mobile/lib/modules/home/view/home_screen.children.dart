@@ -29,8 +29,11 @@ extension _HomeScreenChildren on HomeScreen {
             ],
           ),
           CircleAvatar(
-            radius: 30.0,
-            backgroundImage: AssetImage(avatar),
+
+            radius: 50.0,
+            backgroundImage: AssetImage(avatar,
+            
+            ),
             backgroundColor: Colors.transparent,
           )
         ],
@@ -160,39 +163,7 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _listMovieHot({required List<UIItem> lstMovies}) {
-    final customLayoutOption =
-        CustomLayoutOption(startIndex: -1, stateCount: 3);
-    customLayoutOption.addRotate([-45.0 / 180, 0.0, 45.0 / 180]);
-    customLayoutOption.addTranslate([
-      const Offset(-180.0, -20.0),
-      const Offset(0.0, 0.0),
-      const Offset(180.0, -20.0)
-    ]);
-    return Swiper(
-      layout: SwiperLayout.CUSTOM,
-      customLayoutOption: customLayoutOption,
-      itemWidth: Get.width / 3,
-      itemHeight: 300,
-      itemBuilder: (context, index) {
-        return Column(
-          children: [
-            FCoreImage(
-              lstMovies[index].img ?? '',
-              height: 200,
-              width: Get.width / 3,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Textlabel2(lstMovies[index].title)
-          ],
-        );
-      },
-      itemCount: lstMovies.length,
-    );
-  }
+
 }
 
 class MovieCardModel {

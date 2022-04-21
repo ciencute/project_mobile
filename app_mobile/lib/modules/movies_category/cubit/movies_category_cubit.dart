@@ -15,7 +15,6 @@ class MoviesCategoryCubit extends Cubit<MoviesCategoryState> {
   MovieAppRepository movieAppRepository;
   Future<void> getDataLoadmore({required id}) async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
-
     try {
       final result = await movieAppRepository.getMovieCategoryByID(id, 1);
       emit(state.copyWith(

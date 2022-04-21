@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
@@ -59,44 +60,50 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
               bloc: _cubit,
               builder: (context, state) {
                 List<UIItem> lstUiItem = [];
-                if (state.lstUiItem.isNotEmpty) {
+                if (state.loadStatus == LoadStatus.loading) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(120),
+                      child: LoadingIndicator(
+                        indicatorType: Indicator.ballScaleMultiple,
+                        colors: AppColors.primaryColorLoadingIndicator,
+                        strokeWidth: 7,
+                      ),
+                    ),
+                  );
+                } else if (state.lstUiItem.isNotEmpty) {
                   lstUiItem.addAll(state.lstUiItem);
                 }
                 bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
-                if (state.loadStatus == LoadStatus.loading) {
-                  EasyLoading.show();
-                }
-
                 if (lstUiItem.isEmpty) {
                   const Center(
                     child: Text('Chưa có phim nào!'),
                   );
                 }
-                EasyLoading.dismiss();
+
                 return Scrollbar(
-                isAlwaysShown: true,
+                  isAlwaysShown: true,
                   child: ListView.separated(
-                    
                       controller: _scrollController,
                       itemBuilder: (context, index) {
                         if (index < lstUiItem.length) {
                           return widget._itemMovie(movie: lstUiItem[index]);
                         } else {
-                         return const  Padding(
-                              padding: EdgeInsets.all(32),
-                              child: SpinKitThreeInOut(
-                                color: Colors.blue,
-                                size: 50.0,
-                              ),
-                            );
-                          
+                          return const Padding(
+                            padding: EdgeInsets.all(32),
+                            child: SpinKitThreeInOut(
+                              color: Colors.blue,
+                              size: 50.0,
+                            ),
+                          );
                         }
                       },
                       separatorBuilder: (context, index) => const SizedBox(
                             height: 12,
                           ),
-                      itemCount:
-                          isLoadMore ? (lstUiItem.length + 1) : lstUiItem.length),
+                      itemCount: isLoadMore
+                          ? (lstUiItem.length + 1)
+                          : lstUiItem.length),
                 );
               }),
         ));
@@ -106,15 +113,6 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-       Timer(const Duration(seconds: 10), () async{
-                          const Padding(
-                            padding: EdgeInsets.all(32),
-                            child: SpinKitThreeInOut(
-                              color: Colors.amber,
-                              size: 50.0,
-                            ),
-                          );
-                        });
       _cubit.fetchMoreData(id: 12);
     }
   }

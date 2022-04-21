@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:app_mobile/modules/movies_top10/state/moves_top10_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
@@ -26,8 +25,7 @@ class MoviesTop10Screen extends StatefulWidget {
   State<MoviesTop10Screen> createState() => _MoviesTop10ScreenState();
 }
 
-class _MoviesTop10ScreenState extends State<MoviesTop10Screen>
-    with SingleTickerProviderStateMixin {
+class _MoviesTop10ScreenState extends State<MoviesTop10Screen> {
   late MoviesTop10Cubit _cubit;
 
   @override
@@ -55,16 +53,19 @@ class _MoviesTop10ScreenState extends State<MoviesTop10Screen>
           child: BlocBuilder<MoviesTop10Cubit, MoviesTop10State>(
               bloc: _cubit,
               builder: (context, state) {
-                if(state.loadStatus==LoadStatus.loading){
-                  return const Center(child: CircularProgressIndicator(
-                    color: AppColors.contractInfoColor,
-                  ));
+                if (state.loadStatus == LoadStatus.loading) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(120),
+                      child: LoadingIndicator(
+                        indicatorType: Indicator.ballScaleMultiple,
+                        colors: AppColors.primaryColorLoadingIndicator,
+                        strokeWidth: 7,
+                      ),
+                    ),
+                  );
                 }
-                
-                
-                
-                
-                
+
                 return ListView.separated(
                     itemBuilder: (context, index) {
                       return widget._moviesTopScreen(
