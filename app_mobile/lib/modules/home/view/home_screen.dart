@@ -2,9 +2,11 @@ import 'package:app_mobile/routes/app_pages.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 
+import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../resource/assets_constant/images_constants.dart';
@@ -46,82 +48,92 @@ class _HomeScreenState extends State<HomeScreen> {
         bloc: _cubit,
         builder: (context, state) {
           if (state.homeModel != null) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 24),
-                  widget._headerPage(
-                      avatar: ImageConstants.imageAvatar,
-                      name: 'Kien',
-                      description: 'Check for latest addition.'),
-                  widget._research(),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  CarouselWidget(
-                    items: state.homeModel?.slider ?? [],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._typeAction(typeActions: _cubit.lstTypeAction(),
-                  context: context
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
+            if (state.loadStatus == LoadStatus.loading) {
+              return const Padding(
+                padding: EdgeInsets.all(32),
+                child: SpinKitThreeInOut(
+                  color: Colors.blue,
+                  size: 50.0,
+                ),
+              );
+            } else if (state.loadStatus == LoadStatus.success) {
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 24),
+                    widget._headerPage(
+                        avatar: ImageConstants.imageAvatar,
+                        name: 'Kien',
+                        description: 'Check for latest addition.'),
+                    widget._research(),
+                    const SizedBox(
+                      height: 16,
                     ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.mostViewMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.mostViewMovies?.data ?? []),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
+                    CarouselWidget(
+                      items: state.homeModel?.slider ?? [],
                     ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.animationMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.animationMovies?.data ?? []),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CommonConstants.kDefaultPadding,
+                    const SizedBox(
+                      height: 16,
                     ),
-                    child: TextHeading3(
-                        state.homeModel?.movies.latestMovies?.name),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  widget._lstMovie(
-                      lstMovies:
-                          state.homeModel?.movies.latestMovies?.data ?? []),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                ],
-              ),
-            );
+                    widget._typeAction(
+                        typeActions: _cubit.lstTypeAction(), context: context),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.mostViewMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.mostViewMovies?.data ?? []),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.animationMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.animationMovies?.data ??
+                                []),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CommonConstants.kDefaultPadding,
+                      ),
+                      child: TextHeading3(
+                          state.homeModel?.movies.latestMovies?.name),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    widget._lstMovie(
+                        lstMovies:
+                            state.homeModel?.movies.latestMovies?.data ?? []),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                  ],
+                ),
+              );
+            }
           }
 
           return Container();

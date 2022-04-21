@@ -38,7 +38,8 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _typeAction({required List<UIItem> typeActions, required BuildContext context}) {
+  Widget _typeAction(
+      {required List<UIItem> typeActions, required BuildContext context}) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -46,10 +47,8 @@ extension _HomeScreenChildren on HomeScreen {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(typeActions.length, (index) {
           return InkWell(
-            onTap: (){
-              Get.to( MoviesCategoryScreen());
-             
-  
+            onTap: () {
+              Get.to(MoviesCategoryScreen());
             },
             child: Container(
               margin:
@@ -128,7 +127,6 @@ extension _HomeScreenChildren on HomeScreen {
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(lstMovies.length, (index) {
               return Container(
-              
                 margin: const EdgeInsets.only(
                     right: CommonConstants.kDefaultPadding),
                 width: (Get.width - 64) / 3,
@@ -192,8 +190,6 @@ extension _HomeScreenChildren on HomeScreen {
       itemCount: lstMovies.length,
     );
   }
-
-
 }
 
 class MovieCardModel {
