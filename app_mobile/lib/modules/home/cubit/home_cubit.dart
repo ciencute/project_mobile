@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/base/base_cubit.dart';
-import '../../../api/models/pagination/pagination_identity.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 
@@ -20,18 +20,10 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getData() async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
+      EasyLoading.show();
       final result = await movieAppRepository.getHomeUI();
       emit(state.copyWith(homeModel: result));
-    } catch (error, stackTrace) {
-      logger.e(error, stackTrace: stackTrace);
-    }
-  }
-
-  Future<void> getDataLoadmore({required int page}) async {
-    emit(state.copyWith(loadStatus: LoadStatus.loading));
-    try {
-      final result = await movieAppRepository.getMovieAnimation(page);
-      emit(state.copyWith(lstUiItem: result));
+      EasyLoading.dismiss();
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }

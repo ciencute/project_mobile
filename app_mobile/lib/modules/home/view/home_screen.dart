@@ -13,21 +13,20 @@ import '../../../shared/constants/common.dart';
 import '../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/styles/style.dart';
+import '../../../shared/widgets/carousel_widget/carousel_widget.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../movies_category/view/movies_category_screen.dart';
 import '../cubit/home_cubit.dart';
-
 part 'home_screen.children.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   late HomeCubit _cubit;
-
   @override
   void initState() {
     super.initState();
@@ -37,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    _cubit.close();
     super.dispose();
+    _cubit.close();
   }
 
   @override
@@ -60,7 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  widget._typeAction(typeActions: _cubit.lstTypeAction()),
+                  CarouselWidget(
+                    items: state.homeModel?.slider ?? [],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  widget._typeAction(typeActions: _cubit.lstTypeAction(),
+                  context: context
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -68,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.symmetric(
                       horizontal: CommonConstants.kDefaultPadding,
                     ),
-                    child: TextHeading3('Movie Hot'),
+                    child: TextHeading3(
+                        state.homeModel?.movies.mostViewMovies?.name),
                   ),
                   const SizedBox(
                     height: 16,
@@ -79,8 +87,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 16,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: CommonConstants.kDefaultPadding,
+                    ),
+                    child: TextHeading3(
+                        state.homeModel?.movies.animationMovies?.name),
+                  ),
                   const SizedBox(
                     height: 16,
+                  ),
+                  widget._lstMovie(
+                      lstMovies:
+                          state.homeModel?.movies.animationMovies?.data ?? []),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: CommonConstants.kDefaultPadding,
+                    ),
+                    child: TextHeading3(
+                        state.homeModel?.movies.latestMovies?.name),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  widget._lstMovie(
+                      lstMovies:
+                          state.homeModel?.movies.latestMovies?.data ?? []),
+                  const SizedBox(
+                    height: 32,
                   ),
                 ],
               ),

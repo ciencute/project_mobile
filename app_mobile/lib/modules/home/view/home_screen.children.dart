@@ -38,33 +38,40 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _typeAction({required List<UIItem> typeActions}) {
+  Widget _typeAction({required List<UIItem> typeActions, required BuildContext context}) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(typeActions.length, (index) {
-          return Container(
-            margin:
-                const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
-            width: (Get.width - 64) / 4,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FCoreImage(
-                  typeActions[index].img ?? '',
-                  height: 55,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Textlabel2(
-                  typeActions[index].title,
-                  textAlign: TextAlign.center,
-                )
-              ],
+          return InkWell(
+            onTap: (){
+              Get.to( MoviesCategoryScreen());
+             
+  
+            },
+            child: Container(
+              margin:
+                  const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
+              width: (Get.width - 64) / 4,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FCoreImage(
+                    typeActions[index].img ?? '',
+                    height: 55,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Textlabel2(
+                    typeActions[index].title,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
             ),
           );
         }),
@@ -121,7 +128,7 @@ extension _HomeScreenChildren on HomeScreen {
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(lstMovies.length, (index) {
               return Container(
-                height: 250,
+              
                 margin: const EdgeInsets.only(
                     right: CommonConstants.kDefaultPadding),
                 width: (Get.width - 64) / 3,
@@ -186,24 +193,7 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _lodMore({required List<UIItem> lstItems,required ScrollController controller}) {
-    return Container(
-      height: 400,
-      child: ListView.separated(
-          controller: controller,
-          itemBuilder: (context, index) {
-            if (index < lstItems.length) {
-              return TextHeading1(lstItems[index].title);
-            } else {
-              return CircularProgressIndicator();
-            }
-          },
-          separatorBuilder: (context, index) => const SizedBox(
-                height: 12,
-              ),
-          itemCount: lstItems.length + 1),
-    );
-  }
+
 }
 
 class MovieCardModel {

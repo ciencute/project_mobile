@@ -11,7 +11,7 @@ HomeUIModel _$HomeUIModelFromJson(Map<String, dynamic> json) => HomeUIModel(
           .map((e) => Categories.fromJson(e as Map<String, dynamic>))
           .toList(),
       slider: (json['slider'] as List<dynamic>)
-          .map((e) => Slider.fromJson(e as Map<String, dynamic>))
+          .map((e) => SliderModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       movies: Movies.fromJson(json['movies'] as Map<String, dynamic>),
     );
@@ -38,7 +38,7 @@ Map<String, dynamic> _$CategoriesToJson(Categories instance) =>
       'slug': instance.slug,
     };
 
-Slider _$SliderFromJson(Map<String, dynamic> json) => Slider(
+SliderModel _$SliderFromJson(Map<String, dynamic> json) => SliderModel(
       id: json['id'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -47,7 +47,7 @@ Slider _$SliderFromJson(Map<String, dynamic> json) => Slider(
       targetUrl: json['targetUrl'] as String?,
     );
 
-Map<String, dynamic> _$SliderToJson(Slider instance) => <String, dynamic>{
+Map<String, dynamic> _$SliderToJson(SliderModel instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,

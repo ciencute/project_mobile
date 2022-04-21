@@ -19,4 +19,7 @@ abstract class MovieAPI {
   @GET('/api/movies/animation?page={page}')
   Future<PaginationModel> getMovieAnimation(
      @Part() int? page);
+  @GET('/api/movies/category/{id}?page={page}')
+  Future<PaginationModel> getMovieCategoryByID(@Path() int id,
+     @Part() int? page);
 }

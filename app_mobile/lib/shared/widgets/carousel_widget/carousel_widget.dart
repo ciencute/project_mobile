@@ -1,30 +1,38 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
-import '../../../api/models/ui_item/ui_item.dart';
-import '../../styles/label_style/label_text_style.dart';
+import '../../../api/models/home/home_identity.dart';
+import '../../constants/colors.dart';
 import '../image_widget/fcore_image.dart';
 
-class SliderlWidget extends StatefulWidget {
-  const SliderlWidget({
+class CarouselWidget extends StatefulWidget {
+  const CarouselWidget({
     required this.items,
     Key? key,
+    this.aspectRatio = 2.0,
+    this.showLabel = false,
     this.onTapItem,
+    this.leading,
+  
+    this.decoration,
     this.showIndicator = true,
   }) : super(key: key);
-
-  final List<UIItem> items;
+  final double aspectRatio;
+  final List<SliderModel> items;
   final Function(int index)? onTapItem;
-
+  final Widget? leading;
+  final bool showLabel;
+  
+  final BoxDecoration? decoration;
   final bool showIndicator;
 
   @override
-  _SliderlWidgetState createState() => _SliderlWidgetState();
+  _CarouselWidgetState createState() => _CarouselWidgetState();
 }
 
-class _SliderlWidgetState extends State<SliderlWidget> {
+class _CarouselWidgetState extends State<CarouselWidget> {
   double currentIndex = 0;
 
   @override
@@ -33,57 +41,60 @@ class _SliderlWidgetState extends State<SliderlWidget> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         (widget.items.isNotEmpty)
-            ? SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: widget.items.map((item) {
-                  return InkWell(
-                    child: InkWell(
+            ? CarouselSlider(
+                items: List.generate(
+                  widget.items.length,
+                  (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
                       child: Container(
-                        padding: const EdgeInsets.only(right: 16),
-                        width: (Get.width - 32 - 32) / 3,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FCoreImage(item.img ?? ''),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Textlabel2(item.title)
-                          ],
+                        decoration: widget.decoration,
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(16),
+                          child: FCoreImage(
+                            widget.items[index].imageUrl ?? '',
+                            fit: BoxFit.cover,
+                            width: Get.width,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                }).toList()),
+                    );
+                  },
+                ),
+                options: CarouselOptions(
+                  //viewportFraction: 1.9,
+                  aspectRatio: widget.aspectRatio,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                  autoPlay: true,
+                  onPageChanged: (index, _) {
+                    setState(() {
+                      currentIndex = index.toDouble();
+                    });
+                  },
+                ),
               )
             : promotionsEmptyState,
-        const SizedBox(
-          height: 8,
-        ),
         if (widget.showIndicator)
-          (widget.items.isNotEmpty)
-              ? Center(
-                  child: AnimatedSmoothIndicator(
-                    activeIndex: currentIndex.toInt(),
-                    count: widget.items.length,
-                    effect: const ScrollingDotsEffect(
-                      dotColor: Color(0xffD9D9D9),
-                      activeDotColor: Color(0xff019748),
-                      activeStrokeWidth: 2.6,
-                      activeDotScale: 1.3,
-                      maxVisibleDots: 5,
-                      radius: 8,
-                      spacing: 4,
-                      dotHeight: 10,
-                      dotWidth: 10,
-                    ),
-                  ),
-                )
-              : const SizedBox.shrink(),
+          Center(
+            child: AnimatedSmoothIndicator(
+              activeIndex: currentIndex.toInt(),
+              count: widget.items.length,
+              effect: JumpingDotEffect(
+                spacing: 6,
+                dotColor: const Color(0xffD9D9D9),
+                activeDotColor: AppColors.primaryColorLight.withOpacity(0.5),
+                dotHeight: 8,
+                dotWidth: 8,
+                jumpScale: 1.7,
+                verticalOffset: 8,
+              ),
+            ),
+          )
       ],
     );
   }
 
-  Widget promotionsEmptyState = Center(child: Container());
+  Widget promotionsEmptyState = const Text('Empty');
 }

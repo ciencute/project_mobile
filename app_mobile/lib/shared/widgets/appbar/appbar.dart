@@ -1,52 +1,48 @@
+import 'package:app_mobile/shared/styles/heading_style/heading_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:widget_circular_animator/widget_circular_animator.dart';
+import 'package:get/get.dart';
 
-import '../../../resource/assets_constant/icon_constants.dart';
+import '../../../routes/app_pages.dart';
 import '../../constants/colors.dart';
-import '../../styles/heading_style/heading_text_style.dart';
-import '../image_widget/fcore_image.dart';
+import '../../constants/common.dart';
 
-PreferredSizeWidget appbar(BuildContext context, String s,
-    {String? APP_NAME, IconButton? leadingIcon, String? avatar}) {
+PreferredSizeWidget appbar(BuildContext context,
+    {String title = APP_NAME, bool? isRequired = true}) {
   return AppBar(
-      title: APP_NAME != null ? TextHeading1(APP_NAME) : null,
-      elevation: 0,
-      flexibleSpace: Container(
-        color: AppColors.secondTextColorLight,
+    title: TextHeading1(
+      title,
+      color: Colors.white,
+    ),
+    elevation: 0,
+    flexibleSpace: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [AppColors.colorDark, AppColors.gradient2BackgroundColor],
+        ),
       ),
-      centerTitle: true,
-      leading: leadingIcon ??
-          IconButton(
+    ),
+    centerTitle: true,
+    leading: isRequired!
+        ? IconButton(
             icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
             onPressed: () {
               Navigator.of(context).pop();
             },
-          ),
-      actions: [
-        WidgetCircularAnimator(
-                    size: 250,
-          innerIconsSize: 3,
-          outerIconsSize: 3,
-          innerAnimation: Curves.easeInOutBack,
-          outerAnimation: Curves.easeInOutBack,
-          innerColor: Colors.deepPurple,
-          outerColor: Colors.orangeAccent,
-          innerAnimationSeconds: 10,
-          outerAnimationSeconds: 10,
-          child: Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.grey[200]),
-            child: avatar != null
-                ? FCoreImage(
-                    IconConstants.iconSearch,
-                    fit: BoxFit.contain,
-                  )
-                : Icon(
-                    Icons.person_outline,
-                    color: Colors.deepOrange[200],
-                    size: 60,
-                  ),
-          ),
-        )
-      ]);
+          )
+        : null,
+    actions: [
+      IconButton(
+        icon: const Icon(
+          Icons.search,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          Get.toNamed(Routes.HOME);
+        },
+        color: Colors.white,
+      ),
+    ],
+  );
 }

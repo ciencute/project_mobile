@@ -7,7 +7,7 @@ class HomeUIModel {
   @JsonKey()
   final List<Categories> categories;
   @JsonKey()
-  final List<Slider> slider;
+  final List<SliderModel> slider;
   @JsonKey()
   final Movies movies;
 
@@ -40,7 +40,7 @@ class Categories {
 }
 
 @JsonSerializable()
-class Slider {
+class SliderModel {
   @JsonKey()
   int? id;
   @JsonKey()
@@ -54,7 +54,7 @@ class Slider {
   @JsonKey()
   String? targetUrl;
 
-  Slider(
+  SliderModel(
       {this.id,
       this.name,
       this.description,
@@ -62,7 +62,7 @@ class Slider {
       this.displayOrder,
       this.targetUrl});
 
-  factory Slider.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
+  factory SliderModel.fromJson(Map<String, dynamic> json) => _$SliderFromJson(json);
 
   Map<String, dynamic> toJson() => _$SliderToJson(this);
 }
