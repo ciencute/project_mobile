@@ -81,13 +81,7 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
                         if (index < lstUiItem.length) {
                           return widget._itemMovie(movie: lstUiItem[index]);
                         } else {
-                          return const Padding(
-                            padding: EdgeInsets.all(32),
-                            child: SpinKitThreeInOut(
-                              color: Colors.blue,
-                              size: 50.0,
-                            ),
-                          );
+                          return LoadingCommon().loadMoreItem();
                         }
                       },
                       separatorBuilder: (context, index) => const SizedBox(

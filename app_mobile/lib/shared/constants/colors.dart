@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors();
   static const List<Color> primaryColorLoadingIndicator =  [
-    Colors.red,
+    Color(0xFFF47458),
     Colors.orange,
     Colors.yellow,
     Colors.green,

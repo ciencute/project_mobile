@@ -55,10 +55,11 @@ class _MoviesTop10ScreenState extends State<MoviesTop10Screen> {
               bloc: _cubit,
               builder: (context, state) {
                 if (state.loadStatus == LoadStatus.loading) {
-                   return LoadingCommon().loadingWidget();
+                  return LoadingCommon().loadingWidget();
                 }
 
                 return ListView.separated(
+                  padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
                       return widget._moviesTopScreen(
                           uiItem: state.lstUiItem?[index] ?? UIItem());
