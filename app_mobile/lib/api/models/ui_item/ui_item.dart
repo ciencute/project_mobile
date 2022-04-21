@@ -8,68 +8,67 @@ part 'ui_item.g.dart';
 
 @JsonSerializable()
 class UIItem {
-
   @JsonKey()
   int? id;
-   @JsonKey()
+  @JsonKey()
   String? title;
-   @JsonKey()
+  @JsonKey()
   String? originalTitle;
-   @JsonKey()
+  @JsonKey()
   String? img;
-   @JsonKey()
+  @JsonKey()
   String? url;
-   @JsonKey()
+  @JsonKey()
   String? embededCode;
-   @JsonKey()
+  @JsonKey()
   String? trailerKey;
-   @JsonKey()
+  @JsonKey()
   int? directorId;
-   @JsonKey()
+  @JsonKey()
   String? bgImg;
-   @JsonKey()
+  @JsonKey()
   String? description;
-   @JsonKey()
+  @JsonKey()
   int? countryId;
-   @JsonKey()
+  @JsonKey()
   int? duration;
-   @JsonKey()
+  @JsonKey()
   int? viewCount;
-   @JsonKey()
+  @JsonKey()
   int? categoryId;
-   @JsonKey()
+  @JsonKey()
   String? slug;
-   @JsonKey()
+  @JsonKey()
   double? imdb;
-   @JsonKey()
+  @JsonKey()
   int? isMovie18;
-   @JsonKey()
+  @JsonKey()
   int? isFinished;
-   @JsonKey()
+  @JsonKey()
   int? isMovieSeries;
-   @JsonKey()
+  @JsonKey()
   int? totalEpisode;
-   @JsonKey()
+  @JsonKey()
   String? quality;
-   @JsonKey()
+  @JsonKey()
   String? publishedAt;
-   @JsonKey()
+  @JsonKey()
   String? createdAt;
-   @JsonKey()
+  @JsonKey()
   String? updatedAt;
-   @JsonKey()
-  int? averageRating;
-   @JsonKey()
+  @JsonKey()
+  double? averageRating;
+  @JsonKey()
   int? favoriteCount;
-   @JsonKey()
+  @JsonKey()
   String? countryName;
-   @JsonKey()
+  @JsonKey()
   List<ActorsModel>? actors;
-   @JsonKey()
+  @JsonKey()
   List<RatingsModel>? ratings;
-   @JsonKey()
+  @JsonKey()
   List<EpisodesModel>? episodes;
-   @JsonKey()
+  @JsonKey()
   List<CommentsModel>? comments;
 
   UIItem(
@@ -108,15 +107,4 @@ class UIItem {
   factory UIItem.fromJson(Map<String, dynamic> json) => _$UIItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$UIItemToJson(this);
-
 }
-
-
-
-
-
-
-
-
-
-

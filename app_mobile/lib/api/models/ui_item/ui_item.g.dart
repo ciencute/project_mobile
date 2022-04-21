@@ -31,7 +31,7 @@ UIItem _$UIItemFromJson(Map<String, dynamic> json) => UIItem(
       publishedAt: json['publishedAt'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      averageRating: json['averageRating'] as int?,
+      averageRating: (json['averageRating'] as num?)?.toDouble(),
       favoriteCount: json['favoriteCount'] as int?,
       countryName: json['countryName'] as String?,
       actors: (json['actors'] as List<dynamic>?)
