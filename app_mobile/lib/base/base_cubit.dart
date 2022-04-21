@@ -5,10 +5,6 @@ part './base_state.dart';
 class BaseCubit extends Cubit<BaseState> {
   BaseCubit(initialState) : super(initialState);
   void changeData() {
-    emit(state.copyWith(
-
-
-      
-    ));
+    emit(state.copyWith());
   }
 }

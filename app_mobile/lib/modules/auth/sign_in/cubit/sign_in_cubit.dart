@@ -1,4 +1,3 @@
-
 import 'package:app_mobile/routes/app_pages.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -25,16 +24,16 @@ class SignInCubit extends Cubit<SignInState> {
     try {
       UserModel result = await movieAppRepository.signIn(username, password);
 
-     SharedPreferences prefs = await SharedPreferences.getInstance();
-      if(result.accessToken != null){
-      await prefs.setString(StorageConstants.token, result.accessToken ?? '');
-      await prefs.setString(StorageConstants.avatar, result.user?.img ?? '');
-      await prefs.setString(StorageConstants.userName, result.user?.name ?? '');
-      Get.offAndToNamed(Routes.DASHBOARD);
-      emit(state.copyWith(loadStatus: LoadStatus.success));
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      if (result.token != null) {
+        await prefs.setString(StorageConstants.token, result.token ?? '');
+        await prefs.setString(StorageConstants.avatar, result.user?.img ?? '');
+        await prefs.setString(
+            StorageConstants.userName, result.user?.name ?? '');
+
+        emit(state.copyWith(loadStatus: LoadStatus.success));
+        Get.offAndToNamed(Routes.DASHBOARD);
       }
-prefs.getString(StorageConstants.userName);
-      
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }

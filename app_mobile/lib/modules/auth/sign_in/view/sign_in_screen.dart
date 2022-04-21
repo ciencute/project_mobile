@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../../api/models/enums/load_status.dart';
 import '../../../../resource/assets_constant/images_constants.dart';
 import '../../../../shared/constants/common.dart';
 import '../../../../shared/styles/heading_style/heading_text_style.dart';
@@ -27,8 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
   late SignInCubit _cubit;
   @override
   void initState() {
-    _cubit = SignInCubit(
-        movieAppRepository:Get.find());
+    _cubit = SignInCubit(movieAppRepository: Get.find());
     super.initState();
     _emailController.addListener(() {
       _cubit.emailChange(_emailController.text);
@@ -36,7 +36,6 @@ class _SignInScreenState extends State<SignInScreen> {
     _passwordController.addListener(() {
       _cubit.passChange(_passwordController.text);
     });
-    
   }
 
   @override
@@ -49,36 +48,37 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInCubit, SignInState>(
-      bloc: _cubit,
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Stack(
-            children: <Widget>[
-              SizedBox.expand(
-                child: FittedBox(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: <Widget>[
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: ShaderMask(
+                shaderCallback: (rect) {
+                  return const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.grey, Colors.transparent],
+                  ).createShader(Rect.fromLTRB(2, 1, rect.width, rect.height));
+                },
+                blendMode: BlendMode.dstIn,
+                child: FCoreImage(
+                  ImageConstants.imageBackgroundLogin,
+                  height: DEFAULT_HEIGHT,
+                  width: DEFAULT_WIDTH,
                   fit: BoxFit.cover,
-                  child: ShaderMask(
-                    shaderCallback: (rect) {
-                      return const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.grey, Colors.transparent],
-                      ).createShader(
-                          Rect.fromLTRB(2, 1, rect.width, rect.height));
-                    },
-                    blendMode: BlendMode.dstIn,
-                    child: FCoreImage(
-                      ImageConstants.imageBackgroundLogin,
-                      height: DEFAULT_HEIGHT,
-                      width: DEFAULT_WIDTH,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
                 ),
               ),
-              widget._formLogin(
+            ),
+          ),
+          BlocListener<SignInCubit, SignInState>(
+              bloc: _cubit,
+              listenWhen: (prev, current) =>
+                  prev.loadStatus == LoadStatus.loading,
+              listener: (context, state) {},
+              child: widget._formLogin(
                   emailController: _emailController,
                   passwordController: _passwordController,
                   onTap: (startLoading, stopLoading, btnState) {
@@ -89,11 +89,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordController.text);
                       stopLoading();
                     }
-                  })
-            ],
-          ),
-        );
-      },
+                  }))
+        ],
+      ),
     );
   }
 }

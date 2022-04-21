@@ -1,100 +1,122 @@
 part of 'category_screen.dart';
 
 extension _CategoryScreenChildren on CategoryScreen {
-    Widget _horizontalTabs({
-      required Function(int) onSelected
-    }) {
-    return CustomTab(
+  Widget _cardWidget() {
+    List data = [
+      {"color": const Color(0xffff6968)},
+      {"color": const Color.fromARGB(255, 28, 204, 116)},
+      {"color": const Color(0xffff8f61)},
+      {"color": const Color(0xff2ac3ff)},
+      {"color": const Color.fromARGB(255, 168, 79, 209)},
+      {"color": const Color(0xff96da45)},
+      {"color": const Color(0xffff6968)},
+      {"color": const Color(0xff7a54ff)},
+      {"color": const Color(0xffff8f61)},
+      {"color": const Color(0xff2ac3ff)},
+      {"color": const Color(0xff5a65ff)},
+      {"color": const Color(0xff96da45)},
+    ];
+    List movies = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'];
 
-      items: const [
-        'Phim hành động',
-        'Phim kinh dị',
-        'Phim tình cảm',
-      ],
-      onTabChanged: (value){
-onSelected(value);
-      },
-      itemSpace: 8,
-      activeItemDecoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        color: AppColors.contractInfoColor.withOpacity(0.3),
-      ),
-    );
-  }
-
-  Widget _listItemType({
-     required Function(int) onSelectedTab
-  }) {
-    return ExpandablePageView(
-      onPageChanged: (value){
-        onSelectedTab(value);
-      },
-      
-      physics: const NeverScrollableScrollPhysics(),
-     
-      children: [
-        _dataTabView(),
-        _dataTabView2(),
-        _dataTabView(),
-      ],
-    );
-  }
-  Widget _dataTabView(){
-    return Wrap(
-      spacing: 16,
-      runSpacing: 16,
-      children: List.generate(10, (index){
-        return Container(
-          width: (DEFAULT_WIDTH - 32 - 16) / 2,
-          padding: const EdgeInsets.all(8),
-
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: FCoreImage(ImageConstants.imageMovie1,
-                height: 180,
-                width: DEFAULT_WIDTH,
-                 fit: BoxFit.fitWidth,
-                
-                
-                ),
+    return SingleChildScrollView(
+      child: Column(children: [
+        const SizedBox(
+          height: 16,
+        ),
+        Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          children: List.generate(10, (index) {
+            return Container(
+              width: (Get.width - 32 - 16) / 2,
+              padding:
+                  const EdgeInsets.all(CommonConstants.kDefaultPadding / 2),
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                          bottomLeft: Radius.zero,
+                          bottomRight: Radius.zero,
+                        ),
+                        child: Container(
+                          width: Get.width,
+                          height: 200,
+                          color: data[index]['color'],
+                          child: Center(
+                            child: Text(
+                              movies[index],
+                              style:
+                                  Textbody4.defaultStyle.copyWith(fontSize: 50),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                          right: 0,
+                          top: 0,
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.colorLight.withOpacity(0.5)),
+                            child: InkWell(
+                              child: const Icon(
+                                Icons.favorite_border,
+                                color: AppColors.colorLight,
+                              ),
+                              onTap: () {
+                                // sets
+                              },
+                            ),
+                          ))
+                    ],
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.thirdTextColorLight.withOpacity(0.5),
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(.0),
+                        topLeft: Radius.zero,
+                        topRight: Radius.zero,
+                      ),
+                    ),
+                    height: 50,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: CommonConstants.kDefaultPadding),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.info_outline_rounded,
+                            color: AppColors.colorLight.withOpacity(0.7),
+                          ),
+                          Icon(
+                            Icons.more_vert,
+                            color: AppColors.colorLight.withOpacity(0.7),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Textlabel3('Phim chất lượng cao'),
+                ],
               ),
-              const SizedBox(height: 8,),
-              Textlabel3('Phim chất lượng cao'),
-            ],
-          ),
-        );
-      }),
-    );
-  }
-    Widget _dataTabView2(){
-    return Wrap(
-      spacing: 16,
-      runSpacing: 16,
-      children: List.generate(10, (index){
-        return Container(
-          width: (DEFAULT_WIDTH - 32 - 16) / 2,
-          padding: const EdgeInsets.all(8),
-
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: FCoreImage(ImageConstants.imageAvatar,
-                height: 100,
-                fit: BoxFit.fitWidth,
-                
-                
-                ),
-              ),
-              const SizedBox(height: 8,),
-              Textlabel3('Phim chất lượng cao'),
-            ],
-          ),
-        );
-      }),
+            );
+          }),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ]),
     );
   }
 }
-

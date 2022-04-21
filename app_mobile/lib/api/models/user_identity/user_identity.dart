@@ -4,15 +4,11 @@ part 'user_identity.g.dart';
 @JsonSerializable()
 class UserModel {
   @JsonKey()
-  String? accessToken;
-  @JsonKey()
-  String? tokenType;
-  @JsonKey()
-  int? expiresIn;
+  String? token;
   @JsonKey()
   UserUIModel? user;
 
-  UserModel({this.accessToken, this.tokenType, this.expiresIn, this.user});
+  UserModel({this.token, this.user});
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 

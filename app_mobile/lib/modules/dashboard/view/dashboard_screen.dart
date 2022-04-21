@@ -1,16 +1,18 @@
+import 'package:app_mobile/shared/styles/body_style/body_text_style.dart';
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app_mobile/shared/constants/common.dart';
 
 import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../shared/constants/colors.dart';
+import '../../../shared/constants/common.dart';
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
 import '../../category/view/category_screen.dart';
 import '../../detail/view/detail_screen.dart';
 import '../../home/view/home_screen.dart';
-import '../../profile/view/profile_screen.dart';
+
+import '../../profile/profile_home/view/profile_screen.dart';
 import '../cubit/dashboard_cubit.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -34,7 +36,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ),
     // const HomePage(),
     // const GroupPage(),
-    const DetailScreen(),
+    // const DetailScreen(),
+     Container(),
     const CategoryScreen(),
     const ProfileScreen(),
   ];
@@ -100,10 +103,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         )),
                   ],
                   inactiveIcons: [
-                    Textlabel1('Home'),
-                    Textlabel1('Play'),
-                    Textlabel1('Search'),
-                    Textlabel1('Profile'),
+                    Textbody1('Home'.toUpperCase()),
+                    Textbody1('Play'.toUpperCase()),
+                    Textbody1('Category'.toUpperCase()),
+                    Textbody1('Profile'.toUpperCase()),
                   ],
                   height: 55,
                   circleWidth: 55,

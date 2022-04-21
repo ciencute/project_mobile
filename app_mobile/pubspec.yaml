@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.0.13
   #loading status
   flutter_spinkit: ^5.1.0
+  carousel_slider: ^4.0.0
   #animation
   animations: ^2.0.2
   #Network
@@ -53,6 +54,7 @@ dependencies:
   json_annotation: ^4.4.0
   retrofit: 3.0.0
   connectivity_plus: ^2.2.0
+  
   #firebase
   #firebase_core: ^1.13.1
   #lib pubdev
@@ -74,6 +76,7 @@ dependencies:
   local_auth: ^1.1.11
   expandable_page_view: ^1.0.13
   card_swiper: ^2.0.3
+  flutter_easyloading: ^3.0.3
   
 
   ##############

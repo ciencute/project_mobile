@@ -38,33 +38,38 @@ extension _HomeScreenChildren on HomeScreen {
     );
   }
 
-  Widget _typeAction({required List<UIItem> typeActions}) {
+  Widget _typeAction({required List<UIItem> typeActions, required BuildContext context,
+  required Function(int) onConfirm
+  }) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(typeActions.length, (index) {
-          return Container(
-            margin:
-                const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
-            width: (Get.width - 64) / 4,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FCoreImage(
-                  typeActions[index].icon ?? '',
-                  height: 55,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Textlabel2(
-                  typeActions[index].title,
-                  textAlign: TextAlign.center,
-                )
-              ],
+          return InkWell(
+            onTap: ()=>onConfirm(index),
+            child: Container(
+              margin:
+                  const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
+              width: (Get.width - 64) / 4,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FCoreImage(
+                    typeActions[index].img ?? '',
+                    height: 55,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Textlabel2(
+                    typeActions[index].title,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
             ),
           );
         }),
@@ -80,7 +85,7 @@ extension _HomeScreenChildren on HomeScreen {
         ),
         padding: const EdgeInsets.symmetric(
             horizontal: CommonConstants.kDefaultPadding,
-            vertical: CommonConstants.kDefaultPadding-6),
+            vertical: CommonConstants.kDefaultPadding - 6),
         decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.3),
             border: Border.all(width: 1, color: Colors.white.withOpacity(0.4)),
@@ -106,50 +111,54 @@ extension _HomeScreenChildren on HomeScreen {
           ],
         ),
       ),
-      onTap: (){
+      onTap: () {
         Get.toNamed(Routes.SEARCH);
       },
     );
   }
-Widget _lstMovie({required List<UIItem> lstMovies}){
+
+  Widget _lstMovie({required List<UIItem> lstMovies, required Function(int) onConfirm}) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.only(left: CommonConstants.kDefaultPadding),
         child: Row(
-          children:List.generate(lstMovies.length, (index){
-            return Container(
-            margin:
-                const EdgeInsets.only(right: CommonConstants.kDefaultPadding),
-            width: (Get.width - 64) / 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: FCoreImage(
-                    lstMovies[index].icon ?? '',
-                    height: 180,
-                    fit: BoxFit.cover,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: List.generate(lstMovies.length, (index) {
+              return InkWell(
+                child: Container(
+                
+                  margin: const EdgeInsets.only(
+                      right: CommonConstants.kDefaultPadding),
+                  width: (Get.width - 64) / 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: FCoreImage(
+                          lstMovies[index].img ?? '',
+                          height: 180,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Textlabel2(
+                        lstMovies[index].title,
+                        textAlign: TextAlign.center,
+                        textOverflow: TextOverflow.ellipsis,
+                      )
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Textlabel2(
-                  lstMovies[index].title,
-                  textAlign: TextAlign.center,
-                )
-              ],
-            ),
-          );
-          })
-          ),
+                onTap: ()=> onConfirm(index)
+              );
+            })),
       ),
-      
     );
-}
-
+  }
 
   Widget _listMovieHot({required List<UIItem> lstMovies}) {
     final customLayoutOption =
@@ -163,15 +172,15 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
     return Swiper(
       layout: SwiperLayout.CUSTOM,
       customLayoutOption: customLayoutOption,
-      itemWidth: Get.width  / 3,
+      itemWidth: Get.width / 3,
       itemHeight: 300,
       itemBuilder: (context, index) {
         return Column(
           children: [
             FCoreImage(
-              lstMovies[index].icon ?? '',
+              lstMovies[index].img ?? '',
               height: 200,
-              width: Get.width  / 3,
+              width: Get.width / 3,
               fit: BoxFit.cover,
             ),
             const SizedBox(
@@ -184,6 +193,8 @@ Widget _lstMovie({required List<UIItem> lstMovies}){
       itemCount: lstMovies.length,
     );
   }
+
+
 }
 
 class MovieCardModel {
@@ -192,20 +203,6 @@ class MovieCardModel {
   final double star;
 
   MovieCardModel({required this.icon, required this.title, required this.star});
-}
-
-class UIItem {
-  String? id;
-  String? title;
-  String? icon;
-  String? description;
-  final Bihavior bihavior;
-  UIItem(
-      {required this.id,
-      required this.title,
-      required this.icon,
-      required this.description,
-      required this.bihavior});
 }
 
 class Bihavior {

@@ -1,15 +1,34 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/base/base_cubit.dart';
-import 'package:app_mobile/resource/assets_constant/icon_constants.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import '../../../api/models/ui_item/ui_item.dart';
+import '../../../resource/assets_constant/icon_constants.dart';
 
 import '../../../api/models/enums/load_status.dart';
+import '../../../api/models/home/home_identity.dart';
+import '../../../api/repositories/movie_app_repository.dart';
 import '../../../resource/assets_constant/images_constants.dart';
+import '../../../shared/utils/logger.dart';
 import '../view/home_screen.dart';
 
 part '../state/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeState());
+  HomeCubit({required this.movieAppRepository}) : super(HomeState());
+  MovieAppRepository movieAppRepository;
+
+  Future<void> getData() async {
+    emit(state.copyWith(loadStatus: LoadStatus.loading));
+    try {
+      EasyLoading.show();
+      final result = await movieAppRepository.getHomeUI();
+      EasyLoading.dismiss();
+      emit(state.copyWith(homeModel: result));
+      
+    } catch (error, stackTrace) {
+      logger.e(error, stackTrace: stackTrace);
+    }
+  }
 
   List<MovieCardModel> lstImage() {
     final items = <MovieCardModel>[];
@@ -20,16 +39,17 @@ class HomeCubit extends Cubit<HomeState> {
     }
     return items;
   }
-   List<UIItem> lstMovie() {
+
+  List<UIItem> lstMovie() {
     final items = <UIItem>[];
 
     for (var i = 0; i < 10; i++) {
-        items.add(UIItem(
-              id: i.toString(),
-              title: 'Phim chem nhau',
-              icon: ImageConstants.imageMovie1,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+      items.add(UIItem(
+        id: i,
+        title: 'Phim chem nhau',
+        img: ImageConstants.imageMovie1,
+        description: '',
+      ));
     }
     return items;
   }
@@ -40,35 +60,35 @@ class HomeCubit extends Cubit<HomeState> {
       switch (i) {
         case 1:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Genre',
-              icon: IconConstants.icGenre,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Genre',
+            img: IconConstants.icGenre,
+            description: '',
+          ));
           break;
         case 2:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Top IMDB',
-              icon: IconConstants.icTopImdb,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Top IMDB',
+            img: IconConstants.icTopImdb,
+            description: '',
+          ));
           break;
         case 3:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Country',
-              icon: IconConstants.icCountry,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Top 10',
+            img: IconConstants.icCountry,
+            description: '',
+          ));
           break;
         case 4:
           items.add(UIItem(
-              id: i.toString(),
-              title: 'Watched',
-              icon: IconConstants.icWatched,
-              description: '',
-              bihavior: Bihavior(action: '', data: '')));
+            id: i,
+            title: 'Watched',
+            img: IconConstants.icWatched,
+            description: '',
+          ));
           break;
         default:
       }

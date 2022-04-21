@@ -23,8 +23,7 @@ class FavoriteActorsScreen extends StatefulWidget {
 }
 
 class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
-  // late FavoriteActorsCubit _cubit;
-  late File profilePicFile;
+
   @override
   void initState() {
     super.initState();
