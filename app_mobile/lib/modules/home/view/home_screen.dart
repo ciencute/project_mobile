@@ -26,7 +26,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>  with AutomaticKeepAliveClientMixin{
   late HomeCubit _cubit;
   @override
   void initState() {
@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocBuilder<HomeCubit, HomeState>(
         bloc: _cubit,
         builder: (context, state) {
@@ -160,4 +161,6 @@ class _HomeScreenState extends State<HomeScreen> {
           return Container();
         });
   }
+      @override
+  bool get wantKeepAlive => true;
 }

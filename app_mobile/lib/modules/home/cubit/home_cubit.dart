@@ -7,9 +7,7 @@ import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/home/home_identity.dart';
 import '../../../api/repositories/movie_app_repository.dart';
-import '../../../resource/assets_constant/images_constants.dart';
 import '../../../shared/utils/logger.dart';
-import '../view/home_screen.dart';
 
 part '../state/home_state.dart';
 
@@ -20,40 +18,14 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getData() async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
-      EasyLoading.show();
+     
       final result = await movieAppRepository.getHomeUI();
-      EasyLoading.dismiss();
-      emit(state.copyWith(homeModel: result));
-      
+      emit(state.copyWith(homeModel: result,loadStatus: LoadStatus.success,));
+     
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }
   }
-
-  List<MovieCardModel> lstImage() {
-    final items = <MovieCardModel>[];
-    final item = MovieCardModel(
-        icon: ImageConstants.imageMovie1, star: 5, title: 'Phim hay');
-    for (var i = 0; i < 10; i++) {
-      items.add(item);
-    }
-    return items;
-  }
-
-  List<UIItem> lstMovie() {
-    final items = <UIItem>[];
-
-    for (var i = 0; i < 10; i++) {
-      items.add(UIItem(
-        id: i,
-        title: 'Phim chem nhau',
-        img: ImageConstants.imageMovie1,
-        description: '',
-      ));
-    }
-    return items;
-  }
-
   List<UIItem> lstTypeAction() {
     final items = <UIItem>[];
     for (var i = 1; i <= 4; i++) {

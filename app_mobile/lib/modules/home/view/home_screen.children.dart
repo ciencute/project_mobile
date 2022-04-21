@@ -193,8 +193,6 @@ extension _HomeScreenChildren on HomeScreen {
       itemCount: lstMovies.length,
     );
   }
-
-
 }
 
 class MovieCardModel {
