@@ -19,7 +19,7 @@ class _DetailScreenState extends State<DetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: Get.height * 0.6,
+              height: Get.height * 0.65,
               child: Stack(
                 children: [
                   Container(

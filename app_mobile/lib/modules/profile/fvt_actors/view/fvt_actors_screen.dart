@@ -33,7 +33,7 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
 
   @override
   Widget build(BuildContext context) {
- return Scaffold(
+    return Scaffold(
         appBar: AppBar(
             backgroundColor: AppColors.gradient2BackgroundColor,
             elevation: 0.2,
@@ -70,69 +70,15 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
                     height: 50,
                     child: Text(
                       'Favorite ACTORS'.toUpperCase(),
-                      style: Textbody4.defaultStyle
-                          .copyWith(fontWeight: FontWeight.bold, fontSize: 24,
-                         ),
+                      style: Textbody4.defaultStyle.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                 ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Column(
-                                            children: [
-                                              Text('#Actors'),
-                                              Container(
-                                                
-                          width: Get.width,
-                          height: 170,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Row(
-                              children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      child: Image.asset(
-                                                'lib/resource/assets_resources/images/image_app/image_moive1.png',
-                                                width: 110,
-                                                height: 165),
-                                    ),
-                                    Positioned.fill(
-                                              child: Align(
-                                                  alignment: Alignment.bottomCenter,
-                                                  child: Padding(
-                                                    padding:  EdgeInsets.only(top: 110),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      children: [
-                                                        Textbody1('Episode-#'),
-                                                        Expanded(
-                                                          child: Textbody2(
-                                                            'Action, Crime',
-                                                            textAlign: TextAlign.center,
-                                                            style: TextStyle(
-                                                                color: Color(0xffA0A0A0)),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )))
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 30,
-                                )
-                              ],
-                            ),
-                            itemCount: 5,
-                          ),
-                        ),
-                                            ],
-                                          ),
-                                        ),
-              // widget._lstFvtActors()
-          
+
+                widget._lstFvtActors()
               ],
             ),
           ),
