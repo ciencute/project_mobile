@@ -19,6 +19,7 @@ import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/styles/style.dart';
 import '../../../shared/widgets/carousel_widget/carousel_widget.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
 import '../../movies_category/view/movies_category_screen.dart';
 import '../../movies_top10/view/movies_top10_screen.dart';
 import '../cubit/home_cubit.dart';
@@ -54,16 +55,7 @@ class _HomeScreenState extends State<HomeScreen>
         bloc: _cubit,
         builder: (context, state) {
           if (state.loadStatus == LoadStatus.loading) {
-            return const SizedBox(
-              child: Padding(
-                padding: EdgeInsets.all(120),
-                child: LoadingIndicator(
-                  indicatorType: Indicator.ballScaleMultiple,
-                  colors: AppColors.primaryColorLoadingIndicator,
-                  strokeWidth: 7,
-                ),
-              ),
-            );
+              return LoadingCommon().loadingWidget();
           } else if (state.loadStatus == LoadStatus.success) {
             if (state.homeModel != null) {
               return SingleChildScrollView(

@@ -14,6 +14,7 @@ import '../../../shared/constants/common.dart';
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/widgets/appbar/appbar.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
 import '../cubit/movies_top10_cubit.dart';
 
 part 'movies_top10_screen.children.dart';
@@ -54,16 +55,7 @@ class _MoviesTop10ScreenState extends State<MoviesTop10Screen> {
               bloc: _cubit,
               builder: (context, state) {
                 if (state.loadStatus == LoadStatus.loading) {
-                  return const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(120),
-                      child: LoadingIndicator(
-                        indicatorType: Indicator.ballScaleMultiple,
-                        colors: AppColors.primaryColorLoadingIndicator,
-                        strokeWidth: 7,
-                      ),
-                    ),
-                  );
+                   return LoadingCommon().loadingWidget();
                 }
 
                 return ListView.separated(
