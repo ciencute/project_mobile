@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 24),
                   widget._headerPage(
                       avatar: ImageConstants.imageAvatar,
-                      name: 'Kien',
+                      name: 'NQ Toan',
                       description: 'Check for latest addition.'),
                   widget._research(),
                   const SizedBox(

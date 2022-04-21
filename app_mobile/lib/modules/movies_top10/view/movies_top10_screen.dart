@@ -55,16 +55,13 @@ class _MoviesTop10ScreenState extends State<MoviesTop10Screen>
           child: BlocBuilder<MoviesTop10Cubit, MoviesTop10State>(
               bloc: _cubit,
               builder: (context, state) {
-                if(state.loadStatus==LoadStatus.loading){
-                  return const Center(child: CircularProgressIndicator(
+                if (state.loadStatus == LoadStatus.loading) {
+                  return const Center(
+                      child: CircularProgressIndicator(
                     color: AppColors.contractInfoColor,
                   ));
                 }
-                
-                
-                
-                
-                
+
                 return ListView.separated(
                     itemBuilder: (context, index) {
                       return widget._moviesTopScreen(
