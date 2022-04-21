@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors();
-  static const List<Color> primaryColorLoadingIndicator =  [
+  static const List<Color> primaryColorLoadingIndicator = [
     Color(0xFFF47458),
     Colors.orange,
     Colors.yellow,

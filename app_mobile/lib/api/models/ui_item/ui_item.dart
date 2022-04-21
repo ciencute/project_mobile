@@ -1,56 +1,76 @@
 import 'package:json_annotation/json_annotation.dart';
+
+import '../actors/actors_identity.dart';
+import '../comments/comments_identity.dart';
+import '../episodes/episodes_identity.dart';
+import '../ratings/ratings_identity.dart';
 part 'ui_item.g.dart';
 
 @JsonSerializable()
 class UIItem {
+
   @JsonKey()
   int? id;
-  @JsonKey()
+   @JsonKey()
   String? title;
-  @JsonKey()
+   @JsonKey()
   String? originalTitle;
-  @JsonKey()
+   @JsonKey()
   String? img;
-  @JsonKey()
+   @JsonKey()
   String? url;
-  @JsonKey()
+   @JsonKey()
   String? embededCode;
-  @JsonKey()
+   @JsonKey()
   String? trailerKey;
-  @JsonKey()
-  dynamic directorId;
-  @JsonKey()
+   @JsonKey()
+  int? directorId;
+   @JsonKey()
   String? bgImg;
-  @JsonKey()
+   @JsonKey()
   String? description;
-  @JsonKey()
-  dynamic countryId;
-  @JsonKey()
+   @JsonKey()
+  int? countryId;
+   @JsonKey()
   int? duration;
-  @JsonKey()
+   @JsonKey()
   int? viewCount;
-  @JsonKey()
+   @JsonKey()
   int? categoryId;
-  @JsonKey()
+   @JsonKey()
   String? slug;
-  @JsonKey()
+   @JsonKey()
   double? imdb;
-  @JsonKey()
+   @JsonKey()
   int? isMovie18;
-  @JsonKey()
+   @JsonKey()
   int? isFinished;
-  @JsonKey()
+   @JsonKey()
   int? isMovieSeries;
-  @JsonKey()
+   @JsonKey()
   int? totalEpisode;
-  @JsonKey()
+   @JsonKey()
   String? quality;
-  @JsonKey()
+   @JsonKey()
   String? publishedAt;
-  @JsonKey()
+   @JsonKey()
   String? createdAt;
-  @JsonKey()
+   @JsonKey()
   String? updatedAt;
+   @JsonKey()
+  int? averageRating;
+   @JsonKey()
+  int? favoriteCount;
+   @JsonKey()
+  String? countryName;
+   @JsonKey()
+  List<ActorsModel>? actors;
+   @JsonKey()
+  List<RatingsModel>? ratings;
+   @JsonKey()
+  List<EpisodesModel>? episodes;
+   @JsonKey()
+  List<CommentsModel>? comments;
 
   UIItem(
       {this.id,
@@ -76,9 +96,27 @@ class UIItem {
       this.quality,
       this.publishedAt,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.averageRating,
+      this.favoriteCount,
+      this.countryName,
+      this.actors,
+      this.ratings,
+      this.episodes,
+      this.comments});
 
   factory UIItem.fromJson(Map<String, dynamic> json) => _$UIItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$UIItemToJson(this);
+
 }
+
+
+
+
+
+
+
+
+
+

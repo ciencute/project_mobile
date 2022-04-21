@@ -42,5 +42,5 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   @override
   Future<List<UIItem>> getMoviesTopView() {
     return _movieAPI.getMoviesTopWeek();
-    
-}}
+  }
+}

@@ -14,10 +14,10 @@ UIItem _$UIItemFromJson(Map<String, dynamic> json) => UIItem(
       url: json['url'] as String?,
       embededCode: json['embededCode'] as String?,
       trailerKey: json['trailerKey'] as String?,
-      directorId: json['directorId'],
+      directorId: json['directorId'] as int?,
       bgImg: json['bgImg'] as String?,
       description: json['description'] as String?,
-      countryId: json['countryId'],
+      countryId: json['countryId'] as int?,
       duration: json['duration'] as int?,
       viewCount: json['viewCount'] as int?,
       categoryId: json['categoryId'] as int?,
@@ -31,6 +31,21 @@ UIItem _$UIItemFromJson(Map<String, dynamic> json) => UIItem(
       publishedAt: json['publishedAt'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
+      averageRating: json['averageRating'] as int?,
+      favoriteCount: json['favoriteCount'] as int?,
+      countryName: json['countryName'] as String?,
+      actors: (json['actors'] as List<dynamic>?)
+          ?.map((e) => ActorsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      ratings: (json['ratings'] as List<dynamic>?)
+          ?.map((e) => RatingsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      episodes: (json['episodes'] as List<dynamic>?)
+          ?.map((e) => EpisodesModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      comments: (json['comments'] as List<dynamic>?)
+          ?.map((e) => CommentsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$UIItemToJson(UIItem instance) => <String, dynamic>{
@@ -58,4 +73,11 @@ Map<String, dynamic> _$UIItemToJson(UIItem instance) => <String, dynamic>{
       'publishedAt': instance.publishedAt,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
+      'averageRating': instance.averageRating,
+      'favoriteCount': instance.favoriteCount,
+      'countryName': instance.countryName,
+      'actors': instance.actors,
+      'ratings': instance.ratings,
+      'episodes': instance.episodes,
+      'comments': instance.comments,
     };

@@ -81,7 +81,9 @@ class _CategoryScreenState extends State<CategoryScreen>
                     labelStyle: const TextStyle(fontSize: 20),
                     labelPadding: const EdgeInsets.only(
                         left: 40, right: 40, top: 10, bottom: 10),
-                    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: CommonConstants.kDefaultPadding),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: CommonConstants.kDefaultPadding),
                     indicator: BoxDecoration(
                         color: AppColors.colorLight,
                         borderRadius: BorderRadius.circular(5)),

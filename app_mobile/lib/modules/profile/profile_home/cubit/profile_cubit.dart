@@ -8,13 +8,11 @@ import '../../../../api/models/enums/load_status.dart';
 import '../../../../base/base_cubit.dart';
 import '../view/profile_screen.dart';
 
-
-
 part '../state/profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
- ProfileCubit() : super(ProfileState());
-  InfoUser fetchProjectInfo()  {
+  ProfileCubit() : super(ProfileState());
+  InfoUser fetchProjectInfo() {
     final infoUser = InfoUser(
         avatar: ImageConstants.imageMovie1,
         commnet: 200,
@@ -24,15 +22,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         lstAuthor: lstData(),
         lstFavorite: lstData(),
         lstWatched: lstData(),
-        profilePicFile: File('')
-        );
-        return infoUser;
+        profilePicFile: File(''));
+    return infoUser;
     // emit(state.copyWith(
     //   infoUser: infoUser,
     //   loadStatus: LoadStatus.success,
     // ));
   }
-
 
   List<UIItem> lstData() {
     final datas = <UIItem>[];

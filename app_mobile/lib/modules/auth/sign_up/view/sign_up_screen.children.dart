@@ -1,7 +1,3 @@
 part of 'sign_up_screen.dart';
 
-extension _SignUpScreenChildren on SignUpScreen {
-
-}
-
-
+extension _SignUpScreenChildren on SignUpScreen {}

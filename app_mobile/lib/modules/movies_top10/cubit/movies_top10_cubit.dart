@@ -6,7 +6,6 @@ import '../../../api/repositories/movie_app_repository.dart';
 import '../../../shared/utils/logger.dart';
 import '../state/moves_top10_state.dart';
 
-
 class MoviesTop10Cubit extends Cubit<MoviesTop10State> {
   MoviesTop10Cubit({required this.movieAppRepository})
       : super(MoviesTop10State());
@@ -25,6 +24,4 @@ class MoviesTop10Cubit extends Cubit<MoviesTop10State> {
       logger.e(error);
     }
   }
-
-
 }

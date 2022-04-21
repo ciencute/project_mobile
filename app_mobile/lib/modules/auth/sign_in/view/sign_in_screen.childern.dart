@@ -27,22 +27,21 @@ extension _SignInScreenChildren on SignInScreen {
             height: 32,
           ),
           InkWell(
-            onTap: ()=>onTap(),
+            onTap: () => onTap(),
             child: Container(
               width: DEFAULT_WIDTH,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(32),
                 color: const Color(0xFF7866FE),
               ),
-              padding: const EdgeInsets.symmetric(
-                vertical: 16
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: TextHeading1(
+                'Login',
+                textAlign: TextAlign.center,
               ),
-              child: TextHeading1('Login',textAlign: TextAlign.center, ),
             ),
           ),
           // ArgonButtonWidget(onTap:onTap)
-       
-          
         ],
       ),
     );

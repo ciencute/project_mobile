@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget(
       {this.textController,
@@ -23,10 +22,10 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: 
-           BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              color: const Color(0xFFF4F5F7),),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0),
+        color: const Color(0xFFF4F5F7),
+      ),
       child: TextField(
         onChanged: onChangeData,
         controller: textController,

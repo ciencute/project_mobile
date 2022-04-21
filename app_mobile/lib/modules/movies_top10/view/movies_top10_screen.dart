@@ -59,7 +59,7 @@ class _MoviesTop10ScreenState extends State<MoviesTop10Screen> {
                 }
 
                 return ListView.separated(
-                  padding: EdgeInsets.zero,
+                    padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
                       return widget._moviesTopScreen(
                           uiItem: state.lstUiItem?[index] ?? UIItem());

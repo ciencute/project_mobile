@@ -23,7 +23,6 @@ class FavoriteActorsScreen extends StatefulWidget {
 }
 
 class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -76,7 +75,6 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
                     ),
                   ),
                 ),
-
                 widget._lstFvtActors()
               ],
             ),

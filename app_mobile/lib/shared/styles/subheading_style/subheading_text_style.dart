@@ -83,6 +83,7 @@ class TextSubheading3 extends TextSubheading1 {
           maxLines: maxLines,
         );
 }
+
 class TextSubheading4 extends TextSubheading1 {
   static const TextStyle defaultStyle = TextStyle(
       fontFamily: CommonConstants.mulish_bold,

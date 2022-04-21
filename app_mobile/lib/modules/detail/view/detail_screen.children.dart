@@ -20,17 +20,21 @@ extension _DetailScreenChildren on DetailScreen {
                 )),
           ),
         ),
-        const SizedBox(height: 16,),
+        const SizedBox(
+          height: 16,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
             Stack(
               children: [
-                Container(width: 60, height: 60, decoration: BoxDecoration(
-                  borderRadius:BorderRadius.circular(50),
-                  color: Colors.white
-                ), ),
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white),
+                ),
                 const Positioned.fill(
                     child: Align(
                   alignment: Alignment.center,

@@ -9,7 +9,8 @@ extension LstFavoriteActors on FavoriteActorsScreen {
         '#ActorsName5'
       ];
 
-  get movies => ['#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m #Some infomations....'];
+  get movies =>
+      ['#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m #Some infomations....'];
 
   Widget _lstFvtActors() {
     return SingleChildScrollView(
@@ -27,8 +28,11 @@ extension LstFavoriteActors on FavoriteActorsScreen {
                     itemBuilder: (context, index) {
                       return ExpansionTile(
                         childrenPadding: const EdgeInsets.all(16),
-                        subtitle: Text('#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m \n #Some infomations....',
-                        style: Textbody1.defaultStyle.copyWith(color: AppColors.primaryHintColorLight),),
+                        subtitle: Text(
+                          '#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m \n #Some infomations....',
+                          style: Textbody1.defaultStyle
+                              .copyWith(color: AppColors.primaryHintColorLight),
+                        ),
                         trailing: Column(
                           children: const [
                             Text(

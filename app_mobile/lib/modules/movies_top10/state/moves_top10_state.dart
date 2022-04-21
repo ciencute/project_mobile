@@ -1,10 +1,6 @@
-
-
-
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../base/base_cubit.dart';
-
 
 class MoviesTop10State extends BaseState {
   final LoadStatus loadStatus;
@@ -23,7 +19,8 @@ class MoviesTop10State extends BaseState {
       List<UIItem>? lstUiItem,
       int? lastPages}) {
     return MoviesTop10State(
-        loadStatus: loadStatus ?? this.loadStatus,
-        lstUiItem: lstUiItem ?? this.lstUiItem,);
+      loadStatus: loadStatus ?? this.loadStatus,
+      lstUiItem: lstUiItem ?? this.lstUiItem,
+    );
   }
 }

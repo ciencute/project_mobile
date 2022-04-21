@@ -1,8 +1,6 @@
-import 'package:app_mobile/shared/styles/heading_style/heading_text_style.dart';
-import 'package:app_mobile/shared/styles/label_style/label_text_style.dart';
+import '../../styles/heading_style/heading_text_style.dart';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../constants/common.dart';
 

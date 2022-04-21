@@ -13,16 +13,14 @@ abstract class MovieAPI {
   @POST("/api/login")
   Future<UserModel> authLogin(@Body() Map<String, dynamic> body);
   @GET("/api/home")
-  Future<HomeUIModel>  getHomeUI();
+  Future<HomeUIModel> getHomeUI();
   @GET('/api/movies/{id}')
   Future<UIItem> getMovieDetail(@Path() int id);
   @GET('/api/movies/animation?page={page}')
-  Future<PaginationModel> getMovieAnimation(
-     @Part() int? page);
+  Future<PaginationModel> getMovieAnimation(@Part() int? page);
   @GET('/api/movies/category/{id}?page={page}')
-  Future<PaginationModel> getMovieCategoryByID(@Path() int id,
-     @Part() int? page);
+  Future<PaginationModel> getMovieCategoryByID(
+      @Path() int id, @Part() int? page);
   @GET("/api/movies/mostView/topWeek")
-  Future<List<UIItem>>  getMoviesTopWeek();  
-     
+  Future<List<UIItem>> getMoviesTopWeek();
 }

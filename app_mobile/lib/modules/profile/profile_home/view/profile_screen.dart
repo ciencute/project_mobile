@@ -101,7 +101,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   await sharedPreferences.clear();
                   sharedPreferences.getString(StorageConstants.token);
                   await Get.offAllNamed(Routes.SIGN_IN);
-                  
                 },
                 child: Container(
                   width: Get.width,

@@ -84,7 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
               if (state.loadStatus == LoadStatus.loading) {
                 return LoadingCommon().loadingWidget();
               }
-               if (state.loadStatus == LoadStatus.success) {
+              if (state.loadStatus == LoadStatus.success) {
                 return const SizedBox();
               }
 

@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen>
         bloc: _cubit,
         builder: (context, state) {
           if (state.loadStatus == LoadStatus.loading) {
-              return LoadingCommon().loadingWidget();
+            return LoadingCommon().loadingWidget();
           } else if (state.loadStatus == LoadStatus.success) {
             if (state.homeModel != null) {
               return SingleChildScrollView(
