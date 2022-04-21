@@ -32,6 +32,7 @@ class AppColors {
   static const Color borderTextFieldColor = Color(0xffEEEEEE);
   static const Color colorLight = Color(0xffFFFFFF);
   static const Color colorDark = Color(0xff000000);
+  static const Color colorYellow = Color(0xffFFCC09);
   static const Color gradient1BackgroundColor = Color(0xFF141e30);
   static const Color gradient2BackgroundColor = Color(0xFF243b55);
 }

@@ -38,4 +38,9 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   Future<PaginationModel> getMovieCategoryByID(int id, int? page) {
     return _movieAPI.getMovieCategoryByID(id, page);
   }
-}
+
+  @override
+  Future<List<UIItem>> getMoviesTopView() {
+    return _movieAPI.getMoviesTopWeek();
+    
+}}

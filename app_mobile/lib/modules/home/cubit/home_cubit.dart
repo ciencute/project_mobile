@@ -49,7 +49,7 @@ class HomeCubit extends Cubit<HomeState> {
         case 3:
           items.add(UIItem(
             id: i,
-            title: 'Country',
+            title: 'Top 10',
             img: IconConstants.icCountry,
             description: '',
           ));

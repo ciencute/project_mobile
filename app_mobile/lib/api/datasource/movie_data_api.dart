@@ -22,4 +22,7 @@ abstract class MovieAPI {
   @GET('/api/movies/category/{id}?page={page}')
   Future<PaginationModel> getMovieCategoryByID(@Path() int id,
      @Part() int? page);
+  @GET("/api/movies/mostView/topWeek")
+  Future<List<UIItem>>  getMoviesTopWeek();  
+     
 }

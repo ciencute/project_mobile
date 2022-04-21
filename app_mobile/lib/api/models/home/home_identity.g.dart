@@ -38,7 +38,7 @@ Map<String, dynamic> _$CategoriesToJson(Categories instance) =>
       'slug': instance.slug,
     };
 
-SliderModel _$SliderFromJson(Map<String, dynamic> json) => SliderModel(
+SliderModel _$SliderModelFromJson(Map<String, dynamic> json) => SliderModel(
       id: json['id'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -47,7 +47,8 @@ SliderModel _$SliderFromJson(Map<String, dynamic> json) => SliderModel(
       targetUrl: json['targetUrl'] as String?,
     );
 
-Map<String, dynamic> _$SliderToJson(SliderModel instance) => <String, dynamic>{
+Map<String, dynamic> _$SliderModelToJson(SliderModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,

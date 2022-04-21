@@ -82,7 +82,7 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                           child: SizedBox(
                             height: 50,
                             child: Text(
-                              'Edit your information',
+                              'Edit your information'.toUpperCase(),
                               style: Textbody4.defaultStyle.copyWith(
                                   fontWeight: FontWeight.bold, fontSize: 24),
                             ),

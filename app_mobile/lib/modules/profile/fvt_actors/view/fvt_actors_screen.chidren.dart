@@ -1,118 +1,110 @@
 part of 'fvt_actors_screen.dart';
 
-extension LstFavoriteActors on FavoriteActorsScreen{
+extension LstFavoriteActors on FavoriteActorsScreen {
   get actors => [
-    {"color": Color(0xffff6968)},
-    {"color": Color.fromARGB(255, 28, 204, 116)},
-    {"color": Color(0xffff8f61)},
-    {"color": Color(0xff2ac3ff)},
-    {"color": Color.fromARGB(255, 168, 79, 209)},
-    {"color": Color(0xff96da45)},
-    {"color": Color(0xffff6968)},
-    {"color": Color(0xff7a54ff)},
-    {"color": Color(0xffff8f61)},
-    {"color": Color(0xff2ac3ff)},
-    {"color": Color(0xff5a65ff)},
-    {"color": Color(0xff96da45)},
-  ];
+        '#ActorsName1',
+        '#ActorsName2',
+        '#ActorsName3',
+        '#ActorsName4',
+        '#ActorsName5'
+      ];
 
-  get movies => ['#1','#2','#3','#4','#5','#6','#7','#8','#9','#10'];
+  get movies => ['#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m #Some infomations....'];
 
-  Widget _lstFvtActors(){
-    return  SingleChildScrollView(
+  Widget _lstFvtActors() {
+    return SingleChildScrollView(
       child: Column(children: [
-        const SizedBox(
-          height: 16,
-        ),
-        Wrap(
-          spacing: 16,
-          runSpacing: 16,
-          children: List.generate(10, (index) {
-            return Container(
-              width: (Get.width - 32 - 16) / 2,
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                          bottomLeft: Radius.zero,
-                          bottomRight: Radius.zero,
-                        ),
-                        child: Container(
-                          width: Get.width,
-                          height: 200,
-                          color: actors[index]['color'],
-                          child: Center(
-                            child: Text(movies[index],
-                            style: Textbody4.defaultStyle.copyWith(fontSize: 50),),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          right: 0,
-                          top: 0,
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColors.colorLight.withOpacity(0.5)),
-                            child: InkWell(
-                              child:  const Icon(
-                                Icons.favorite_border,
-                                color: AppColors.colorLight,
-                              ),
-                              onTap: (){
-                                // sets
-                              },
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Container(
+                  width: Get.width,
+                  child: ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return ExpansionTile(
+                        childrenPadding: const EdgeInsets.all(16),
+                        subtitle: Text('#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m \n #Some infomations....',
+                        style: Textbody1.defaultStyle.copyWith(color: AppColors.primaryHintColorLight),),
+                        trailing: Column(
+                          children: const [
+                            Text(
+                              'Movies',
+                              style: Textbody2.defaultStyle,
                             ),
-                          ))
-                    ],
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.thirdTextColorLight.withOpacity(0.5),
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(0),
-                        bottomRight: Radius.circular(.0),
-                        topLeft: Radius.zero,
-                        topRight: Radius.zero,
-                      ),
-                    ),
-                    height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            Icon(
+                              Icons.arrow_drop_down_rounded,
+                              color: AppColors.colorLight,
+                              size: 25,
+                            ),
+                          ],
+                        ),
+                        title: Text(
+                          actors[index],
+                          style: Textbody3.defaultStyle,
+                        ),
                         children: [
-                          Icon(
-                            Icons.info_outline_rounded,
-                            color: AppColors.colorLight.withOpacity(0.7),
+                          SizedBox(
+                            width: Get.width,
+                            height: 170,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) => Row(
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Image.asset(
+                                          'lib/resource/assets_resources/images/image_app/image_moive1.png',
+                                          width: 110,
+                                          height: 165),
+                                      Positioned.fill(
+                                          child: Align(
+                                              alignment: Alignment.bottomCenter,
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 110),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Textbody1('Episode-#'),
+                                                    Expanded(
+                                                      child: Textbody2(
+                                                        'Action, Crime',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: const TextStyle(
+                                                            color: Color(
+                                                                0xffA0A0A0)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )))
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  )
+                                ],
+                              ),
+                              itemCount: 5,
+                            ),
                           ),
-                          Icon(
-                            Icons.more_vert,
-                            color: AppColors.colorLight.withOpacity(0.7),
-                          )
                         ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Textlabel3('Phim chất lượng cao'),
-                ],
-              ),
-            );
-          }),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Divider();
+                    },
+                  ))
+            ],
+          ),
         ),
-        SizedBox(
-          height: 20,
-        ),
-
       ]),
     );
   }

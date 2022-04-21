@@ -1,3 +1,4 @@
+import 'package:app_mobile/shared/styles/body_style/body_text_style.dart';
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ),
     // const HomePage(),
     // const GroupPage(),
-    const DetailScreen(),
+    // const DetailScreen(),
+     Container(),
     const CategoryScreen(),
     const ProfileScreen(),
   ];
@@ -49,6 +51,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
+     
     return Container(
       height: DEFAULT_HEIGHT,
       decoration: const BoxDecoration(
@@ -101,10 +104,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         )),
                   ],
                   inactiveIcons: [
-                    Textlabel1('Home'),
-                    Textlabel1('Play'),
-                    Textlabel1('category'),
-                    Textlabel1('Profile'),
+                    Textbody1('Home'.toUpperCase()),
+                    Textbody1('Play'.toUpperCase()),
+                    Textbody1('Category'.toUpperCase()),
+                    Textbody1('Profile'.toUpperCase()),
                   ],
                   height: 55,
                   circleWidth: 55,
@@ -130,4 +133,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               })),
     );
   }
+
+
 }
