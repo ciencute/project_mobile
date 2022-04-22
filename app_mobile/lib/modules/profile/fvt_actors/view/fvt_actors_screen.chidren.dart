@@ -1,115 +1,96 @@
 part of 'fvt_actors_screen.dart';
 
 extension LstFavoriteActors on FavoriteActorsScreen {
-  get actors => [
-        '#ActorsName1',
-        '#ActorsName2',
-        '#ActorsName3',
-        '#ActorsName4',
-        '#ActorsName5'
-      ];
-
-  get movies =>
-      ['#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m #Some infomations....'];
-
-  Widget _lstFvtActors() {
-    return SingleChildScrollView(
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Container(
-                  width: Get.width,
-                  child: ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return ExpansionTile(
-                        childrenPadding: const EdgeInsets.all(16),
-                        subtitle: Text(
-                          '#Dob: dd/mm/yyyy \n #Weight: kg \n #Height: m \n #Some infomations....',
-                          style: Textbody1.defaultStyle
-                              .copyWith(color: AppColors.primaryHintColorLight),
-                        ),
-                        trailing: Column(
-                          children: const [
-                            Text(
-                              'Movies',
-                              style: Textbody2.defaultStyle,
-                            ),
-                            Icon(
-                              Icons.arrow_drop_down_rounded,
-                              color: AppColors.colorLight,
-                              size: 25,
-                            ),
-                          ],
-                        ),
-                        title: Text(
-                          actors[index],
-                          style: Textbody3.defaultStyle,
-                        ),
-                        children: [
-                          SizedBox(
-                            width: Get.width,
-                            height: 170,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => Row(
-                                children: [
-                                  Stack(
-                                    children: [
-                                      Image.asset(
-                                          'lib/resource/assets_resources/images/image_app/image_moive1.png',
-                                          width: 110,
-                                          height: 165),
-                                      Positioned.fill(
-                                          child: Align(
-                                              alignment: Alignment.bottomCenter,
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 110),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Textbody1('Episode-#'),
-                                                    Expanded(
-                                                      child: Textbody2(
-                                                        'Action, Crime',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: const TextStyle(
-                                                            color: Color(
-                                                                0xffA0A0A0)),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              )))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  )
-                                ],
-                              ),
-                              itemCount: 5,
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Divider();
-                    },
-                  ))
-            ],
+  Widget _item({required ActorsModel actor,
+  required Function(int) onSelected
+  
+  }) {
+    return Container(
+      width: DEFAULT_WIDTH,
+      padding: const EdgeInsets.all(12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextHeading2(actor.name),
+                const SizedBox(
+                  height: 8,
+                ),
+                Textbody2(actor.slug),
+                const SizedBox(
+                  height: 8,
+                ),
+                Textbody2(actor.gender),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.favorite,
+                      color: Colors.pink,
+                      size: 24.0,
+                      semanticLabel: 'Like count:',
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Textbody2(actor.favoriteCount.toString()),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Textbody3(
+                  actor.detail,
+                  maxLines: 2,
+                  textOverflow: TextOverflow.ellipsis,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
           ),
-        ),
-      ]),
+          const SizedBox(
+                  width: 12,
+                ),
+           Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                const CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: AssetImage(
+                    ImageConstants.imageAvatar,
+                  ),
+                  backgroundColor: Colors.transparent,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                InkWell(
+                  onTap: ()=>onSelected(actor.id??0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      color: AppColors.primaryColorLoading,
+                      
+                    ),
+                    child: Center(
+                      child: Textbody1('actor make'),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

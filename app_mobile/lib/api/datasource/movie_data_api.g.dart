@@ -120,6 +120,26 @@ class _MovieAPI implements MovieAPI {
     return value;
   }
 
+  @override
+  Future<PaginationActorModel> getMovieFavoriteActor({page}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<PaginationActorModel>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/movies/favorite/actor?page=${page}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = PaginationActorModel.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

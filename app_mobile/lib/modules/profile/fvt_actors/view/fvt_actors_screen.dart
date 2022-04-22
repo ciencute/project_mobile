@@ -1,18 +1,20 @@
-import 'dart:io';
-
-import 'package:app_mobile/modules/profile/acount_infos/state/acount_infos_state.dart';
-import 'package:app_mobile/modules/profile/fvt_actors/state/fvt_actors_state.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/resource/assets_constant/icon_constants.dart';
 import 'package:app_mobile/resource/assets_constant/images_constants.dart';
-import 'package:app_mobile/shared/constants/colors.dart';
+import 'package:app_mobile/shared/constants/common.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import 'package:app_mobile/shared/constants/colors.dart';
+
+import '../../../../api/models/actors/actors_identity.dart';
+import '../../../../api/models/enums/load_status.dart';
 import '../../../../shared/styles/body_style/body_text_style.dart';
-import '../../../../shared/styles/label_style/label_text_style.dart';
+import '../../../../shared/styles/heading_style/heading_text_style.dart';
+import '../../../../shared/widgets/loading_indicator/loading_indicator.dart';
 import '../cubit/fvt_actors_cubit.dart';
+import '../state/fvt_actors_state.dart';
+
 part 'fvt_actors_screen.chidren.dart';
 
 class FavoriteActorsScreen extends StatefulWidget {
@@ -23,10 +25,17 @@ class FavoriteActorsScreen extends StatefulWidget {
 }
 
 class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
+  late FavoriteActorsCubit _cubit;
+
+  final _scrollController = ScrollController();
+  final _scrollThreshold = 200.0;
   @override
   void initState() {
     super.initState();
-    // _cubit = FavoriteActorsCubit();
+    _cubit = FavoriteActorsCubit(movieAppRepository: Get.find());
+
+    _cubit.getDataLoadmore(id: 12);
+    _scrollController.addListener(_onScroll);
   }
 
   @override
@@ -46,39 +55,62 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
               },
             )),
         body: Container(
-          height: Get.height,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  tileMode: TileMode.clamp,
-                  stops: [0.4, 1.0],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topLeft,
-                  colors: [
-                    AppColors.gradient1BackgroundColor,
-                    AppColors.gradient2BackgroundColor
-                  ])),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: Get.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: SizedBox(
-                    height: 50,
-                    child: Text(
-                      'Favorite ACTORS'.toUpperCase(),
-                      style: Textbody4.defaultStyle.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                  ),
-                ),
-                widget._lstFvtActors()
-              ],
-            ),
-          ),
-        ));
+            height: Get.height,
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    tileMode: TileMode.clamp,
+                    stops: [0.4, 1.0],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topLeft,
+                    colors: [
+                      AppColors.gradient1BackgroundColor,
+                      AppColors.gradient2BackgroundColor
+                    ])),
+            child: BlocBuilder<FavoriteActorsCubit, FavariteActorsState>(
+                bloc: _cubit,
+                builder: (context, state) {
+                  List<ActorsModel> lstUiItem = [];
+                  if (state.loadStatus == LoadStatus.loading) {
+                    return LoadingCommon().loadingWidget();
+                  } else if (state.lstUiItem.isNotEmpty) {
+                    lstUiItem.addAll(state.lstUiItem);
+                  }
+                  bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
+                  if (lstUiItem.isEmpty) {
+                    const Center(
+                      child: Text('Chưa có diễn viên yêu thích nào!'),
+                    );
+                  }
+
+                  return ListView.separated(
+                      controller: _scrollController,
+                      itemBuilder: (context, index) {
+                        if (index < lstUiItem.length) {
+                          return widget._item(actor: lstUiItem[index],
+                          onSelected: (value){
+                            
+                          }
+                          
+                          );
+                        } else {
+                          return LoadingCommon().loadMoreItem();
+                        }
+                      },
+                      separatorBuilder: (context, index) => Container(
+                            color: Colors.grey,
+                            height: 0.5,
+                          ),
+                      itemCount: isLoadMore
+                          ? (lstUiItem.length + 1)
+                          : lstUiItem.length);
+                })));
+  }
+
+  void _onScroll() async {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      _cubit.fetchMoreData(id: 12);
+    }
   }
 }

@@ -24,15 +24,13 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   void initState() {
     super.initState();
-      controller = VideoPlayerController.network( widget.videoUrl)
-      
+    controller = VideoPlayerController.network(widget.videoUrl)
       ..initialize().then((_) {
         controller.play();
         controller.setLooping(true);
         controller.addListener(() => setState(() {}));
         setState(() {});
       });
-     
 
     chewieController = ChewieController(
       showOptions: true,
@@ -55,7 +53,6 @@ class _VideoScreenState extends State<VideoScreen> {
       },
     );
   }
-  
 
   @override
   void dispose() {
@@ -69,27 +66,22 @@ class _VideoScreenState extends State<VideoScreen> {
     return Scaffold(
         appBar: appbar(context, title: 'MOVIE'),
         backgroundColor: AppColors.gradient2BackgroundColor,
-        body: 
-        
-        controller.value.isInitialized
+        body: controller.value.isInitialized
             ? Column(
-              children: [
-                SizedBox(
+                children: [
+                  SizedBox(
                     height: DEFAULT_HEIGHT * 4 / 5,
                     child: Chewie(
                       controller: chewieController,
                     ),
                   ),
-                     Container(
-                      height: 50,
-                      width: 80,
-                      color: Colors.amber,
-                    )
-              ],
-            )
+                  Container(
+                    height: 50,
+                    width: 80,
+                    color: Colors.amber,
+                  )
+                ],
+              )
             : LoadingCommon().loadingWidget());
-
-
-
   }
 }

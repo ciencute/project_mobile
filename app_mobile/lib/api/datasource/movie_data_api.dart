@@ -4,6 +4,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../models/home/home_identity.dart';
 import '../models/pagination/pagination_identity.dart';
+import '../models/pagination_actor/pagination_actor.dart';
 import '../models/user_identity/user_identity.dart';
 part 'movie_data_api.g.dart';
 
@@ -23,4 +24,6 @@ abstract class MovieAPI {
       @Path() int id, @Part() int? page);
   @GET("/api/movies/mostView/topWeek")
   Future<List<UIItem>> getMoviesTopWeek();
+   @GET('/api/movies/favorite/actor?page={page}')
+  Future<PaginationActorModel> getMovieFavoriteActor({@Part() int? page});
 }

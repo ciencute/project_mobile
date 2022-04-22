@@ -2,6 +2,7 @@ import 'package:app_mobile/api/models/ui_item/ui_item.dart';
 
 import '../models/home/home_identity.dart';
 import '../models/pagination/pagination_identity.dart';
+import '../models/pagination_actor/pagination_actor.dart';
 import '../models/user_identity/user_identity.dart';
 
 abstract class MovieAppRepository {
@@ -14,4 +15,6 @@ abstract class MovieAppRepository {
   Future<PaginationModel> getMovieAnimation(int? page);
   Future<PaginationModel> getMovieCategoryByID(int id, int? page);
   Future<List<UIItem>> getMoviesTopView();
+  Future<PaginationActorModel> getMovieFavoriteActor(int? page);
 }
+//getMovieFavoriteActor
