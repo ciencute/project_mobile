@@ -13,7 +13,7 @@ class FavoriteActorsCubit extends Cubit<FavariteActorsState> {
   Future<void> getDataLoadmore({required id}) async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
-      final result = await movieAppRepository.getMovieFavoriteActor(1);
+      final result = await movieAppRepository.getFavoriteActor(1);
       emit(state.copyWith(
         loadStatus: LoadStatus.success,
         lstUiItem: result.data,
@@ -34,7 +34,7 @@ class FavoriteActorsCubit extends Cubit<FavariteActorsState> {
     }
     emit(state.copyWith(loadStatus: LoadStatus.loadingMore));
 
-    final result = await movieAppRepository.getMovieFavoriteActor(
+    final result = await movieAppRepository.getFavoriteActor(
       state.page += 1,
     );
     emit(state.copyWith(

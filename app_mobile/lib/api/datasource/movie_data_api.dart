@@ -24,6 +24,8 @@ abstract class MovieAPI {
       @Path() int id, @Part() int? page);
   @GET("/api/movies/mostView/topWeek")
   Future<List<UIItem>> getMoviesTopWeek();
-   @GET('/api/movies/favorite/actor?page={page}')
-  Future<PaginationActorModel> getMovieFavoriteActor({@Part() int? page});
+  @GET('/api/movies/favorite/actor?page={page}')
+  Future<PaginationActorModel> getFavoriteActor({@Part() int? page});
+  @GET('/api/movies/actor/{actorId}?page={page}')
+  Future<PaginationModel> getMovieByActorID(@Path() int id, @Part() int? page);
 }
