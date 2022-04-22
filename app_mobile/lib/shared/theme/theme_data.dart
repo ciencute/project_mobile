@@ -3,21 +3,19 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 import '../constants/common.dart';
+
 class ThemeConfig {
   ThemeConfig();
 
-
-    static final ThemeData lightTheme = ThemeData(
+  static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.green,
-   
-  
-   //  backgroundColor:  LinearGradient(colors: [Colors.blue, Colors.green]),
-    
+
+    //  backgroundColor:  LinearGradient(colors: [Colors.blue, Colors.green]),
+
     colorScheme: ColorScheme.light(
-      primary:   AppColors.primaryColorLight,
-                
-      secondary:  AppColors.primaryColorLight.withOpacity(0.4),
+      primary: AppColors.primaryColorLight,
+      secondary: AppColors.primaryColorLight.withOpacity(0.4),
     ),
   );
 

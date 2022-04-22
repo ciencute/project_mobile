@@ -1,7 +1,9 @@
 import 'package:app_mobile/shared/constants/colors.dart';
+import 'package:app_mobile/shared/constants/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'routes/app_pages.dart';
 import 'shared/theme/theme_data.dart';
@@ -11,12 +13,15 @@ class MoveApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sharedPreferences = Get.find<SharedPreferences>();
     return GetMaterialApp(
       theme: ThemeConfig.lightTheme,
       debugShowCheckedModeBanner: false,
       enableLog: true,
       defaultTransition: Transition.fade,
-      initialRoute: Routes.TYPEOPTION,
+      initialRoute: sharedPreferences.getString(StorageConstants.token) != null
+          ? Routes.DASHBOARD
+          : Routes.TYPEOPTION,
       getPages: routePages,
       builder: EasyLoading.init(),
     );

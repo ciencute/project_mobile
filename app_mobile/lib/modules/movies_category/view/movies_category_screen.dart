@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
@@ -14,6 +15,7 @@ import '../../../shared/constants/common.dart';
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/widgets/appbar/appbar.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
 import '../cubit/movies_category_cubit.dart';
 
 part 'movies_category_screen.children.dart';
@@ -53,52 +55,47 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
     return Scaffold(
         appBar: appbar(context, title: 'Danh sách Phim'),
         backgroundColor: AppColors.gradient2BackgroundColor,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocBuilder<MoviesCategoryCubit, MoviesCategoryState>(
-              bloc: _cubit,
-              builder: (context, state) {
-                List<UIItem> lstUiItem = [];
-                if (state.lstUiItem.isNotEmpty) {
-                  lstUiItem.addAll(state.lstUiItem);
-                }
-                bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
-                if (state.loadStatus == LoadStatus.loading) {
-                  EasyLoading.show();
-                }
+        body: Scrollbar(
+          isAlwaysShown: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: BlocBuilder<MoviesCategoryCubit, MoviesCategoryState>(
 
-                if (lstUiItem.isEmpty) {
-                  const Center(
-                    child: Text('Chưa có phim nào!'),
-                  );
-                }
-                EasyLoading.dismiss();
-                return Scrollbar(
-                isAlwaysShown: true,
-                  child: ListView.separated(
-                    
+                bloc: _cubit,
+                builder: (context, state) {
+                  List<UIItem> lstUiItem = [];
+                  if (state.loadStatus == LoadStatus.loading) {
+                    return LoadingCommon().loadingWidget();
+                  } else if (state.lstUiItem.isNotEmpty) {
+                    lstUiItem.addAll(state.lstUiItem);
+                  }
+                  bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
+                  if (lstUiItem.isEmpty) {
+                    const Center(
+                      child: Text('Chưa có phim nào!'),
+                    );
+                  }
+
+                  return ListView.separated(
                       controller: _scrollController,
                       itemBuilder: (context, index) {
                         if (index < lstUiItem.length) {
                           return widget._itemMovie(movie: lstUiItem[index]);
                         } else {
-                         return const  Padding(
-                              padding: EdgeInsets.all(32),
-                              child: SpinKitThreeInOut(
-                                color: Colors.blue,
-                                size: 50.0,
-                              ),
-                            );
-                          
+                          return LoadingCommon().loadMoreItem();
                         }
                       },
                       separatorBuilder: (context, index) => const SizedBox(
                             height: 12,
                           ),
-                      itemCount:
-                          isLoadMore ? (lstUiItem.length + 1) : lstUiItem.length),
-                );
-              }),
+                      itemCount: isLoadMore
+                          ? (lstUiItem.length + 1)
+                          : lstUiItem.length);
+                }
+                
+                
+                ),
+          ),
         ));
   }
 
@@ -106,15 +103,6 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-       Timer(const Duration(seconds: 10), () async{
-                          const Padding(
-                            padding: EdgeInsets.all(32),
-                            child: SpinKitThreeInOut(
-                              color: Colors.amber,
-                              size: 50.0,
-                            ),
-                          );
-                        });
       _cubit.fetchMoreData(id: 12);
     }
   }

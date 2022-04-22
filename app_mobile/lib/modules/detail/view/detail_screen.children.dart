@@ -8,7 +8,7 @@ extension _DetailScreenChildren on DetailScreen {
       children: [
         SizedBox(
           height: Get.height * 0.45,
-          child: Container(
+          child: SizedBox(
             width: Get.width,
             child: ClipRRect(
                 borderRadius: const BorderRadius.only(
@@ -20,26 +20,38 @@ extension _DetailScreenChildren on DetailScreen {
                 )),
           ),
         ),
-        const SizedBox(height: 16,),
+        const SizedBox(
+          height: 16,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
             Stack(
               children: [
-                Container(width: 60, height: 60, decoration: BoxDecoration(
-                  borderRadius:BorderRadius.circular(50),
-                  color: Colors.white
-                ), ),
-                const Positioned.fill(
-                    child: Align(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.play_circle,
-                    color: Color(0xffFF3B30),
-                    size: 60,
-                  ),
-                ))
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white),
+                ),
+                 Positioned.fill(
+                    child: InkWell(
+                      onTap: (){
+                        Get.to(VideoScreen(
+                          title: model.title??'',
+                          videoUrl: model.url??'',
+                        ));
+                      },
+                      child: const Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                      Icons.play_circle,
+                      color: Color(0xffFF3B30),
+                      size: 60,
+                                      ),
+                                    ),
+                    ))
               ],
             ),
             const SizedBox(
@@ -63,11 +75,11 @@ extension _DetailScreenChildren on DetailScreen {
                   width: 1,
                   height: 20,
                   color: Colors.black.withOpacity(0.5),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
                 ),
                 Textbody2(
                   model.slug ?? '',
-                  style: TextStyle(color: Color(0xffA0A0A0)),
+                   color: Color(0xffA0A0A0),
                 ),
                 Container(
                   width: 1,
@@ -77,7 +89,7 @@ extension _DetailScreenChildren on DetailScreen {
                 ),
                 Textbody2(
                   'Episode - ' + model.totalEpisode.toString(),
-                  style: TextStyle(color: Color(0xffA0A0A0)),
+                  color: Color(0xffA0A0A0),
                 ),
               ],
             ),

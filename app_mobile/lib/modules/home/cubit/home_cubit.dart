@@ -18,14 +18,16 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getData() async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
-     
       final result = await movieAppRepository.getHomeUI();
-      emit(state.copyWith(homeModel: result,loadStatus: LoadStatus.success,));
-     
+      emit(state.copyWith(
+        homeModel: result,
+        loadStatus: LoadStatus.success,
+      ));
     } catch (error, stackTrace) {
       logger.e(error, stackTrace: stackTrace);
     }
   }
+
   List<UIItem> lstTypeAction() {
     final items = <UIItem>[];
     for (var i = 1; i <= 4; i++) {

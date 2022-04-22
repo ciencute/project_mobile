@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../shared/styles/body_style/body_text_style.dart';
 import '../../../shared/widgets/appbar/appbar.dart';
+import '../../video/view/video_screen.dart';
 part 'detail_screen.children.dart';
 
 class DetailScreen extends StatefulWidget {

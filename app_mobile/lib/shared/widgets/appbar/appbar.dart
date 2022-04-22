@@ -19,7 +19,10 @@ PreferredSizeWidget appbar(BuildContext context,
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: [AppColors.gradient2BackgroundColor,AppColors.gradient1BackgroundColor],
+          colors: [
+            AppColors.gradient2BackgroundColor,
+            AppColors.gradient1BackgroundColor
+          ],
         ),
       ),
     ),
@@ -32,6 +35,5 @@ PreferredSizeWidget appbar(BuildContext context,
             },
           )
         : null,
-
   );
 }

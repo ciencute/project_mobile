@@ -62,7 +62,8 @@ class SliderModel {
       this.displayOrder,
       this.targetUrl});
 
-  factory SliderModel.fromJson(Map<String, dynamic> json) => _$SliderModelFromJson(json);
+  factory SliderModel.fromJson(Map<String, dynamic> json) =>
+      _$SliderModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$SliderModelToJson(this);
 }

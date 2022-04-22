@@ -68,7 +68,7 @@ extension ListHotMovie on SearchScreen {
                       ],
                     ),
                   ),
-                  onTap: (){
+                  onTap: () {
                     Get.toNamed(Routes.DETAIL);
                   },
                 );

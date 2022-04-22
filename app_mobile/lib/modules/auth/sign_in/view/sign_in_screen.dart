@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 
 import '../../../../api/models/enums/load_status.dart';
 import '../../../../resource/assets_constant/images_constants.dart';
+import '../../../../shared/constants/colors.dart';
 import '../../../../shared/constants/common.dart';
 import '../../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../../shared/widgets/argon_button/argon_button_widget.dart';
 import '../../../../shared/widgets/image_widget/fcore_image.dart';
+import '../../../../shared/widgets/loading_indicator/loading_indicator.dart';
 import '../../../../shared/widgets/text_input_widget/text_input_widget.dart';
 import '../cubit/sign_in_cubit.dart';
 
@@ -60,7 +62,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   return const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.grey, Colors.transparent],
+                    colors: [
+                      AppColors.colorDark,
+                      AppColors.gradient2BackgroundColor
+                    ],
                   ).createShader(Rect.fromLTRB(2, 1, rect.width, rect.height));
                 },
                 blendMode: BlendMode.dstIn,
@@ -73,23 +78,26 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
           ),
-          BlocListener<SignInCubit, SignInState>(
-              bloc: _cubit,
-              listenWhen: (prev, current) =>
-                  prev.loadStatus == LoadStatus.loading,
-              listener: (context, state) {},
-              child: widget._formLogin(
+          BlocBuilder<SignInCubit, SignInState>(
+            bloc: _cubit,
+            builder: (context, state) {
+              if (state.loadStatus == LoadStatus.loading) {
+                return LoadingCommon().loadingWidget();
+              }
+              if (state.loadStatus == LoadStatus.success) {
+                return const SizedBox();
+              }
+
+              return widget._formLogin(
                   emailController: _emailController,
                   passwordController: _passwordController,
-                  onTap: (startLoading, stopLoading, btnState) {
-                    if (btnState == ButtonState.Idle) {
-                      startLoading();
-                      _cubit.signIn(
-                          username: _emailController.text,
-                          password: _passwordController.text);
-                      stopLoading();
-                    }
-                  }))
+                  onTap: () async {
+                    _cubit.signIn(
+                        username: _emailController.text,
+                        password: _passwordController.text);
+                  });
+            },
+          )
         ],
       ),
     );

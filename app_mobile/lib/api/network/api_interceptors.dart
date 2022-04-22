@@ -13,7 +13,8 @@ class ApiInterceptors extends InterceptorsWrapper {
     final data = options.data;
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    options.headers['Authorization'] = 'Bearer ${prefs.getString(StorageConstants.token)}';
+    options.headers['Authorization'] =
+        'Bearer ${prefs.getString(StorageConstants.token)}';
 
     logger.log(
         '\n\n--------------------------------------------------------------------------------------------------------');
