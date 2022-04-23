@@ -32,7 +32,7 @@ class _FvtMovieScreenState extends State<FvtMovieScreen> {
 
     _cubit = FvtMovieCubit(movieAppRepository: Get.find());
 
-    _cubit.geMovieActorByID(id: widget.id);
+    _cubit.getYourFavorite();
     _scrollController.addListener(_onScroll);
   }
 
@@ -45,7 +45,7 @@ class _FvtMovieScreenState extends State<FvtMovieScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar(context, title: 'MOVIE'),
+        appBar: appbar(context, title: 'Your favorite movie'),
         backgroundColor: AppColors.gradient2BackgroundColor,
         body: BlocBuilder<FvtMovieCubit, FvtMovieState>(
             bloc: _cubit,
@@ -100,7 +100,7 @@ class _FvtMovieScreenState extends State<FvtMovieScreen> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-      _cubit.fetchMoreData(id: widget.id);
+      _cubit.fetchMoreData();
     }
   }
 }

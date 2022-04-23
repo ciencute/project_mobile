@@ -12,10 +12,10 @@ class FvtMovieCubit extends Cubit<FvtMovieState> {
   FvtMovieCubit({required this.movieAppRepository}) : super(FvtMovieState());
 
   MovieAppRepository movieAppRepository;
-  Future<void> geMovieActorByID({required int id}) async {
+  Future<void> getYourFavorite() async {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
     try {
-      final result = await movieAppRepository.getMovieByActorID(id, 1);
+      final result = await movieAppRepository.getYourFavorite(1);
       emit(state.copyWith(
         loadStatus: LoadStatus.success,
         lstUiItem: result.data,
@@ -27,7 +27,7 @@ class FvtMovieCubit extends Cubit<FvtMovieState> {
     }
   }
 
-  void fetchMoreData({required int id}) async {
+  void fetchMoreData() async {
     if (state.page == state.lastPages) {
       return;
     }
@@ -36,8 +36,7 @@ class FvtMovieCubit extends Cubit<FvtMovieState> {
     }
     emit(state.copyWith(loadStatus: LoadStatus.loadingMore));
 
-    final result = await movieAppRepository.getMovieByActorID(
-      id,
+    final result = await movieAppRepository.getYourFavorite(
       state.page += 1,
     );
     emit(state.copyWith(

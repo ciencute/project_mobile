@@ -64,11 +64,8 @@ extension _DetailScreenChildren on DetailScreen {
                     Get.to(VideoScreen(
                       title: model.title ?? '',
                       videoUrl: model.url ?? '',
-<<<<<<< HEAD
-=======
                       lstComment: model.comments ?? [],
                       lstEpisodes: model.episodes ?? [],
->>>>>>> e63254871309f5d556f1aed2721c2bab4871eb38
                     ));
                   },
                   child: const Align(
@@ -107,11 +104,7 @@ extension _DetailScreenChildren on DetailScreen {
                 ),
                 Textbody2(
                   model.slug ?? '',
-<<<<<<< HEAD
-                  color: Color(0xffA0A0A0),
-=======
                   color: const Color(0xffA0A0A0),
->>>>>>> e63254871309f5d556f1aed2721c2bab4871eb38
                 ),
                 Container(
                   width: 1,
