@@ -1,6 +1,5 @@
 import 'package:app_mobile/shared/styles/heading_style/heading_text_style.dart';
 import 'package:app_mobile/shared/styles/label_style/label_text_style.dart';
-import 'package:app_mobile/shared/widgets/image_widget/fcore_image.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';

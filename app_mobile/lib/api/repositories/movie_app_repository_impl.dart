@@ -113,4 +113,9 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   Future<PaginationActorModel> getFavoriteActor(int? page) {
     return _movieAPI.getFavoriteActor(page);
   }
+
+  @override
+  Future<PaginationModel> getYourFavorite(int? page) {
+    return _movieAPI.getYourFavorite(page);
+  }
 }

@@ -66,13 +66,16 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMovieAnimation(page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/movies/animation?page=${page}',
+                .compose(_dio.options, '/api/movies/animation?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
@@ -83,14 +86,16 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMovieCategoryByID(id, page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(
-                    _dio.options, '/api/movies/category/${id}?page=${page}',
+                .compose(_dio.options, '/api/movies/category/${id}?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
@@ -119,14 +124,16 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationActorModel> getFavoriteActor(page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationActorModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(
-                    _dio.options, '/api/movies/favorite/actor?page=${page}',
+                .compose(_dio.options, '/api/movies/favorite/actor?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationActorModel.fromJson(_result.data!);
@@ -137,14 +144,17 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMovieByActorID(actorId, page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(
-                    _dio.options, '/api/movies/actor/${actorId}?page=${page}',
+                    _dio.options, '/api/movies/actor/${actorId}?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
@@ -173,13 +183,16 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMoviesTopView(page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/movies/topView/?page=${page}',
+                .compose(_dio.options, '/api/movies/topView/?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
@@ -190,14 +203,17 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMoviesFavoriteMovie(page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(
-                    _dio.options, '/api/movies/favorite/movie/?page=${page}',
+                    _dio.options, '/api/movies/favorite/movie/?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
@@ -289,15 +305,39 @@ class _MovieAPI implements MovieAPI {
   Future<PaginationModel> getMovieWatched(page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('page', page.toString()));
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<PaginationModel>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/movies/watched?page=${page}',
+                .compose(_dio.options, '/api/movies/watched?page={page}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = PaginationModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<PaginationModel> getYourFavorite(page) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (page != null) {
+      _data.fields.add(MapEntry('page', page.toString()));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<PaginationModel>(Options(
+                method: 'GET', headers: _headers, extra: _extra)
+            .compose(
+                _dio.options, '/api/movies/favorite/yourFavorite?page={page}',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PaginationModel.fromJson(_result.data!);
     return value;
   }
