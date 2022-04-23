@@ -93,7 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ],
                             ),
                             onTap: () {
-                              Get.toNamed(Routes.DETAIL);
+                              // Get.toNamed(Routes.DETAIL);
                             },
                           ),
                           trailing: const Icon(

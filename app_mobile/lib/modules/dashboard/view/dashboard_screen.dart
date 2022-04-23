@@ -12,6 +12,7 @@ import '../../category/view/category_screen.dart';
 import '../../detail/view/detail_screen.dart';
 import '../../home/view/home_screen.dart';
 
+import '../../play_now/view/play_now_screen.dart';
 import '../../profile/profile_home/view/profile_screen.dart';
 import '../cubit/dashboard_cubit.dart';
 
@@ -37,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     // const HomePage(),
     // const GroupPage(),
     // const DetailScreen(),
-    Container(),
+    const PlayNowScreen(),
     const CategoryScreen(),
     const ProfileScreen(),
   ];

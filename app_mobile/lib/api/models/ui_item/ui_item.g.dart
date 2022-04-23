@@ -33,6 +33,7 @@ UIItem _$UIItemFromJson(Map<String, dynamic> json) => UIItem(
       updatedAt: json['updatedAt'] as String?,
       averageRating: (json['averageRating'] as num?)?.toDouble(),
       favoriteCount: json['favoriteCount'] as int?,
+      isLiked: json['isLiked'] as bool?,
       countryName: json['countryName'] as String?,
       actors: (json['actors'] as List<dynamic>?)
           ?.map((e) => ActorsModel.fromJson(e as Map<String, dynamic>))
@@ -75,6 +76,7 @@ Map<String, dynamic> _$UIItemToJson(UIItem instance) => <String, dynamic>{
       'updatedAt': instance.updatedAt,
       'averageRating': instance.averageRating,
       'favoriteCount': instance.favoriteCount,
+      'isLiked': instance.isLiked,
       'countryName': instance.countryName,
       'actors': instance.actors,
       'ratings': instance.ratings,

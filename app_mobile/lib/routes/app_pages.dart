@@ -20,10 +20,11 @@ final routePages = [
   GetPage(name: Routes.ONBOARDING, page: () => const OnboardingScreen()),
   GetPage(name: Routes.DASHBOARD, page: () => const DashBoardScreen()),
   GetPage(name: Routes.HOME, page: () => const HomeScreen()),
-  GetPage(name: Routes.DETAIL, page: () => const DetailScreen()),
+
   GetPage(name: Routes.TYPEOPTION, page: () => const TypeOntion()),
   GetPage(name: Routes.SEARCH, page: () => const SearchScreen()),
   GetPage(name: Routes.ACOUNTINFO, page: () => const AcountInfoScreen()),
+  GetPage(name: Routes.FVTACTORS, page: () => const FavoriteActorsScreen()),
   GetPage(name: Routes.FVTACTORS, page: () => const FavoriteActorsScreen()),
   // GetPage(name: Routes.FVTFILMS, page: () => const FavoriteFilmsScreen()),
 ];

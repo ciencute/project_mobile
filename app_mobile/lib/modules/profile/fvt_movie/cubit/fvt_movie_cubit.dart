@@ -1,16 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../api/models/enums/load_status.dart';
-import '../../../api/models/ui_item/ui_item.dart';
-import '../../../api/repositories/movie_app_repository.dart';
-import '../../../base/base_cubit.dart';
-import '../../../shared/utils/logger.dart';
+import '../../../../api/models/enums/load_status.dart';
+import '../../../../api/models/ui_item/ui_item.dart';
+import '../../../../api/repositories/movie_app_repository.dart';
+import '../../../../base/base_cubit.dart';
+import '../../../../shared/utils/logger.dart';
 
-part '../state/movies_by_actor_state.dart';
+part '../state/fvt_movie_state.dart';
 
-class MoviesByActorCubit extends Cubit<MoviesByActorState> {
-  MoviesByActorCubit({required this.movieAppRepository})
-      : super(MoviesByActorState());
+class FvtMovieCubit extends Cubit<FvtMovieState> {
+  FvtMovieCubit({required this.movieAppRepository}) : super(FvtMovieState());
 
   MovieAppRepository movieAppRepository;
   Future<void> geMovieActorByID({required int id}) async {

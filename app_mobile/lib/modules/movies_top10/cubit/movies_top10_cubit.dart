@@ -15,7 +15,7 @@ class MoviesTop10Cubit extends Cubit<MoviesTop10State> {
     emit(state.copyWith(loadStatus: LoadStatus.loading));
 
     try {
-      final result = await movieAppRepository.getMoviesTopView();
+      final result = await movieAppRepository.getMoviesTopViewOne();
       emit(state.copyWith(
         loadStatus: LoadStatus.success,
         lstUiItem: result,

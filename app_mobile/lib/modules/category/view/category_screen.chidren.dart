@@ -18,17 +18,17 @@ extension _CategoryScreenChildren on CategoryScreen {
     ];
     List movies = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'];
 
-    return SingleChildScrollView(
-      child: Column(children: [
-        const SizedBox(
-          height: 16,
-        ),
-        Wrap(
-          spacing: 16,
-          runSpacing: 16,
-          children: List.generate(10, (index) {
+    return Column(children: [
+      const SizedBox(
+        height: 16,
+      ),
+      MasonryGridView.count(
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          crossAxisCount: 2,
+          itemBuilder: (context, index) {
             return Container(
-              width: (Get.width - 32 - 16) / 2,
+              width: (index % 5 + 1) * 100,
               padding:
                   const EdgeInsets.all(CommonConstants.kDefaultPadding / 2),
               child: Column(
@@ -112,11 +112,9 @@ extension _CategoryScreenChildren on CategoryScreen {
               ),
             );
           }),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ]),
-    );
+      const SizedBox(
+        height: 20,
+      ),
+    ]);
   }
 }
