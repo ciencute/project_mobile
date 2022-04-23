@@ -14,12 +14,12 @@ class UserSimplePreferences {
       await _preferences?.setString(_keyUsername, username);
 
   static String? getUsername() => _preferences?.getString(_keyUsername);
-    static Future setPhone(String phone) async =>
+  static Future setPhone(String phone) async =>
       await _preferences?.setString(_keyPhone, phone);
 
   static String? getPhone() => _preferences?.getString(_keyPhone);
-    static Future setAddress(String address) async =>
+  static Future setAddress(String address) async =>
       await _preferences?.setString(_keyAddress, address);
 
   static String? getAddress() => _preferences?.getString(_keyAddress);
-  }
+}

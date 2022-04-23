@@ -5,7 +5,7 @@ import 'cache_iamge.dart';
 
 class FCoreImage extends StatelessWidget {
   const FCoreImage(
-     this.source, {
+    this.source, {
     Key? key,
     this.fit = BoxFit.cover,
     this.width,

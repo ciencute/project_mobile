@@ -4,7 +4,7 @@ extension _SignInScreenChildren on SignInScreen {
   Widget _formLogin(
       {required TextEditingController emailController,
       required TextEditingController passwordController,
-      required Function(Function startLoading, Function stopLoading, ButtonState btnState) onTap}) {
+      required VoidCallback onTap}) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -26,9 +26,22 @@ extension _SignInScreenChildren on SignInScreen {
           const SizedBox(
             height: 32,
           ),
+          InkWell(
+            onTap: () => onTap(),
+            child: Container(
+              width: DEFAULT_WIDTH,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(32),
+                color: const Color(0xFF7866FE),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: TextHeading1(
+                'Login',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
           // ArgonButtonWidget(onTap:onTap)
-         ArgonButtonWidget(onTap: onTap,)
-          
         ],
       ),
     );

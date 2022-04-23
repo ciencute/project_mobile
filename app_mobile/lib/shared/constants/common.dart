@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:get/get.dart';
@@ -26,4 +24,3 @@ const FONT_FAMILY = 'Quicksand';
 double DEFAULT_WIDTH = Get.width;
 double DEFAULT_HEIGHT = Get.width;
 const ClientAPIDomain = 'https://movieapi.tk/';
-

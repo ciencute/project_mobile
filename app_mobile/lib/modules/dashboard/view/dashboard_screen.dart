@@ -37,7 +37,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     // const HomePage(),
     // const GroupPage(),
     // const DetailScreen(),
-     Container(),
+    Container(),
     const CategoryScreen(),
     const ProfileScreen(),
   ];
@@ -51,7 +51,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-     
     return Container(
       height: DEFAULT_HEIGHT,
       decoration: const BoxDecoration(
@@ -60,7 +59,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               stops: [0.4, 1.0],
               begin: Alignment.bottomCenter,
               end: Alignment.topRight,
-              colors: [AppColors.gradient1BackgroundColor, AppColors.gradient2BackgroundColor])),
+              colors: [
+                AppColors.gradient1BackgroundColor,
+                AppColors.gradient2BackgroundColor
+              ])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: PageView(
@@ -133,6 +135,4 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               })),
     );
   }
-
-
 }

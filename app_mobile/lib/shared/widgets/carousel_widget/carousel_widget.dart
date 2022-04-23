@@ -15,7 +15,6 @@ class CarouselWidget extends StatefulWidget {
     this.showLabel = false,
     this.onTapItem,
     this.leading,
-  
     this.decoration,
     this.showIndicator = true,
   }) : super(key: key);
@@ -24,7 +23,7 @@ class CarouselWidget extends StatefulWidget {
   final Function(int index)? onTapItem;
   final Widget? leading;
   final bool showLabel;
-  
+
   final BoxDecoration? decoration;
   final bool showIndicator;
 
@@ -50,8 +49,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                       child: Container(
                         decoration: widget.decoration,
                         child: ClipRRect(
-                          borderRadius:
-                              BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(16),
                           child: FCoreImage(
                             widget.items[index].imageUrl ?? '',
                             fit: BoxFit.cover,

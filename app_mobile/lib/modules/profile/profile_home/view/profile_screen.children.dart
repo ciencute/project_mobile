@@ -27,13 +27,17 @@ extension _DetailScreenChildren on ProfileScreen {
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side:  BorderSide(color:Colors.white.withOpacity(0.5)),
+                    side: BorderSide(color: Colors.white.withOpacity(0.5)),
                   ),
                   primary: Colors.white,
-                  backgroundColor:  Colors.white.withOpacity(0.5),
+                  backgroundColor: Colors.white.withOpacity(0.5),
                 ),
                 onPressed: () {},
-                child: const FCoreImage(IconConstants.iconCamera,color: Colors.white,width: 16,),
+                child: const FCoreImage(
+                  IconConstants.iconCamera,
+                  color: Colors.white,
+                  width: 16,
+                ),
               ),
             ),
           )

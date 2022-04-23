@@ -11,30 +11,23 @@ class SignInState extends BaseState {
       this.userModel,
       this.emailOrPhone,
       this.password,
-      this.sharedPreferenceStatus
-      });
+      this.sharedPreferenceStatus});
   @override
-  List<Object?> get props => [
-        loadStatus,
-        userModel,
-        emailOrPhone,
-        password,
-        sharedPreferenceStatus
-      ];
+  List<Object?> get props =>
+      [loadStatus, userModel, emailOrPhone, password, sharedPreferenceStatus];
   @override
-  SignInState copyWith({
-    LoadStatus? loadStatus,
-    UserModel? userModel,
-    String? emailOrPhone,
-    String? password,
-    LoadStatus? sharedPreferenceStatus
-  }) {
+  SignInState copyWith(
+      {LoadStatus? loadStatus,
+      UserModel? userModel,
+      String? emailOrPhone,
+      String? password,
+      LoadStatus? sharedPreferenceStatus}) {
     return SignInState(
-      loadStatus: loadStatus ?? this.loadStatus,
-      userModel: userModel ?? userModel,
-      emailOrPhone: emailOrPhone ?? emailOrPhone,
-      password: password ?? password,
-      sharedPreferenceStatus:sharedPreferenceStatus??sharedPreferenceStatus
-    );
+        loadStatus: loadStatus ?? this.loadStatus,
+        userModel: userModel ?? userModel,
+        emailOrPhone: emailOrPhone ?? emailOrPhone,
+        password: password ?? password,
+        sharedPreferenceStatus:
+            sharedPreferenceStatus ?? sharedPreferenceStatus);
   }
 }

@@ -116,14 +116,13 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: AppColors
-                                              .colorLight,
+                                          color: AppColors.colorLight,
                                           width: 2),
                                     ),
                                     hintText: 'Your name',
                                     hintStyle: Textbody3.defaultStyle),
                                 onChanged: (name) =>
-                                    setState(() =>this.name = name),
+                                    setState(() => this.name = name),
                               ),
                             ],
                           ),
@@ -157,8 +156,7 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: AppColors
-                                              .colorLight,
+                                          color: AppColors.colorLight,
                                           width: 2),
                                     ),
                                     hintText: 'Your phone',
@@ -197,8 +195,7 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: AppColors
-                                              .colorLight,
+                                          color: AppColors.colorLight,
                                           width: 2),
                                     ),
                                     hintText: 'Your address',
@@ -216,7 +213,8 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                 GestureDetector(
                   child: Container(
                     width: Get.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 20),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: const Center(
                         child: Text('SAVE', style: Textbody3.defaultStyle)),
@@ -247,13 +245,11 @@ class _AcountInfoScreenState extends State<AcountInfoScreen> {
                       duration: Duration(milliseconds: 1000),
                     ));
                     Get.back();
-
                   },
                 )
               ],
             ),
           ),
         ));
-        
   }
 }

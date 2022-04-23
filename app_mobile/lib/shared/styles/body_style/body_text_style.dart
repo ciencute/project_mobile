@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/common.dart';
 
-
 class Textbody1 extends Text {
   static const TextStyle defaultStyle = TextStyle(
       fontSize: CommonConstants.smallText,
@@ -84,6 +83,7 @@ class Textbody3 extends Textbody1 {
           maxLines: maxLines,
         );
 }
+
 class Textbody4 extends Textbody1 {
   static const TextStyle defaultStyle = TextStyle(
       fontFamily: CommonConstants.mulish_semiBold,
@@ -107,4 +107,3 @@ class Textbody4 extends Textbody1 {
           maxLines: maxLines,
         );
 }
-

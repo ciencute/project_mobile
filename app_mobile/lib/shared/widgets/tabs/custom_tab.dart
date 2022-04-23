@@ -1,8 +1,6 @@
 import 'package:app_mobile/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-
-
 class CustomTab extends StatefulWidget {
   const CustomTab({
     required this.items,
@@ -14,7 +12,7 @@ class CustomTab extends StatefulWidget {
       fontWeight: FontWeight.w400,
     ),
     this.selectedStyle = const TextStyle(
-      color:  AppColors.accentColorLight,
+      color: AppColors.accentColorLight,
       fontSize: 14,
       fontWeight: FontWeight.w600,
     ),
