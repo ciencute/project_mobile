@@ -6,19 +6,42 @@ extension _DetailScreenChildren on DetailScreen {
   Widget _movieInfo({required UIItem model}) {
     return Column(
       children: [
-        SizedBox(
-          height: Get.height * 0.45,
-          child: SizedBox(
-            width: Get.width,
-            child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
-                child: FCoreImage(
-                  model.img ?? '',
-                  fit: BoxFit.cover,
-                )),
-          ),
+        Stack(
+          children: [
+            SizedBox(
+              height: Get.height * 0.45,
+              child: SizedBox(
+                width: Get.width,
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30)),
+                    child: FCoreImage(
+                      model.img ?? '',
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            ),
+            Positioned(
+                top: 0,
+                right: 0 ,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                 decoration: BoxDecoration(
+                 color: AppColors.colorLight.withOpacity(0.5),
+                 borderRadius: BorderRadius.circular(50)
+
+                 ),
+                  child:  Center(
+                    child: Shimmer.fromColors(
+    baseColor: AppColors.gradient2BackgroundColor,
+    highlightColor: AppColors.colorLight,
+    child: const Icon(Icons.favorite_border,size: 35,),
+  ),
+                  ),
+                ))
+          ],
         ),
         const SizedBox(
           height: 16,
@@ -258,7 +281,8 @@ extension _DetailScreenChildren on DetailScreen {
               ),
             ],
           ),
-        )
+        ),
+
       ],
     );
   }

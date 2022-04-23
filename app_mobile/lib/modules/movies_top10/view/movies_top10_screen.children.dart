@@ -32,8 +32,8 @@ extension _MoviesTop10ScreenChildren on MoviesTop10Screen {
                       height: 12,
                     ),
                     Textlabel3(
-                      uiItem.description,
-                      color: AppColors.fifthTextColorLight,
+                      uiItem.quality,
+                      color: AppColors.colorLight,
                       maxLines: 5,
                       textOverflow: TextOverflow.ellipsis,
                     )
