@@ -156,7 +156,7 @@ extension _HomeScreenChildren on HomeScreen {
                       ],
                     ),
                   ),
-                  onTap: () => onConfirm(index));
+                  onTap: () => onConfirm(lstMovies[index].id ?? 0));
             })),
       ),
     );

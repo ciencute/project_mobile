@@ -60,7 +60,6 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: BlocBuilder<MoviesCategoryCubit, MoviesCategoryState>(
-
                 bloc: _cubit,
                 builder: (context, state) {
                   List<UIItem> lstUiItem = [];
@@ -91,10 +90,7 @@ class _MoviesCategoryScreenState extends State<MoviesCategoryScreen>
                       itemCount: isLoadMore
                           ? (lstUiItem.length + 1)
                           : lstUiItem.length);
-                }
-                
-                
-                ),
+                }),
           ),
         ));
   }

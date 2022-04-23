@@ -1,12 +1,12 @@
-part of '../cubit/play_now_cubit.dart';
+part of '../cubit/fvt_movie_cubit.dart';
 
-class PlayNowState extends BaseState {
+class FvtMovieState extends BaseState {
   final LoadStatus loadStatus;
   final List<UIItem> lstUiItem;
   final int lastPages;
   int page;
 
-  PlayNowState({
+  FvtMovieState({
     this.loadStatus = LoadStatus.initial,
     this.lastPages = 0,
     this.lstUiItem = const [],
@@ -15,12 +15,12 @@ class PlayNowState extends BaseState {
   @override
   List<Object?> get props => [loadStatus, lstUiItem, lastPages, page];
   @override
-  PlayNowState copyWith(
+  FvtMovieState copyWith(
       {LoadStatus? loadStatus,
       int? page,
       List<UIItem>? lstUiItem,
       int? lastPages}) {
-    return PlayNowState(
+    return FvtMovieState(
         loadStatus: loadStatus ?? this.loadStatus,
         lastPages: lastPages ?? this.lastPages,
         lstUiItem: lstUiItem ?? this.lstUiItem,

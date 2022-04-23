@@ -1,10 +1,7 @@
-import 'dart:async';
-
-import 'package:app_mobile/modules/movies_top10/state/moves_top10_state.dart';
+import '../state/moves_top10_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 
 import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';

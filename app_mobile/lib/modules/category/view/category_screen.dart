@@ -1,5 +1,6 @@
 import 'package:app_mobile/shared/constants/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/constants/colors.dart';

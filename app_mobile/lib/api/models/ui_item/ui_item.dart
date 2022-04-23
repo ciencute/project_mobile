@@ -61,6 +61,8 @@ class UIItem {
   @JsonKey()
   int? favoriteCount;
   @JsonKey()
+  bool? isLiked;
+  @JsonKey()
   String? countryName;
   @JsonKey()
   List<ActorsModel>? actors;
@@ -98,6 +100,7 @@ class UIItem {
       this.updatedAt,
       this.averageRating,
       this.favoriteCount,
+      this.isLiked,
       this.countryName,
       this.actors,
       this.ratings,

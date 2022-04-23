@@ -1,28 +1,27 @@
-import 'package:app_mobile/api/models/enums/load_status.dart';
-import 'package:app_mobile/routes/app_pages.dart';
-import 'package:app_mobile/shared/constants/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:get/get.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../api/models/enums/load_status.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 import '../../../resource/assets_constant/images_constants.dart';
+import '../../../routes/app_pages.dart';
 import '../../../shared/constants/colors.dart';
 import '../../../shared/constants/common.dart';
+import '../../../shared/constants/storage.dart';
 import '../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/styles/style.dart';
 import '../../../shared/widgets/carousel_widget/carousel_widget.dart';
 import '../../../shared/widgets/image_widget/fcore_image.dart';
 import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
+import '../../detail/view/detail_screen.dart';
 import '../../movies_category/view/movies_category_screen.dart';
 import '../../movies_top10/view/movies_top10_screen.dart';
 import '../cubit/home_cubit.dart';
+
 part 'home_screen.children.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,7 +31,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen>
-    with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
+    with AutomaticKeepAliveClientMixin {
   late HomeCubit _cubit;
   @override
   void initState() {
@@ -120,9 +119,13 @@ class _HomeScreenState extends State<HomeScreen>
                         lstMovies:
                             state.homeModel?.movies.mostViewMovies?.data ?? [],
                         onConfirm: (value) {
-                          final modelItem = state
-                              .homeModel?.movies.mostViewMovies?.data[value];
-                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailScreen(
+                                      id: value,
+                                    )),
+                          );
                         }),
                     const SizedBox(
                       height: 16,
@@ -141,9 +144,13 @@ class _HomeScreenState extends State<HomeScreen>
                         lstMovies:
                             state.homeModel?.movies.animationMovies?.data ?? [],
                         onConfirm: (value) {
-                          final modelItem = state
-                              .homeModel?.movies.animationMovies?.data[value];
-                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailScreen(
+                                      id: value,
+                                    )),
+                          );
                         }),
                     const SizedBox(
                       height: 16,
@@ -162,9 +169,13 @@ class _HomeScreenState extends State<HomeScreen>
                         lstMovies:
                             state.homeModel?.movies.latestMovies?.data ?? [],
                         onConfirm: (value) {
-                          final modelItem =
-                              state.homeModel?.movies.latestMovies?.data[value];
-                          Get.toNamed(Routes.DETAIL, arguments: modelItem);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailScreen(
+                                      id: value,
+                                    )),
+                          );
                         }),
                     const SizedBox(
                       height: 32,

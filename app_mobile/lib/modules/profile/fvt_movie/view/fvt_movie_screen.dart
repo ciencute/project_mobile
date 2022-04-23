@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import '../../../api/models/enums/load_status.dart';
-import '../../../api/models/ui_item/ui_item.dart';
-import '../../../routes/app_pages.dart';
-import '../../../shared/constants/colors.dart';
-import '../../../shared/widgets/appbar/appbar.dart';
-import '../../../shared/widgets/item_movie/item_movie_widget.dart';
-import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
-import '../../detail/view/detail_screen.dart';
-import '../cubit/movies_by_actor_cubit.dart';
+import '../../../../api/models/enums/load_status.dart';
+import '../../../../api/models/ui_item/ui_item.dart';
+import '../../../../routes/app_pages.dart';
+import '../../../../shared/constants/colors.dart';
+import '../../../../shared/widgets/appbar/appbar.dart';
+import '../../../../shared/widgets/item_movie/item_movie_widget.dart';
+import '../../../../shared/widgets/loading_indicator/loading_indicator.dart';
+import '../../../detail/view/detail_screen.dart';
+import '../cubit/fvt_movie_cubit.dart';
 
-class MoviesByActor extends StatefulWidget {
+class FvtMovieScreen extends StatefulWidget {
   final int id;
-  const MoviesByActor({Key? key, required this.id}) : super(key: key);
+  const FvtMovieScreen({Key? key, required this.id}) : super(key: key);
 
   @override
-  State<MoviesByActor> createState() => _MoviesByActorState();
+  State<FvtMovieScreen> createState() => _FvtMovieScreenState();
 }
 
-class _MoviesByActorState extends State<MoviesByActor> {
-  late MoviesByActorCubit _cubit;
+class _FvtMovieScreenState extends State<FvtMovieScreen> {
+  late FvtMovieCubit _cubit;
 
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
@@ -30,7 +30,7 @@ class _MoviesByActorState extends State<MoviesByActor> {
   void initState() {
     super.initState();
 
-    _cubit = MoviesByActorCubit(movieAppRepository: Get.find());
+    _cubit = FvtMovieCubit(movieAppRepository: Get.find());
 
     _cubit.geMovieActorByID(id: widget.id);
     _scrollController.addListener(_onScroll);
@@ -47,7 +47,7 @@ class _MoviesByActorState extends State<MoviesByActor> {
     return Scaffold(
         appBar: appbar(context, title: 'MOVIE'),
         backgroundColor: AppColors.gradient2BackgroundColor,
-        body: BlocBuilder<MoviesByActorCubit, MoviesByActorState>(
+        body: BlocBuilder<FvtMovieCubit, FvtMovieState>(
             bloc: _cubit,
             builder: (context, state) {
               List<UIItem> lstUiItem = [];

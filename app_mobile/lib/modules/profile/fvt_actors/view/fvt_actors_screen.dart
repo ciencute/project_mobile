@@ -9,9 +9,11 @@ import 'package:app_mobile/shared/constants/colors.dart';
 
 import '../../../../api/models/actors/actors_identity.dart';
 import '../../../../api/models/enums/load_status.dart';
+import '../../../../routes/app_pages.dart';
 import '../../../../shared/styles/body_style/body_text_style.dart';
 import '../../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../../shared/widgets/loading_indicator/loading_indicator.dart';
+import '../../../movies_by_actor/view/movies_by_actor_screen.dart';
 import '../cubit/fvt_actors_cubit.dart';
 import '../state/fvt_actors_state.dart';
 
@@ -86,12 +88,17 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
                       controller: _scrollController,
                       itemBuilder: (context, index) {
                         if (index < lstUiItem.length) {
-                          return widget._item(actor: lstUiItem[index],
-                          onSelected: (value){
-                            
-                          }
-                          
-                          );
+                          return widget._item(
+                              actor: lstUiItem[index],
+                              onSelected: (value) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MoviesByActor(
+                                            id: value,
+                                          )),
+                                );
+                              });
                         } else {
                           return LoadingCommon().loadMoreItem();
                         }

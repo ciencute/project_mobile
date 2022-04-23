@@ -64,6 +64,11 @@ extension _DetailScreenChildren on DetailScreen {
                     Get.to(VideoScreen(
                       title: model.title ?? '',
                       videoUrl: model.url ?? '',
+<<<<<<< HEAD
+=======
+                      lstComment: model.comments ?? [],
+                      lstEpisodes: model.episodes ?? [],
+>>>>>>> e63254871309f5d556f1aed2721c2bab4871eb38
                     ));
                   },
                   child: const Align(
@@ -102,17 +107,21 @@ extension _DetailScreenChildren on DetailScreen {
                 ),
                 Textbody2(
                   model.slug ?? '',
+<<<<<<< HEAD
                   color: Color(0xffA0A0A0),
+=======
+                  color: const Color(0xffA0A0A0),
+>>>>>>> e63254871309f5d556f1aed2721c2bab4871eb38
                 ),
                 Container(
                   width: 1,
                   height: 20,
                   color: Colors.black.withOpacity(0.5),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
                 ),
                 Textbody2(
                   'Episode - ' + model.totalEpisode.toString(),
-                  color: Color(0xffA0A0A0),
+                  color: const Color(0xffA0A0A0),
                 ),
               ],
             ),
@@ -127,7 +136,7 @@ extension _DetailScreenChildren on DetailScreen {
                               : AppColors.fifthTextColorLight,
                           size: 30.0,
                         ))),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Row(
@@ -179,13 +188,11 @@ extension _DetailScreenChildren on DetailScreen {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   child: Container(
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Text(model.quality ?? '',
-                            style: Textbody1.defaultStyle
-                                .copyWith(color: Colors.black))),
-                  ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Text(model.quality ?? '',
+                          style: Textbody1.defaultStyle
+                              .copyWith(color: Colors.black))),
                 ),
               ],
             )
@@ -199,75 +206,69 @@ extension _DetailScreenChildren on DetailScreen {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 30),
+          margin: const EdgeInsets.only(left: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Related Movies',
-                      style: Textbody1.defaultStyle
-                          .copyWith(fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: Get.width,
-                      height: 170,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => Row(
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  // child: FCoreImage(model.img??'',fit: BoxFit.cover,)
-
-                                  child: Image.asset(
-                                      'lib/resource/assets_resources/images/image_app/image_moive1.png',
-                                      width: 110,
-                                      height: 165),
-                                ),
-                                Positioned.fill(
-                                    child: Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 110),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Textbody1('Episode-#'),
-                                              Expanded(
-                                                child: Textbody2(
-                                                  'Action, Crime',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Color(0xffA0A0A0)),
-                                                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Related Movies',
+                    style: Textbody1.defaultStyle
+                        .copyWith(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: Get.width,
+                    height: 170,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => Row(
+                        children: [
+                          Stack(
+                            children: [
+                              Image.asset(
+                                  'lib/resource/assets_resources/images/image_app/image_moive1.png',
+                                  width: 110,
+                                  height: 165),
+                              Positioned.fill(
+                                  child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 110),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Textbody1('Episode-#'),
+                                            Expanded(
+                                              child: Textbody2(
+                                                'Action, Crime',
+                                                textAlign: TextAlign.center,
+                                               
+                                                    color: const Color(0xffA0A0A0),
                                               ),
-                                            ],
-                                          ),
-                                        )))
-                              ],
-                            ),
-                            SizedBox(
-                              width: 30,
-                            )
-                          ],
-                        ),
-                        itemCount: 5,
+                                            ),
+                                          ],
+                                        ),
+                                      )))
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          )
+                        ],
                       ),
+                      itemCount: 5,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Text(
@@ -276,11 +277,11 @@ extension _DetailScreenChildren on DetailScreen {
                     .copyWith(fontSize: 18, fontWeight: FontWeight.w700),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 29, bottom: 32, top: 4),
+                padding: const EdgeInsets.only(right: 29, bottom: 32, top: 4),
                 child: Text(
                   model.description ?? '',
                   style: Textbody1.defaultStyle.copyWith(
-                      color: Color(0xffA0A0A0),
+                      color: const Color(0xffA0A0A0),
                       fontSize: 14,
                       fontWeight: FontWeight.w500),
                 ),

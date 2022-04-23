@@ -41,17 +41,76 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   }
 
   @override
-  Future<List<UIItem>> getMoviesTopView() {
-    return _movieAPI.getMoviesTopWeek();
+  Future<List<UIItem>> getMoviesTopViewOne() {
+    return _movieAPI.getMoviesTopViewOne();
+  }
+
+  @override
+  Future<PaginationModel> getMovieByActorID(int actorId, int? page) {
+    return _movieAPI.getMovieByActorID(actorId, page);
+  }
+
+  @override
+  Future<List<UIItem>> getMoviesTopFavorite() {
+    return _movieAPI.getMoviesTopFavorite();
+  }
+
+  @override
+  Future<PaginationModel> getMoviesFavoriteMovie(int? page) {
+    return _movieAPI.getMoviesFavoriteMovie(page);
+  }
+
+  @override
+  Future<PaginationModel> getMoviesTopView(int? page) {
+    return _movieAPI.getMoviesTopView(page);
+  }
+
+  @override
+  Future<UIItem> getMoviesByID(int id) {
+    return _movieAPI.getMoviesByID(id);
+  }
+
+  @override
+  Future<bool> ratingMovie(int movieId, int ratingPoint) {
+    final param = {
+      'movieId': 7,
+      'ratingPoint': 4,
+    };
+    return _movieAPI.ratingMovie(param);
+  }
+
+  @override
+  Future<bool> commentMovie(int movieId, String content) {
+    final param = {
+      'movieId': 7,
+      'content': content,
+    };
+    return _movieAPI.commentMovie(param);
+  }
+
+  @override
+  Future<PaginationModel> getMovieWatched(int? page) {
+    return _movieAPI.getMovieWatched(page);
+  }
+
+  @override
+  Future<bool> addMovieFavorite(int movieId) {
+    final param = {
+      'movieId': movieId,
+    };
+    return _movieAPI.addMovieFavorite(param);
+  }
+
+  @override
+  Future<bool> deleteMovieFavorite(int movieId) {
+    final param = {
+      'movieId': movieId,
+    };
+    return _movieAPI.deleteMovieFavorite(param);
   }
 
   @override
   Future<PaginationActorModel> getFavoriteActor(int? page) {
-    return _movieAPI.getFavoriteActor(page: page);
-  }
-
-  @override
-  Future<PaginationModel> getMovieByActorID(int id, int? page) {
-    return _movieAPI.getMovieByActorID(id, page);
+    return _movieAPI.getFavoriteActor(page);
   }
 }

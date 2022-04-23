@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/base/base_cubit.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../api/models/ui_item/ui_item.dart';
 import '../../../resource/assets_constant/icon_constants.dart';
 

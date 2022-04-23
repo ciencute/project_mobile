@@ -1,10 +1,8 @@
 part of 'fvt_actors_screen.dart';
 
 extension LstFavoriteActors on FavoriteActorsScreen {
-  Widget _item({required ActorsModel actor,
-  required Function(int) onSelected
-  
-  }) {
+  Widget _item(
+      {required ActorsModel actor, required Function(int) onSelected}) {
     return Container(
       width: DEFAULT_WIDTH,
       padding: const EdgeInsets.all(12),
@@ -54,9 +52,9 @@ extension LstFavoriteActors on FavoriteActorsScreen {
             ),
           ),
           const SizedBox(
-                  width: 12,
-                ),
-           Expanded(
+            width: 12,
+          ),
+          Expanded(
             flex: 1,
             child: Column(
               children: [
@@ -71,15 +69,12 @@ extension LstFavoriteActors on FavoriteActorsScreen {
                   height: 12,
                 ),
                 InkWell(
-                  onTap: ()=>onSelected(actor.id??0),
+                  onTap: () => onSelected(actor.id ?? 0),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24),
                       color: AppColors.primaryColorLoading,
-                      
                     ),
                     child: Center(
                       child: Textbody1('actor make'),
