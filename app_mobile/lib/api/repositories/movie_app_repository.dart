@@ -35,5 +35,6 @@ abstract class MovieAppRepository {
     int movieId,
   );
   Future<bool> deleteMovieFavorite(int movieId);
+  Future<PaginationModel> getYourFavorite(int? page);
 }
 //getMovieFavoriteActor  getMovieByActorID  getMoviesTopFavorite //getMoviesTopView

@@ -23,4 +23,4 @@ const VIDEO_APP = 'assets/video/background_app.mp4';
 const FONT_FAMILY = 'Quicksand';
 double DEFAULT_WIDTH = Get.width;
 double DEFAULT_HEIGHT = Get.width;
-const ClientAPIDomain = 'https://movieapi.tk/';
+const ClientAPIDomain = 'https://movieapp.cf/';

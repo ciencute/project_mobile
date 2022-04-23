@@ -54,5 +54,8 @@ abstract class MovieAPI {
   // da xem
   @GET('/api/movies/watched?page={page}')
   Future<PaginationModel> getMovieWatched(@Part() int? page);
+  //danh sach phim yeu thich cua ban
+  @GET('/api/movies/favorite/yourFavorite?page={page}')
+  Future<PaginationModel> getYourFavorite(@Part() int? page);
 }
 //
