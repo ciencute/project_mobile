@@ -1,15 +1,15 @@
 import 'package:app_mobile/resource/assets_constant/icon_constants.dart';
-import 'package:app_mobile/resource/assets_constant/images_constants.dart';
-import 'package:app_mobile/shared/constants/common.dart';
+import 'package:app_mobile/shared/widgets/empty_widget/empty_widget.dart';
+import 'package:app_mobile/shared/widgets/image_widget/fcore_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import 'package:app_mobile/shared/constants/colors.dart';
-
 import '../../../../api/models/actors/actors_identity.dart';
 import '../../../../api/models/enums/load_status.dart';
-import '../../../../routes/app_pages.dart';
+import '../../../../resource/assets_constant/images_constants.dart';
+import '../../../../shared/constants/colors.dart';
+import '../../../../shared/constants/common.dart';
 import '../../../../shared/styles/body_style/body_text_style.dart';
 import '../../../../shared/styles/heading_style/heading_text_style.dart';
 import '../../../../shared/widgets/loading_indicator/loading_indicator.dart';
@@ -76,6 +76,8 @@ class _FavoriteActorsScreenState extends State<FavoriteActorsScreen> {
                     return LoadingCommon().loadingWidget();
                   } else if (state.lstUiItem.isNotEmpty) {
                     lstUiItem.addAll(state.lstUiItem);
+                  } else if (state.lstUiItem.isEmpty) {
+                    return const EmptyWidget();
                   }
                   bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
                   if (lstUiItem.isEmpty) {

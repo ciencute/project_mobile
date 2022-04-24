@@ -7,13 +7,15 @@ part of 'home_identity.dart';
 // **************************************************************************
 
 HomeUIModel _$HomeUIModelFromJson(Map<String, dynamic> json) => HomeUIModel(
-      categories: (json['categories'] as List<dynamic>)
-          .map((e) => Categories.fromJson(e as Map<String, dynamic>))
+      categories: (json['categories'] as List<dynamic>?)
+          ?.map((e) => Categories.fromJson(e as Map<String, dynamic>))
           .toList(),
-      slider: (json['slider'] as List<dynamic>)
-          .map((e) => SliderModel.fromJson(e as Map<String, dynamic>))
+      slider: (json['slider'] as List<dynamic>?)
+          ?.map((e) => SliderModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      movies: Movies.fromJson(json['movies'] as Map<String, dynamic>),
+      movies: json['movies'] == null
+          ? null
+          : Movies.fromJson(json['movies'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HomeUIModelToJson(HomeUIModel instance) =>

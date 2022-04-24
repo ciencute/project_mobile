@@ -10,4 +10,5 @@ class ImageConstants {
   static const imageAvatar = '${IMAGE_ASSET}img_avatar.png';
   static const imageBackgroundLogin =
       '${IMAGE_ASSET}image_background_login.jpeg';
+  static const imageEmpty = '${IMAGE_ASSET}image_empty.png';
 }

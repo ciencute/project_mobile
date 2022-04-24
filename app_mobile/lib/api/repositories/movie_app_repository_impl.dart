@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import '../datasource/movie_data_api.dart';
 import '../models/home/home_identity.dart';
 import '../models/pagination/pagination_identity.dart';
 import '../models/pagination_actor/pagination_actor.dart';
+import '../models/response_result/response_result.dart';
 import '../models/ui_item/ui_item.dart';
 import '../models/user_identity/user_identity.dart';
 import 'movie_app_repository.dart';
@@ -13,8 +16,8 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   @override
   Future<UserModel> signIn(String username, String password) async {
     final param = {
-      'email': 'ljenkins@example.net',
-      'password': 'password',
+      'email': 'ciencute1998@gmail.com',
+      'password': '080298',
     };
     return _movieAPI.authLogin(param);
   }
@@ -70,7 +73,7 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   }
 
   @override
-  Future<bool> ratingMovie(int movieId, int ratingPoint) {
+  Future<ResponseResult> ratingMovie(int movieId, int ratingPoint) {
     final param = {
       'movieId': 7,
       'ratingPoint': 4,
@@ -79,7 +82,7 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   }
 
   @override
-  Future<bool> commentMovie(int movieId, String content) {
+  Future<ResponseResult> commentMovie(int movieId, String content) {
     final param = {
       'movieId': 7,
       'content': content,
@@ -93,7 +96,7 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   }
 
   @override
-  Future<bool> addMovieFavorite(int movieId) {
+  Future<ResponseResult> addMovieFavorite(int movieId) {
     final param = {
       'movieId': movieId,
     };
@@ -101,7 +104,7 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   }
 
   @override
-  Future<bool> deleteMovieFavorite(int movieId) {
+  Future<ResponseResult> deleteMovieFavorite(int movieId) {
     final param = {
       'movieId': movieId,
     };
@@ -116,5 +119,73 @@ class MovieAppRepositoryImpl extends MovieAppRepository {
   @override
   Future<PaginationModel> getYourFavorite(int? page) {
     return _movieAPI.getYourFavorite(page);
+  }
+
+  @override
+  Future<List<UIItem>> getMoviesTopYear() {
+    return _movieAPI.getMoviesTopYear();
+  }
+
+  @override
+  Future<List<UIItem>> getMoviesTopwatchedDay() {
+    return _movieAPI.getMoviesTopwatchedDay();
+  }
+
+  @override
+  Future<List<UIItem>> getMoviesTopwatchedMonth() {
+    return _movieAPI.getMoviesTopwatchedMonth();
+  }
+
+  @override
+  Future<List<UIItem>> getMoviesTopwatchedWeek() {
+    return _movieAPI.getMoviesTopwatchedWeek();
+  }
+
+  @override
+  addActorYourFavorite(int actorId) {
+    final param = {
+      'actorId': actorId,
+    };
+    return _movieAPI.addActorYourFavorite(param);
+  }
+
+  @override
+  deleteActorYourFavorite(int actorId) {
+    final param = {
+      'actorId': actorId,
+    };
+    return _movieAPI.deleteActorYourFavorite(param);
+  }
+
+  @override
+  register(String name, String email, String password) {
+    final param = {
+      'name': name,
+      'email': email,
+      'password': password,
+    };
+    return _movieAPI.authRegister(param);
+  }
+
+  @override
+  Future<ResponseResult> editYourProfile(
+      String name, String email, String password, File files) {
+    final param = {
+      'name': name,
+      'email': email,
+      'password': password,
+      'files': files,
+    };
+    return _movieAPI.editYourProfile(param);
+  }
+
+  @override
+  Future<List<Categories>> getAllCategory() {
+    return _movieAPI.getAllCategory();
+  }
+
+  @override
+  Future<PaginationModel> getMoviesByCategoryID(int categoryId, int? page) {
+    return _movieAPI.getMoviesByCategoryID(categoryId, page);
   }
 }

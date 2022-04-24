@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_mobile/resource/assets_constant/images_constants.dart';
 
 import '../../../../api/models/enums/load_status.dart';
+import '../../../../api/models/ui_item/ui_item.dart';
 import '../../../../base/base_cubit.dart';
 import '../view/profile_screen.dart';
 
@@ -35,8 +36,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     for (int i = 0; i < 20; i++) {
       final data = UIItem(
         description: 'Phim hay',
-        icon: ImageConstants.imageMovie1,
-        id: i.toString(),
+        img: ImageConstants.imageMovie1,
+        id: i,
         title: 'Phim người nhện',
       );
       datas.add(data);

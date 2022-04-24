@@ -1,4 +1,9 @@
-import 'package:app_mobile/api/models/ui_item/ui_item.dart';
+import 'dart:io';
+
+import 'package:retrofit/retrofit.dart';
+
+import '../models/response_result/response_result.dart';
+import '../models/ui_item/ui_item.dart';
 
 import '../models/home/home_identity.dart';
 import '../models/pagination/pagination_identity.dart';
@@ -10,6 +15,11 @@ abstract class MovieAppRepository {
     String username,
     String password,
   );
+  Future<UserModel> register(String name, String email, String password);
+  Future<ResponseResult> editYourProfile(
+      String name, String email, String password, File files);
+
+  // editYourProfile
   Future<HomeUIModel> getHomeUI();
   Future<UIItem> getMovieDetail(int id);
   Future<PaginationModel> getMovieAnimation(int? page);
@@ -23,18 +33,33 @@ abstract class MovieAppRepository {
   Future<UIItem> getMoviesByID(int id);
 
   Future<PaginationModel> getMovieWatched(int? page);
-  Future<bool> ratingMovie(
+  Future<ResponseResult> ratingMovie(
     int movieId,
     int ratingPoint,
   );
-  Future<bool> commentMovie(
+  Future<ResponseResult> commentMovie(
     int movieId,
     String content,
   );
-  Future<bool> addMovieFavorite(
+  Future<ResponseResult> addMovieFavorite(
     int movieId,
   );
-  Future<bool> deleteMovieFavorite(int movieId);
+  Future<ResponseResult> deleteMovieFavorite(int movieId);
   Future<PaginationModel> getYourFavorite(int? page);
+  // top 10
+  Future<List<UIItem>> getMoviesTopwatchedDay();
+  Future<List<UIItem>> getMoviesTopwatchedWeek();
+  Future<List<UIItem>> getMoviesTopwatchedMonth();
+  Future<List<UIItem>> getMoviesTopYear();
+  // actor
+  Future<ResponseResult> deleteActorYourFavorite(
+    int actorId,
+  );
+  Future<ResponseResult> addActorYourFavorite(
+    int actorId,
+  );
+
+  Future<List<Categories>> getAllCategory();
+  Future<PaginationModel> getMoviesByCategoryID(int categoryId, int? page);
 }
 //getMovieFavoriteActor  getMovieByActorID  getMoviesTopFavorite //getMoviesTopView

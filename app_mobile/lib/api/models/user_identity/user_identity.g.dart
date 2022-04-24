@@ -11,11 +11,15 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       user: json['user'] == null
           ? null
           : UserUIModel.fromJson(json['user'] as Map<String, dynamic>),
+      message: json['message'] as String?,
+      success: json['success'] as String?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'token': instance.token,
       'user': instance.user,
+      'message': instance.message,
+      'success': instance.success,
     };
 
 UserUIModel _$UserUIModelFromJson(Map<String, dynamic> json) => UserUIModel(
@@ -26,6 +30,7 @@ UserUIModel _$UserUIModelFromJson(Map<String, dynamic> json) => UserUIModel(
       updatedAt: json['updatedAt'] as String?,
       roleId: json['roleId'] as int?,
       img: json['img'] as String?,
+      profileUrl: json['profileUrl'] as String?,
     );
 
 Map<String, dynamic> _$UserUIModelToJson(UserUIModel instance) =>
@@ -37,4 +42,5 @@ Map<String, dynamic> _$UserUIModelToJson(UserUIModel instance) =>
       'updatedAt': instance.updatedAt,
       'roleId': instance.roleId,
       'img': instance.img,
+      'profileUrl': instance.profileUrl,
     };

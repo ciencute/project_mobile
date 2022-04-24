@@ -110,14 +110,14 @@ class _HomeScreenState extends State<HomeScreen>
                         horizontal: CommonConstants.kDefaultPadding,
                       ),
                       child: TextHeading3(
-                          state.homeModel?.movies.mostViewMovies?.name),
+                          state.homeModel?.movies?.mostViewMovies?.name),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     widget._lstMovie(
                         lstMovies:
-                            state.homeModel?.movies.mostViewMovies?.data ?? [],
+                            state.homeModel?.movies?.mostViewMovies?.data ?? [],
                         onConfirm: (value) {
                           Navigator.push(
                             context,
@@ -135,14 +135,15 @@ class _HomeScreenState extends State<HomeScreen>
                         horizontal: CommonConstants.kDefaultPadding,
                       ),
                       child: TextHeading3(
-                          state.homeModel?.movies.animationMovies?.name),
+                          state.homeModel?.movies?.animationMovies?.name),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     widget._lstMovie(
                         lstMovies:
-                            state.homeModel?.movies.animationMovies?.data ?? [],
+                            state.homeModel?.movies?.animationMovies?.data ??
+                                [],
                         onConfirm: (value) {
                           Navigator.push(
                             context,
@@ -160,14 +161,14 @@ class _HomeScreenState extends State<HomeScreen>
                         horizontal: CommonConstants.kDefaultPadding,
                       ),
                       child: TextHeading3(
-                          state.homeModel?.movies.latestMovies?.name),
+                          state.homeModel?.movies?.latestMovies?.name),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     widget._lstMovie(
                         lstMovies:
-                            state.homeModel?.movies.latestMovies?.data ?? [],
+                            state.homeModel?.movies?.latestMovies?.data ?? [],
                         onConfirm: (value) {
                           Navigator.push(
                             context,

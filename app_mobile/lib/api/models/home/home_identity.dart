@@ -5,11 +5,11 @@ part 'home_identity.g.dart';
 @JsonSerializable()
 class HomeUIModel {
   @JsonKey()
-  final List<Categories> categories;
+  final List<Categories>? categories;
   @JsonKey()
-  final List<SliderModel> slider;
+  final List<SliderModel>? slider;
   @JsonKey()
-  final Movies movies;
+  final Movies? movies;
 
   HomeUIModel(
       {required this.categories, required this.slider, required this.movies});

@@ -103,17 +103,17 @@ class InfoUser {
       required this.profilePicFile});
 }
 
-class UIItem {
-  String? id;
-  String? title;
-  String? icon;
-  String? description;
-  UIItem(
-      {required this.id,
-      required this.title,
-      required this.icon,
-      required this.description});
-}
+// class UIItem {
+//   String? id;
+//   String? title;
+//   String? icon;
+//   String? description;
+//   UIItem(
+//       {required this.id,
+//       required this.title,
+//       required this.icon,
+//       required this.description});
+// }
 
 class Author {
   final String id;

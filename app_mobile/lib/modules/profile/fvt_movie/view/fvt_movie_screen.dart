@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../../api/models/enums/load_status.dart';
 import '../../../../api/models/ui_item/ui_item.dart';
-import '../../../../routes/app_pages.dart';
 import '../../../../shared/constants/colors.dart';
 import '../../../../shared/widgets/appbar/appbar.dart';
 import '../../../../shared/widgets/item_movie/item_movie_widget.dart';
@@ -13,8 +12,7 @@ import '../../../detail/view/detail_screen.dart';
 import '../cubit/fvt_movie_cubit.dart';
 
 class FvtMovieScreen extends StatefulWidget {
-  final int id;
-  const FvtMovieScreen({Key? key, required this.id}) : super(key: key);
+  const FvtMovieScreen({Key? key}) : super(key: key);
 
   @override
   State<FvtMovieScreen> createState() => _FvtMovieScreenState();
@@ -61,7 +59,7 @@ class _FvtMovieScreenState extends State<FvtMovieScreen> {
               bool isLoadMore = state.loadStatus == LoadStatus.loadingMore;
               if (lstUiItem.isEmpty) {
                 const Center(
-                  child: Text('Chưa có phim nào!'),
+                  child: Text('Chưa yêu thích phim nào!'),
                 );
               }
               return GridView.builder(

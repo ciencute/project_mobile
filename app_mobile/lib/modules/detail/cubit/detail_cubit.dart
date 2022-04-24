@@ -17,9 +17,38 @@ class DetailCubit extends Cubit<DetailState> {
     try {
       final result = await movieAppRepository.getMovieDetail(id);
       emit(state.copyWith(
-        loadStatus: LoadStatus.success,
-        uiItem: result,
-      ));
+          loadStatus: LoadStatus.success,
+          uiItem: result,
+          isCheckResult: result.isLiked));
+    } catch (error) {
+      logger.e(error);
+    }
+  }
+
+  Future<void> actionFavoriteMovie({required int movieId}) async {
+    emit(state.copyWith(actionLike: LoadStatus.loading));
+    final isStatusLike = state.isCheckResult;
+    try {
+      if (isStatusLike == false) {
+        final result = await movieAppRepository.addMovieFavorite(movieId);
+        if (result.success == true) {
+          emit(state.copyWith(
+            actionLike: LoadStatus.success,
+            isCheckResult: true,
+          ));
+        } else {
+          print('Có lỗi trong quá trình xử lý');
+        }
+      }
+      if (isStatusLike == true) {
+        final result = await movieAppRepository.deleteMovieFavorite(movieId);
+        if (result.success == true) {
+          emit(state.copyWith(
+              actionLike: LoadStatus.success, isCheckResult: false));
+        } else {
+          print('Có lỗi trong quá trình xử lý');
+        }
+      }
     } catch (error) {
       logger.e(error);
     }

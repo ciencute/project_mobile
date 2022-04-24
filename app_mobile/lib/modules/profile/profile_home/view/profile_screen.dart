@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:app_mobile/routes/app_pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../api/models/ui_item/ui_item.dart';
 import '../../../../resource/assets_constant/icon_constants.dart';
 import '../../../../resource/assets_constant/images_constants.dart';
 import '../../../../shared/constants/colors.dart';

@@ -13,4 +13,5 @@ abstract class Routes {
   static const ACOUNTINFO = '/acountInfo';
   static const FVTFILMS = '/fvtFilms';
   static const FVTACTORS = '/fvtActors';
+  static const VIDEO_PLAYER = '/videoScreenPlay';
 }

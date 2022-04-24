@@ -3,7 +3,12 @@
 part of 'detail_screen.dart';
 
 extension _DetailScreenChildren on DetailScreen {
-  Widget _movieInfo({required UIItem model}) {
+  Widget _movieInfo(
+      //   isCheckResult
+      {required UIItem model,
+      required VoidCallback onClickLike,
+      required bool? isStatusLike,
+      required BuildContext context}) {
     return Column(
       children: [
         Stack(
@@ -22,25 +27,8 @@ extension _DetailScreenChildren on DetailScreen {
                     )),
               ),
             ),
-            Positioned(
-                top: 0,
-                right: 0 ,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                 decoration: BoxDecoration(
-                 color: AppColors.colorLight.withOpacity(0.5),
-                 borderRadius: BorderRadius.circular(50)
-
-                 ),
-                  child:  Center(
-                    child: Shimmer.fromColors(
-    baseColor: AppColors.gradient2BackgroundColor,
-    highlightColor: AppColors.colorLight,
-    child: const Icon(Icons.favorite_border,size: 35,),
-  ),
-                  ),
-                ))
+            _likeMovie(
+                onLike: () => onClickLike(), resultLike: isStatusLike ?? false)
           ],
         ),
         const SizedBox(
@@ -61,12 +49,13 @@ extension _DetailScreenChildren on DetailScreen {
                 Positioned.fill(
                     child: InkWell(
                   onTap: () {
-                    Get.to(VideoScreen(
-                      title: model.title ?? '',
-                      videoUrl: model.url ?? '',
-                      lstComment: model.comments ?? [],
-                      lstEpisodes: model.episodes ?? [],
-                    ));
+                    final arguments = <String, dynamic>{
+                      'videoUrl': model.url ?? '',
+                      'title': model.title,
+                      'lstComment': model.comments ?? [],
+                      'lstEpisodes': model.episodes ?? [],
+                    };
+                    Get.toNamed(Routes.VIDEO_PLAYER, arguments: arguments);
                   },
                   child: const Align(
                     alignment: Alignment.center,
@@ -181,8 +170,8 @@ extension _DetailScreenChildren on DetailScreen {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5)),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(5)),
                       child: Text(model.quality ?? '',
                           style: Textbody1.defaultStyle
                               .copyWith(color: Colors.black))),
@@ -192,6 +181,31 @@ extension _DetailScreenChildren on DetailScreen {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _likeMovie({required bool resultLike, required VoidCallback onLike}) {
+    return InkWell(
+      onTap: () => onLike(),
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+            color: resultLike
+                ? AppColors.coloRed.withOpacity(0.8)
+                : AppColors.colorLight.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(50)),
+        child: Center(
+          child: Shimmer.fromColors(
+            baseColor: Color.fromARGB(255, 231, 155, 68),
+            highlightColor: AppColors.accentColorLight,
+            child: const Icon(
+              Icons.favorite_border,
+              size: 35,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -232,7 +246,8 @@ extension _DetailScreenChildren on DetailScreen {
                                   child: Align(
                                       alignment: Alignment.bottomCenter,
                                       child: Padding(
-                                        padding: const EdgeInsets.only(top: 110),
+                                        padding:
+                                            const EdgeInsets.only(top: 110),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -242,8 +257,7 @@ extension _DetailScreenChildren on DetailScreen {
                                               child: Textbody2(
                                                 'Action, Crime',
                                                 textAlign: TextAlign.center,
-                                               
-                                                    color: const Color(0xffA0A0A0),
+                                                color: const Color(0xffA0A0A0),
                                               ),
                                             ),
                                           ],
@@ -282,7 +296,6 @@ extension _DetailScreenChildren on DetailScreen {
             ],
           ),
         ),
-
       ],
     );
   }

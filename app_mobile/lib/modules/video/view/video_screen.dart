@@ -1,49 +1,58 @@
-import 'package:app_mobile/shared/styles/heading_style/heading_text_style.dart';
-import 'package:app_mobile/shared/styles/label_style/label_text_style.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../api/models/comments/comments_identity.dart';
 import '../../../api/models/episodes/episodes_identity.dart';
 import '../../../shared/constants/colors.dart';
 import '../../../shared/constants/common.dart';
+import '../../../shared/styles/heading_style/heading_text_style.dart';
+import '../../../shared/styles/label_style/label_text_style.dart';
 import '../../../shared/widgets/appbar/appbar.dart';
 import '../../../shared/widgets/loading_indicator/loading_indicator.dart';
+
 part 'video_screen.children.dart';
 
 class VideoScreen extends StatefulWidget {
-  late String? videoUrl;
-  final String title;
-  final List<CommentsModel> lstComment;
-  final List<EpisodesModel> lstEpisodes;
-
-  VideoScreen(
-      {required this.videoUrl,
-      required this.title,
-      required this.lstComment,
-      required this.lstEpisodes});
+  const VideoScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _VideoScreenState createState() => _VideoScreenState();
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-  late VideoPlayerController controller;
-  late ChewieController chewieController;
+  VideoPlayerController? controller;
+  ChewieController? chewieController;
+  late String videoUrl;
+  late String title;
+  late List<CommentsModel> lstComment;
+  late List<EpisodesModel> lstEpisodes;
 
   @override
   void initState() {
     super.initState();
-    initPlayer(widget.videoUrl ?? '');
+    Future.delayed(Duration.zero, () async {
+      await initData();
+      await initPlayer(videoUrl);
+    });
+  }
+
+  Future<void> initData() async {
+    videoUrl = await Get.arguments['videoUrl'] ?? '';
+    title = await Get.arguments['title'] ?? '';
+    lstComment = await Get.arguments['lstComment'] ?? [];
+    lstEpisodes = await Get.arguments['lstEpisodes'] ?? [];
   }
 
   initPlayer(String url) {
     controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
-        controller.play();
-        controller.setLooping(true);
-        controller.addListener(() => setState(() {}));
+        controller?.play();
+        controller?.setLooping(true);
+        controller?.addListener(() => setState(() {}));
         setState(() {});
       });
     chewieController = ChewieController(
@@ -55,7 +64,7 @@ class _VideoScreenState extends State<VideoScreen> {
           backgroundColor: Colors.red,
           bufferedColor: AppColors.primaryColorLoading),
       allowFullScreen: true,
-      videoPlayerController: controller,
+      videoPlayerController: controller!,
       autoInitialize: true,
       errorBuilder: (context, errorMessage) {
         return Center(
@@ -69,20 +78,20 @@ class _VideoScreenState extends State<VideoScreen> {
   }
 
   void disposePlayer() {
-    controller.dispose();
-    chewieController.dispose();
+    controller?.dispose();
+    chewieController?.dispose();
   }
 
   void resetPlayer() {
     disposePlayer();
-    initPlayer(widget.videoUrl ?? '');
+    initPlayer(videoUrl);
   }
 
   @override
   void didUpdateWidget(VideoScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.videoUrl != widget.videoUrl) {
+    if (videoUrl != videoUrl) {
       resetPlayer();
     }
   }
@@ -100,13 +109,13 @@ class _VideoScreenState extends State<VideoScreen> {
       child: Scaffold(
           appBar: appbar(context, title: 'MOVIE'),
           backgroundColor: AppColors.gradient2BackgroundColor,
-          body: controller.value.isInitialized
+          body: controller?.value.isInitialized ?? false
               ? Column(
                   children: [
                     SizedBox(
                       height: DEFAULT_HEIGHT * 4 / 5,
                       child: Chewie(
-                        controller: chewieController,
+                        controller: chewieController!,
                       ),
                     ),
                     SizedBox(
@@ -127,10 +136,10 @@ class _VideoScreenState extends State<VideoScreen> {
                         child: TabBarView(
                       children: [
                         widget._lstEpisodes(
-                            lstEpisodes: widget.lstEpisodes,
+                            lstEpisodes: lstEpisodes,
                             urlNew: (url) {
-                                initPlayer(
-                            'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');
+                              initPlayer(
+                                  'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');
                             }),
                         Container()
                       ],

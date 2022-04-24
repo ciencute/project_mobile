@@ -11,5 +11,6 @@ class IconConstants {
   static const icGenre = '${ICON_ASSET}ic_genre.svg';
   static const icTopImdb = '${ICON_ASSET}ic_top_imdb.svg';
   static const icWatched = '${ICON_ASSET}ic_watched.svg';
-  static const icReview= '${ICON_ASSET}review.svg';
+  static const icReview = '${ICON_ASSET}review.svg';
+  static const icEmptyHistoryApp = '${ICON_ASSET}ic_empty_history_app.svg';
 }
