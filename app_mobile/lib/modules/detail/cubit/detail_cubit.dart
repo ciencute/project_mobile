@@ -53,4 +53,18 @@ class DetailCubit extends Cubit<DetailState> {
       logger.e(error);
     }
   }
+
+  Future<void> ratingMovie(
+      {required int movieId, required int ratingPoint}) async {
+    try {
+      final result = await movieAppRepository.ratingMovie(movieId, ratingPoint);
+      if (result.success == true) {
+        print('đánh giá thành công');
+      } else {
+        print('Có lỗi trong quá trình xử lý');
+      }
+    } catch (error) {
+      logger.e(error);
+    }
+  }
 }

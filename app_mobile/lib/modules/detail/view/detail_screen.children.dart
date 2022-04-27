@@ -228,7 +228,7 @@ extension _DetailScreenChildren on DetailScreen {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     width: Get.width,
                     height: 170,
                     child: ListView.builder(
@@ -238,10 +238,8 @@ extension _DetailScreenChildren on DetailScreen {
                         children: [
                           Stack(
                             children: [
-                              Image.asset(
-                                  'lib/resource/assets_resources/images/image_app/image_moive1.png',
-                                  width: 110,
-                                  height: 165),
+                              const FCoreImage(ImageConstants.imageMovie1,
+                                  width: 110, height: 165),
                               Positioned.fill(
                                   child: Align(
                                       alignment: Alignment.bottomCenter,

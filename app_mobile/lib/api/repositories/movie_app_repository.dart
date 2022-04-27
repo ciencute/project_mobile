@@ -1,13 +1,10 @@
 import 'dart:io';
 
-import 'package:retrofit/retrofit.dart';
-
-import '../models/response_result/response_result.dart';
-import '../models/ui_item/ui_item.dart';
-
 import '../models/home/home_identity.dart';
 import '../models/pagination/pagination_identity.dart';
 import '../models/pagination_actor/pagination_actor.dart';
+import '../models/response_result/response_result.dart';
+import '../models/ui_item/ui_item.dart';
 import '../models/user_identity/user_identity.dart';
 
 abstract class MovieAppRepository {
@@ -18,7 +15,6 @@ abstract class MovieAppRepository {
   Future<UserModel> register(String name, String email, String password);
   Future<ResponseResult> editYourProfile(
       String name, String email, String password, File files);
-
   // editYourProfile
   Future<HomeUIModel> getHomeUI();
   Future<UIItem> getMovieDetail(int id);
@@ -31,7 +27,6 @@ abstract class MovieAppRepository {
   Future<PaginationModel> getMoviesTopView(int? page);
   Future<PaginationModel> getMoviesFavoriteMovie(int? page);
   Future<UIItem> getMoviesByID(int id);
-
   Future<PaginationModel> getMovieWatched(int? page);
   Future<ResponseResult> ratingMovie(
     int movieId,
@@ -58,8 +53,6 @@ abstract class MovieAppRepository {
   Future<ResponseResult> addActorYourFavorite(
     int actorId,
   );
-
   Future<List<Categories>> getAllCategory();
   Future<PaginationModel> getMoviesByCategoryID(int categoryId, int? page);
 }
-//getMovieFavoriteActor  getMovieByActorID  getMoviesTopFavorite //getMoviesTopView

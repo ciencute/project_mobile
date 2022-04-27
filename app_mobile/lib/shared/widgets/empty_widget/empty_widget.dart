@@ -41,10 +41,10 @@ class EmptyWidget extends StatelessWidget {
                     offset: const Offset(0, 4),
                   ),
                 ],
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(64),
                 gradient: const LinearGradient(
                     tileMode: TileMode.clamp,
-                    stops: [0.4, 1.0],
+                    stops: [1.0, 1.0],
                     begin: Alignment.bottomLeft,
                     end: Alignment.topLeft,
                     colors: [
