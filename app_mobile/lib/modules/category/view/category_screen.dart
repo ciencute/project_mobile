@@ -28,29 +28,27 @@ class _CategoryScreenState extends State<CategoryScreen>
   void initState() {
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0)
       ..addListener(() {});
-
+ _cubit = CategoryCubit(movieAppRepository: Get.find());
     _cubit.getCategories();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BlocBuilder<CategoryCubit, CategoryState>(
-        bloc: _cubit,
-        builder: (context, state) {
-          return Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              CustomTab(
-                  items:
-                      state.lstUiItem?.map((e) => e.name ?? '').toList() ?? []),
-            ],
-          );
-        },
-      ),
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      bloc: _cubit,
+      builder: (context, state) {
+        return Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            CustomTab(
+                items:
+                    state.lstUiItem?.map((e) => e.name ?? '').toList() ?? []),
+          ],
+        );
+      },
     );
   }
 }
