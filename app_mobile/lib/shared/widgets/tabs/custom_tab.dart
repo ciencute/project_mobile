@@ -29,7 +29,7 @@ class CustomTab extends StatefulWidget {
       borderRadius: BorderRadius.all(Radius.circular(30)),
       color: Colors.red,
     ),
-  })  : assert(items.length != 0, 'items must not be null or empty'),
+  }) : 
         super(key: key);
 
   final List<String> items;
